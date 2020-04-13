@@ -1,7 +1,5 @@
 package com.eCommerce.jewelrystore.products.model;
 
-import org.springframework.cloud.openfeign.EnableFeignClients;
-
 import javax.persistence.*;
 
 @Entity
