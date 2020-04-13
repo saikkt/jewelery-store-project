@@ -31,6 +31,10 @@ public class ProductService {
 
     Logger logger = LoggerFactory.getLogger(ProductService.class);
 
+    public Product getByProductID(long productID){
+        return productsRepository.findByProductID(productID);
+    }
+
     public List<Product> getProducts(){
         List<Product> products = null;
         try {

@@ -1,7 +1,7 @@
 package com.eCommerce.jewelrystore.products.model;
 
 import javax.persistence.*;
-import java.util.UUID;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "jProducts")
@@ -23,7 +23,7 @@ public class Product {
     @Column(name = "InStockQuantity")
     private int inStockQuantity;
     @Column(name = "Price")
-    private int price;
+    private BigDecimal price;
     @Column(name = "ImagePath")
     private String imagePath;
     @Version
@@ -97,11 +97,11 @@ public class Product {
         this.inStockQuantity = inStockQuantity;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

@@ -9,7 +9,7 @@ import java.util.UUID;
 @JsonSerialize
 public class OrderItemModel {
     @JsonProperty
-    private long orderDetailsID;
+    private long orderItemID;
     @JsonProperty
     private long orderID;
     @JsonProperty
@@ -21,16 +21,16 @@ public class OrderItemModel {
     @JsonProperty
     private BigDecimal discount;
     @JsonProperty
-    private long version;
+    private BigDecimal totalPrice;
     @JsonProperty
-    private UUID objectID;
+    private long version;
 
-    public long getOrderDetailsID() {
-        return orderDetailsID;
+    public long getOrderItemID() {
+        return orderItemID;
     }
 
-    public void setOrderDetailsID(long orderDetailsID) {
-        this.orderDetailsID = orderDetailsID;
+    public void setOrderItemID(long orderItemID) {
+        this.orderItemID = orderItemID;
     }
 
     public long getOrderID() {
@@ -73,6 +73,14 @@ public class OrderItemModel {
         this.discount = discount;
     }
 
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
     public long getVersion() {
         return version;
     }
@@ -81,11 +89,5 @@ public class OrderItemModel {
         this.version = version;
     }
 
-    public UUID getObjectID() {
-        return objectID;
-    }
 
-    public void setObjectID(UUID objectID) {
-        this.objectID = objectID;
-    }
 }

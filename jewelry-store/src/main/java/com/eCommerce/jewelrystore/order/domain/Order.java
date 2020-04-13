@@ -1,7 +1,17 @@
 package com.eCommerce.jewelrystore.order.domain;
 
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
@@ -17,6 +27,7 @@ public class Order {
     private long customerID;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm:ss")
     @Column(name = "OrderDate")
     private Date orderDate;
 
@@ -24,8 +35,8 @@ public class Order {
     @Column(name = "OrderStatus")
     private OrderStatus orderStatus;
 
-    @Column(name = "TotalPrice")
-    private BigDecimal totalPrice;
+    @Column(name = "CheckoutPrice")
+    private BigDecimal checkoutPrice;
 
     @Version
     private long version;
@@ -37,22 +48,17 @@ public class Order {
             fetch = FetchType.EAGER)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    protected Order(){}
+    protected Order(){
+
+    }
+
+
 
     public Order(long customerID) {
         this.customerID = customerID;
-        this.orderDate = new Date();
+        this.orderDate = Calendar.getInstance().getTime();
         this.orderStatus = OrderStatus.PROCESSING;
         this.objectID = UUID.randomUUID();
-    }
-
-    public void addItem(OrderItem item) {
-        item.setOrderID(this.orderID);
-        orderItems.add(item);
-    }
-
-    public void removeItem(OrderItem item) {
-        orderItems.remove(item);
     }
 
     public long getOrderID() {
@@ -88,11 +94,11 @@ public class Order {
     }
 
     public BigDecimal getTotalPrice() {
-        return totalPrice;
+        return checkoutPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalPrice(BigDecimal checkoutPrice) {
+        this.checkoutPrice = checkoutPrice;
     }
 
     public List<OrderItem> getOrderItems() {
@@ -116,7 +122,7 @@ public class Order {
     }
 
     public void setObjectID(UUID objectID) {
-        this.objectID = objectID;
+        this.objectID = UUID.randomUUID();
     }
 
     @Override

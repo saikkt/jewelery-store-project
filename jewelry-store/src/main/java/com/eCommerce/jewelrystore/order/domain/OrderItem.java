@@ -14,9 +14,6 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderItemID;
 
-    @Column(name = "OrderID")
-    private long orderID;
-
     @Column(name = "ProductID")
     private long productID;
 
@@ -29,7 +26,10 @@ public class OrderItem {
     @Column(name = "Discount")
     private BigDecimal discount;
 
-    @MapsId("orderID")
+    @Column(name = "TotalPrice")
+    private BigDecimal totalPrice;
+
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "OrderID")
     private Order order;
@@ -43,8 +43,8 @@ public class OrderItem {
 
     protected OrderItem(){}
 
-    public OrderItem(long orderID, long productID) {
-        this.orderID = orderID;
+    public OrderItem(Order order, long productID) {
+        this.order = order;
         this.productID = productID;
         this.objectID = UUID.randomUUID();
     }
@@ -65,13 +65,6 @@ public class OrderItem {
         this.order = order;
     }
 
-    public long getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(long orderID) {
-        this.orderID = orderID;
-    }
 
     public long getProductID() {
         return productID;
@@ -105,6 +98,14 @@ public class OrderItem {
         this.discount = discount;
     }
 
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
     public long getVersion() {
         return version;
     }
@@ -118,7 +119,7 @@ public class OrderItem {
     }
 
     public void setObjectID(UUID objectID) {
-        this.objectID = objectID;
+        this.objectID = UUID.randomUUID();
     }
 
     @Override

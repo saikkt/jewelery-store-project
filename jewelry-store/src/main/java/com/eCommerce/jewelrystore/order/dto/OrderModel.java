@@ -4,7 +4,6 @@ import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -23,9 +22,7 @@ public class OrderModel {
     @JsonProperty
     private long version;
     @JsonProperty
-    private UUID objectID;
-    @JsonProperty
-    private List<OrderItemModel> orderItemModels;
+    private List<OrderItemModel> orderItems;
 
     public long getOrderID() {
         return orderID;
@@ -59,12 +56,12 @@ public class OrderModel {
         this.orderStatus = orderStatus;
     }
 
-    public List<OrderItemModel> getOrderItemModels() {
-        return orderItemModels;
+    public List<OrderItemModel> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrderItemModels(List<OrderItemModel> orderItemModels) {
-        this.orderItemModels = orderItemModels;
+    public void setOrderItems(List<OrderItemModel> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public long getVersion() {
@@ -73,13 +70,5 @@ public class OrderModel {
 
     public void setVersion(long version) {
         this.version = version;
-    }
-
-    public UUID getObjectID() {
-        return objectID;
-    }
-
-    public void setObjectID(UUID objectID) {
-        this.objectID = objectID;
     }
 }
