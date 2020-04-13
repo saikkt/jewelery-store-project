@@ -93,11 +93,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public BigDecimal getTotalPrice() {
+    public BigDecimal getCheckoutPrice() {
         return checkoutPrice;
     }
 
-    public void setTotalPrice(BigDecimal checkoutPrice) {
+    public void setCheckoutPrice(BigDecimal checkoutPrice) {
         this.checkoutPrice = checkoutPrice;
     }
 

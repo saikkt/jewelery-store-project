@@ -4,6 +4,7 @@ import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +22,8 @@ public class OrderModel {
     private OrderStatus orderStatus;
     @JsonProperty
     private long version;
+    @JsonProperty
+    private BigDecimal checkoutPrice;
     @JsonProperty
     private List<OrderItemModel> orderItems;
 
@@ -62,6 +65,14 @@ public class OrderModel {
 
     public void setOrderItems(List<OrderItemModel> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public BigDecimal getCheckoutPrice() {
+        return checkoutPrice;
+    }
+
+    public void setCheckoutPrice(BigDecimal checkoutPrice) {
+        this.checkoutPrice = checkoutPrice;
     }
 
     public long getVersion() {

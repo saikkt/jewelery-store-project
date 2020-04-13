@@ -10,10 +10,10 @@ class OrderItemMapper {
 
     static OrderItem toEntity(Order order, OrderItemModel orderItemModel){
         OrderItem orderItem = new OrderItem(order,orderItemModel.getProductID());
-        orderItem.setDiscount(orderItemModel.getDiscount());
+       // orderItem.setDiscount(orderItemModel.getDiscount());
         orderItem.setQuantity(orderItemModel.getQuantity());
-        orderItem.setUnitPrice(orderItemModel.getUnitPrice());
-        orderItem.setTotalPrice(orderItemModel.getTotalPrice());
+     //   orderItem.setUnitPrice(orderItemModel.getUnitPrice());
+     //   orderItem.setTotalPrice(orderItemModel.getTotalPrice());
         return orderItem;
     }
 

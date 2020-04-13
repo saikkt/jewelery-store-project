@@ -23,6 +23,7 @@ class OrderMapper {
         orderModel.setCustomerID(order.getCustomerID());
         orderModel.setOrderDate(order.getOrderDate());
         orderModel.setOrderStatus(order.getOrderStatus());
+        orderModel.setCheckoutPrice(order.getCheckoutPrice());
         orderModel.setOrderItems(
                 order.getOrderItems().stream().map(OrderItemMapper::toModel).collect(Collectors.toList())
         );

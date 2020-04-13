@@ -45,10 +45,10 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getAll());
     }
 
-    @DeleteMapping("/{emailAddress}")
-    public ResponseEntity delete(@PathVariable(name = "emailAddress") String emailAddress){
-        Customer customer = customerService.findByEmailAddress(emailAddress);
-        customerService.delete(customer.getCustomerID());
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping("/{emailAddress}")
+//    public ResponseEntity delete(@PathVariable(name = "emailAddress") String emailAddress){
+//        Customer customer = customerService.findByEmailAddress(emailAddress);
+//        customerService.delete(customer.getCustomerID());
+//        return ResponseEntity.noContent().build();
+//    }
 }
