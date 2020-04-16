@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -113,8 +114,14 @@ public class ProductService {
         return savedProducts;
     }
 
+
     public void deleteProduct(long productId){
         Product product=productsRepository.findByProductID(productId);
         productsRepository.delete(product);
     }
+
+    public List<Product> getLatestThreeProducts() {
+        return productsRepository.findProductsByLatestDate();
+    }
+
 }

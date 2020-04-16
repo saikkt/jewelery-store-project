@@ -1,0 +1,2144 @@
+2020-04-14 21:08:57,443 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
+2020-04-14 21:09:00,369 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-14 21:09:00,867 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 470ms. Found 8 JPA repository interfaces.
+2020-04-14 21:09:01,474 INFO org.springframework.cloud.context.scope.GenericScope [main] BeanFactory id=a75ae0de-541f-3740-b2f8-c9e931bac19d
+2020-04-14 21:09:03,462 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-04-14 21:09:03,485 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-04-14 21:09:03,487 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-04-14 21:09:03,488 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-14 21:09:04,169 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-04-14 21:09:04,173 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 6604 ms
+2020-04-14 21:09:04,313 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-04-14 21:09:05,304 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-04-14 21:09:05,325 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2020-04-14 21:09:05,882 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-14 21:09:06,231 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-04-14 21:09:06,808 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-14 21:09:07,516 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-04-14 21:09:10,319 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not found; SQL statement:
+
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0 [42102-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.tableIfTableExists(Parser.java:8041)
+	at org.h2.command.Parser.parseAlterTableDrop(Parser.java:7843)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:7696)
+	at org.h2.command.Parser.parseAlter(Parser.java:6983)
+	at org.h2.command.Parser.parsePrepared(Parser.java:887)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 35 common frames omitted
+2020-04-14 21:09:10,346 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jAddresses (
+       AddressID bigint not null auto_increment,
+        ApartmentNumber varchar(255),
+        City varchar(255),
+        Country varchar(255),
+        CustomerID bigint,
+        isDefaultBilling bit,
+        isDefaultShipping bit,
+        ObjectID binary(255),
+        State varchar(255),
+        Street varchar(255),
+        version bigint not null,
+        primary key (AddressID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jAddresses (
+       AddressID bigint not null auto_increment,
+        ApartmentNumber varchar(255),
+        City varchar(255),
+        Country varchar(255),
+        CustomerID bigint,
+        isDefaultBilling bit,
+        isDefaultShipping bit,
+        ObjectID binary(255),
+        State varchar(255),
+        Street varchar(255),
+        version bigint not null,
+        primary key (AddressID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JADDRESSES (
+       ADDRESSID BIGINT NOT NULL AUTO_INCREMENT,
+        APARTMENTNUMBER VARCHAR(255),
+        CITY VARCHAR(255),
+        COUNTRY VARCHAR(255),
+        CUSTOMERID BIGINT,
+        ISDEFAULTBILLING BIT,
+        ISDEFAULTSHIPPING BIT,
+        OBJECTID BINARY(255),
+        STATE VARCHAR(255),
+        STREET VARCHAR(255),
+        VERSION BIGINT NOT NULL,
+        PRIMARY KEY (ADDRESSID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jAddresses (
+       AddressID bigint not null auto_increment,
+        ApartmentNumber varchar(255),
+        City varchar(255),
+        Country varchar(255),
+        CustomerID bigint,
+        isDefaultBilling bit,
+        isDefaultShipping bit,
+        ObjectID binary(255),
+        State varchar(255),
+        Street varchar(255),
+        version bigint not null,
+        primary key (AddressID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,349 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        primary key (CategoryID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        primary key (CategoryID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JCATEGORIES (
+       CATEGORYID BIGINT NOT NULL AUTO_INCREMENT,
+        CATEGORYNAME VARCHAR(255),
+        PRIMARY KEY (CATEGORYID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        primary key (CategoryID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,368 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jCollections (
+       CollectionID bigint not null auto_increment,
+        CollectionName varchar(255),
+        primary key (CollectionID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jCollections (
+       CollectionID bigint not null auto_increment,
+        CollectionName varchar(255),
+        primary key (CollectionID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JCOLLECTIONS (
+       COLLECTIONID BIGINT NOT NULL AUTO_INCREMENT,
+        COLLECTIONNAME VARCHAR(255),
+        PRIMARY KEY (COLLECTIONID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jCollections (
+       CollectionID bigint not null auto_increment,
+        CollectionName varchar(255),
+        primary key (CollectionID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,390 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table JCustomers (
+       CustomerID bigint not null auto_increment,
+        CustomerLastName varchar(120),
+        CustomerFirstName varchar(120),
+        EmailAddress varchar(255),
+        IsGuest bit,
+        ObjectID binary(255),
+        Phone varchar(20),
+        version bigint not null,
+        primary key (CustomerID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table JCustomers (
+       CustomerID bigint not null auto_increment,
+        CustomerLastName varchar(120),
+        CustomerFirstName varchar(120),
+        EmailAddress varchar(255),
+        IsGuest bit,
+        ObjectID binary(255),
+        Phone varchar(20),
+        version bigint not null,
+        primary key (CustomerID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JCUSTOMERS (
+       CUSTOMERID BIGINT NOT NULL AUTO_INCREMENT,
+        CUSTOMERLASTNAME VARCHAR(120),
+        CUSTOMERFIRSTNAME VARCHAR(120),
+        EMAILADDRESS VARCHAR(255),
+        ISGUEST BIT,
+        OBJECTID BINARY(255),
+        PHONE VARCHAR(20),
+        VERSION BIGINT NOT NULL,
+        PRIMARY KEY (CUSTOMERID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table JCustomers (
+       CustomerID bigint not null auto_increment,
+        CustomerLastName varchar(120),
+        CustomerFirstName varchar(120),
+        EmailAddress varchar(255),
+        IsGuest bit,
+        ObjectID binary(255),
+        Phone varchar(20),
+        version bigint not null,
+        primary key (CustomerID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,417 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jOrderItems (
+       OrderItemID bigint not null auto_increment,
+        Discount decimal(19,2),
+        ObjectID binary(255),
+        ProductID bigint,
+        Quantity integer,
+        TotalPrice decimal(19,2),
+        UnitPrice decimal(19,2),
+        version bigint not null,
+        OrderID bigint not null,
+        primary key (OrderItemID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jOrderItems (
+       OrderItemID bigint not null auto_increment,
+        Discount decimal(19,2),
+        ObjectID binary(255),
+        ProductID bigint,
+        Quantity integer,
+        TotalPrice decimal(19,2),
+        UnitPrice decimal(19,2),
+        version bigint not null,
+        OrderID bigint not null,
+        primary key (OrderItemID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JORDERITEMS (
+       ORDERITEMID BIGINT NOT NULL AUTO_INCREMENT,
+        DISCOUNT DECIMAL(19,2),
+        OBJECTID BINARY(255),
+        PRODUCTID BIGINT,
+        QUANTITY INTEGER,
+        TOTALPRICE DECIMAL(19,2),
+        UNITPRICE DECIMAL(19,2),
+        VERSION BIGINT NOT NULL,
+        ORDERID BIGINT NOT NULL,
+        PRIMARY KEY (ORDERITEMID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jOrderItems (
+       OrderItemID bigint not null auto_increment,
+        Discount decimal(19,2),
+        ObjectID binary(255),
+        ProductID bigint,
+        Quantity integer,
+        TotalPrice decimal(19,2),
+        UnitPrice decimal(19,2),
+        version bigint not null,
+        OrderID bigint not null,
+        primary key (OrderItemID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,460 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jOrders (
+       OrderID bigint not null auto_increment,
+        CheckoutPrice decimal(19,2),
+        CustomerID bigint,
+        ObjectID binary(255),
+        OrderDate date,
+        OrderStatus varchar(255),
+        version bigint not null,
+        primary key (OrderID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jOrders (
+       OrderID bigint not null auto_increment,
+        CheckoutPrice decimal(19,2),
+        CustomerID bigint,
+        ObjectID binary(255),
+        OrderDate date,
+        OrderStatus varchar(255),
+        version bigint not null,
+        primary key (OrderID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JORDERS (
+       ORDERID BIGINT NOT NULL AUTO_INCREMENT,
+        CHECKOUTPRICE DECIMAL(19,2),
+        CUSTOMERID BIGINT,
+        OBJECTID BINARY(255),
+        ORDERDATE DATE,
+        ORDERSTATUS VARCHAR(255),
+        VERSION BIGINT NOT NULL,
+        PRIMARY KEY (ORDERID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jOrders (
+       OrderID bigint not null auto_increment,
+        CheckoutPrice decimal(19,2),
+        CustomerID bigint,
+        ObjectID binary(255),
+        OrderDate date,
+        OrderStatus varchar(255),
+        version bigint not null,
+        primary key (OrderID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,475 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jProducts (
+       ProductID bigint not null auto_increment,
+        CategoryID bigint,
+        CollectionID bigint,
+        ImagePath varchar(255),
+        InStockQuantity integer,
+        Price decimal(19,2),
+        ProductName varchar(255),
+        SectionID bigint,
+        version integer not null,
+        primary key (ProductID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jProducts (
+       ProductID bigint not null auto_increment,
+        CategoryID bigint,
+        CollectionID bigint,
+        ImagePath varchar(255),
+        InStockQuantity integer,
+        Price decimal(19,2),
+        ProductName varchar(255),
+        SectionID bigint,
+        version integer not null,
+        primary key (ProductID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JPRODUCTS (
+       PRODUCTID BIGINT NOT NULL AUTO_INCREMENT,
+        CATEGORYID BIGINT,
+        COLLECTIONID BIGINT,
+        IMAGEPATH VARCHAR(255),
+        INSTOCKQUANTITY INTEGER,
+        PRICE DECIMAL(19,2),
+        PRODUCTNAME VARCHAR(255),
+        SECTIONID BIGINT,
+        VERSION INTEGER NOT NULL,
+        PRIMARY KEY (PRODUCTID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jProducts (
+       ProductID bigint not null auto_increment,
+        CategoryID bigint,
+        CollectionID bigint,
+        ImagePath varchar(255),
+        InStockQuantity integer,
+        Price decimal(19,2),
+        ProductName varchar(255),
+        SectionID bigint,
+        version integer not null,
+        primary key (ProductID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,496 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jSections (
+       SectionID bigint not null auto_increment,
+        SectionName varchar(255),
+        primary key (SectionID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jSections (
+       SectionID bigint not null auto_increment,
+        SectionName varchar(255),
+        primary key (SectionID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JSECTIONS (
+       SECTIONID BIGINT NOT NULL AUTO_INCREMENT,
+        SECTIONNAME VARCHAR(255),
+        PRIMARY KEY (SECTIONID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jSections (
+       SectionID bigint not null auto_increment,
+        SectionName varchar(255),
+        primary key (SectionID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,521 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jShippingDetails (
+       PackingSlipID bigint not null auto_increment,
+        ShipCity varchar(255),
+        ShipCountry varchar(255),
+        ShipPostalCode varchar(255),
+        ShipRegion varchar(255),
+        OrderId bigint,
+        ShipAddress varchar(255),
+        ShipName varchar(255),
+        TrackId varchar(255),
+        version integer not null,
+        primary key (PackingSlipID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jShippingDetails (
+       PackingSlipID bigint not null auto_increment,
+        ShipCity varchar(255),
+        ShipCountry varchar(255),
+        ShipPostalCode varchar(255),
+        ShipRegion varchar(255),
+        OrderId bigint,
+        ShipAddress varchar(255),
+        ShipName varchar(255),
+        TrackId varchar(255),
+        version integer not null,
+        primary key (PackingSlipID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JSHIPPINGDETAILS (
+       PACKINGSLIPID BIGINT NOT NULL AUTO_INCREMENT,
+        SHIPCITY VARCHAR(255),
+        SHIPCOUNTRY VARCHAR(255),
+        SHIPPOSTALCODE VARCHAR(255),
+        SHIPREGION VARCHAR(255),
+        ORDERID BIGINT,
+        SHIPADDRESS VARCHAR(255),
+        SHIPNAME VARCHAR(255),
+        TRACKID VARCHAR(255),
+        VERSION INTEGER NOT NULL,
+        PRIMARY KEY (PACKINGSLIPID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jShippingDetails (
+       PackingSlipID bigint not null auto_increment,
+        ShipCity varchar(255),
+        ShipCountry varchar(255),
+        ShipPostalCode varchar(255),
+        ShipRegion varchar(255),
+        OrderId bigint,
+        ShipAddress varchar(255),
+        ShipName varchar(255),
+        TrackId varchar(255),
+        version integer not null,
+        primary key (PackingSlipID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,534 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table jOrderItems 
+       add constraint FKfc5dhoeufeegjgujeh17dpmb0 
+       foreign key (OrderID) 
+       references jOrders (OrderID)" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table jOrderItems 
+       add constraint FKfc5dhoeufeegjgujeh17dpmb0 
+       foreign key (OrderID) 
+       references jOrders (OrderID)" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:374)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not found; SQL statement:
+
+    alter table jOrderItems 
+       add constraint FKfc5dhoeufeegjgujeh17dpmb0 
+       foreign key (OrderID) 
+       references jOrders (OrderID) [42102-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:108)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:78)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:09:10,553 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-14 21:09:10,584 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-14 21:09:12,838 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-14 21:09:13,253 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-14 21:09:13,280 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-04-14 21:09:13,281 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-14 21:09:13,301 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-04-14 21:09:13,303 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-14 21:09:13,622 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-14 21:09:14,912 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-04-14 21:09:14,965 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-04-14 21:09:15,061 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-04-14 21:09:15,455 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: getCategoriesUsingGET_1
+2020-04-14 21:09:15,550 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: saveUsingPOST_1
+2020-04-14 21:09:15,596 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: postProductUsingPOST_1
+2020-04-14 21:09:15,718 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-04-14 21:09:15,757 INFO org.apache.juli.logging.DirectJDKLog [main] Pausing ProtocolHandler ["http-nio-8080"]
+2020-04-14 21:09:15,758 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2020-04-14 21:09:15,767 WARN org.apache.juli.logging.DirectJDKLog [main] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.5/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.5/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.5/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.5/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.5/java.lang.Thread.run(Thread.java:834)
+2020-04-14 21:09:15,772 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping ProtocolHandler ["http-nio-8080"]
+2020-04-14 21:09:15,773 INFO org.apache.juli.logging.DirectJDKLog [main] Destroying ProtocolHandler ["http-nio-8080"]
+2020-04-14 21:09:15,781 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-04-14 21:09:15,788 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-14 21:09:15,802 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-14 21:09:15,805 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2020-04-14 21:09:15,809 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0
+2020-04-14 21:09:15,821 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCategories
+2020-04-14 21:09:15,823 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCollections
+2020-04-14 21:09:15,825 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists JCustomers
+2020-04-14 21:09:15,830 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jOrders
+2020-04-14 21:09:15,845 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2020-04-14 21:09:15,857 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2020-04-14 21:09:15,867 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-04-14 21:11:29,292 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
+2020-04-14 21:11:31,046 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-14 21:11:31,456 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 388ms. Found 8 JPA repository interfaces.
+2020-04-14 21:11:31,951 INFO org.springframework.cloud.context.scope.GenericScope [main] BeanFactory id=a75ae0de-541f-3740-b2f8-c9e931bac19d
+2020-04-14 21:11:33,143 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 7009 (http)
+2020-04-14 21:11:33,165 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-7009"]
+2020-04-14 21:11:33,166 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-04-14 21:11:33,166 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-14 21:11:33,640 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-04-14 21:11:33,641 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4315 ms
+2020-04-14 21:11:33,696 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-04-14 21:11:34,132 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-04-14 21:11:34,147 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2020-04-14 21:11:34,545 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-14 21:11:34,737 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-04-14 21:11:35,125 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-14 21:11:35,412 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-04-14 21:11:37,206 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not found; SQL statement:
+
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0 [42102-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.tableIfTableExists(Parser.java:8041)
+	at org.h2.command.Parser.parseAlterTableDrop(Parser.java:7843)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:7696)
+	at org.h2.command.Parser.parseAlter(Parser.java:6983)
+	at org.h2.command.Parser.parsePrepared(Parser.java:887)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 35 common frames omitted
+2020-04-14 21:11:37,226 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jAddresses (
+       AddressID bigint not null auto_increment,
+        ApartmentNumber varchar(255),
+        City varchar(255),
+        Country varchar(255),
+        CustomerID bigint,
+        isDefaultBilling bit,
+        isDefaultShipping bit,
+        ObjectID binary(255),
+        State varchar(255),
+        Street varchar(255),
+        version bigint not null,
+        primary key (AddressID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jAddresses (
+       AddressID bigint not null auto_increment,
+        ApartmentNumber varchar(255),
+        City varchar(255),
+        Country varchar(255),
+        CustomerID bigint,
+        isDefaultBilling bit,
+        isDefaultShipping bit,
+        ObjectID binary(255),
+        State varchar(255),
+        Street varchar(255),
+        version bigint not null,
+        primary key (AddressID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JADDRESSES (
+       ADDRESSID BIGINT NOT NULL AUTO_INCREMENT,
+        APARTMENTNUMBER VARCHAR(255),
+        CITY VARCHAR(255),
+        COUNTRY VARCHAR(255),
+        CUSTOMERID BIGINT,
+        ISDEFAULTBILLING BIT,
+        ISDEFAULTSHIPPING BIT,
+        OBJECTID BINARY(255),
+        STATE VARCHAR(255),
+        STREET VARCHAR(255),
+        VERSION BIGINT NOT NULL,
+        PRIMARY KEY (ADDRESSID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jAddresses (
+       AddressID bigint not null auto_increment,
+        ApartmentNumber varchar(255),
+        City varchar(255),
+        Country varchar(255),
+        CustomerID bigint,
+        isDefaultBilling bit,
+        isDefaultShipping bit,
+        ObjectID binary(255),
+        State varchar(255),
+        Street varchar(255),
+        version bigint not null,
+        primary key (AddressID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,228 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        primary key (CategoryID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        primary key (CategoryID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JCATEGORIES (
+       CATEGORYID BIGINT NOT NULL AUTO_INCREMENT,
+        CATEGORYNAME VARCHAR(255),
+        PRIMARY KEY (CATEGORYID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        primary key (CategoryID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,236 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jCollections (
+       CollectionID bigint not null auto_increment,
+        CollectionName varchar(255),
+        primary key (CollectionID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jCollections (
+       CollectionID bigint not null auto_increment,
+        CollectionName varchar(255),
+        primary key (CollectionID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JCOLLECTIONS (
+       COLLECTIONID BIGINT NOT NULL AUTO_INCREMENT,
+        COLLECTIONNAME VARCHAR(255),
+        PRIMARY KEY (COLLECTIONID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jCollections (
+       CollectionID bigint not null auto_increment,
+        CollectionName varchar(255),
+        primary key (CollectionID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,242 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table JCustomers (
+       CustomerID bigint not null auto_increment,
+        CustomerLastName varchar(120),
+        CustomerFirstName varchar(120),
+        EmailAddress varchar(255),
+        IsGuest bit,
+        ObjectID binary(255),
+        Phone varchar(20),
+        version bigint not null,
+        primary key (CustomerID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table JCustomers (
+       CustomerID bigint not null auto_increment,
+        CustomerLastName varchar(120),
+        CustomerFirstName varchar(120),
+        EmailAddress varchar(255),
+        IsGuest bit,
+        ObjectID binary(255),
+        Phone varchar(20),
+        version bigint not null,
+        primary key (CustomerID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JCUSTOMERS (
+       CUSTOMERID BIGINT NOT NULL AUTO_INCREMENT,
+        CUSTOMERLASTNAME VARCHAR(120),
+        CUSTOMERFIRSTNAME VARCHAR(120),
+        EMAILADDRESS VARCHAR(255),
+        ISGUEST BIT,
+        OBJECTID BINARY(255),
+        PHONE VARCHAR(20),
+        VERSION BIGINT NOT NULL,
+        PRIMARY KEY (CUSTOMERID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table JCustomers (
+       CustomerID bigint not null auto_increment,
+        CustomerLastName varchar(120),
+        CustomerFirstName varchar(120),
+        EmailAddress varchar(255),
+        IsGuest bit,
+        ObjectID binary(255),
+        Phone varchar(20),
+        version bigint not null,
+        primary key (CustomerID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,247 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jOrderItems (
+       OrderItemID bigint not null auto_increment,
+        Discount decimal(19,2),
+        ObjectID binary(255),
+        ProductID bigint,
+        Quantity integer,
+        TotalPrice decimal(19,2),
+        UnitPrice decimal(19,2),
+        version bigint not null,
+        OrderID bigint not null,
+        primary key (OrderItemID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jOrderItems (
+       OrderItemID bigint not null auto_increment,
+        Discount decimal(19,2),
+        ObjectID binary(255),
+        ProductID bigint,
+        Quantity integer,
+        TotalPrice decimal(19,2),
+        UnitPrice decimal(19,2),
+        version bigint not null,
+        OrderID bigint not null,
+        primary key (OrderItemID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JORDERITEMS (
+       ORDERITEMID BIGINT NOT NULL AUTO_INCREMENT,
+        DISCOUNT DECIMAL(19,2),
+        OBJECTID BINARY(255),
+        PRODUCTID BIGINT,
+        QUANTITY INTEGER,
+        TOTALPRICE DECIMAL(19,2),
+        UNITPRICE DECIMAL(19,2),
+        VERSION BIGINT NOT NULL,
+        ORDERID BIGINT NOT NULL,
+        PRIMARY KEY (ORDERITEMID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jOrderItems (
+       OrderItemID bigint not null auto_increment,
+        Discount decimal(19,2),
+        ObjectID binary(255),
+        ProductID bigint,
+        Quantity integer,
+        TotalPrice decimal(19,2),
+        UnitPrice decimal(19,2),
+        version bigint not null,
+        OrderID bigint not null,
+        primary key (OrderItemID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,256 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jOrders (
+       OrderID bigint not null auto_increment,
+        CheckoutPrice decimal(19,2),
+        CustomerID bigint,
+        ObjectID binary(255),
+        OrderDate date,
+        OrderStatus varchar(255),
+        version bigint not null,
+        primary key (OrderID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jOrders (
+       OrderID bigint not null auto_increment,
+        CheckoutPrice decimal(19,2),
+        CustomerID bigint,
+        ObjectID binary(255),
+        OrderDate date,
+        OrderStatus varchar(255),
+        version bigint not null,
+        primary key (OrderID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JORDERS (
+       ORDERID BIGINT NOT NULL AUTO_INCREMENT,
+        CHECKOUTPRICE DECIMAL(19,2),
+        CUSTOMERID BIGINT,
+        OBJECTID BINARY(255),
+        ORDERDATE DATE,
+        ORDERSTATUS VARCHAR(255),
+        VERSION BIGINT NOT NULL,
+        PRIMARY KEY (ORDERID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jOrders (
+       OrderID bigint not null auto_increment,
+        CheckoutPrice decimal(19,2),
+        CustomerID bigint,
+        ObjectID binary(255),
+        OrderDate date,
+        OrderStatus varchar(255),
+        version bigint not null,
+        primary key (OrderID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,270 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jProducts (
+       ProductID bigint not null auto_increment,
+        CategoryID bigint,
+        CollectionID bigint,
+        ImagePath varchar(255),
+        InStockQuantity integer,
+        Price decimal(19,2),
+        ProductName varchar(255),
+        SectionID bigint,
+        version integer not null,
+        primary key (ProductID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jProducts (
+       ProductID bigint not null auto_increment,
+        CategoryID bigint,
+        CollectionID bigint,
+        ImagePath varchar(255),
+        InStockQuantity integer,
+        Price decimal(19,2),
+        ProductName varchar(255),
+        SectionID bigint,
+        version integer not null,
+        primary key (ProductID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JPRODUCTS (
+       PRODUCTID BIGINT NOT NULL AUTO_INCREMENT,
+        CATEGORYID BIGINT,
+        COLLECTIONID BIGINT,
+        IMAGEPATH VARCHAR(255),
+        INSTOCKQUANTITY INTEGER,
+        PRICE DECIMAL(19,2),
+        PRODUCTNAME VARCHAR(255),
+        SECTIONID BIGINT,
+        VERSION INTEGER NOT NULL,
+        PRIMARY KEY (PRODUCTID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jProducts (
+       ProductID bigint not null auto_increment,
+        CategoryID bigint,
+        CollectionID bigint,
+        ImagePath varchar(255),
+        InStockQuantity integer,
+        Price decimal(19,2),
+        ProductName varchar(255),
+        SectionID bigint,
+        version integer not null,
+        primary key (ProductID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,287 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jSections (
+       SectionID bigint not null auto_increment,
+        SectionName varchar(255),
+        primary key (SectionID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jSections (
+       SectionID bigint not null auto_increment,
+        SectionName varchar(255),
+        primary key (SectionID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JSECTIONS (
+       SECTIONID BIGINT NOT NULL AUTO_INCREMENT,
+        SECTIONNAME VARCHAR(255),
+        PRIMARY KEY (SECTIONID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jSections (
+       SectionID bigint not null auto_increment,
+        SectionName varchar(255),
+        primary key (SectionID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,336 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jShippingDetails (
+       PackingSlipID bigint not null auto_increment,
+        ShipCity varchar(255),
+        ShipCountry varchar(255),
+        ShipPostalCode varchar(255),
+        ShipRegion varchar(255),
+        OrderId bigint,
+        ShipAddress varchar(255),
+        ShipName varchar(255),
+        TrackId varchar(255),
+        version integer not null,
+        primary key (PackingSlipID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jShippingDetails (
+       PackingSlipID bigint not null auto_increment,
+        ShipCity varchar(255),
+        ShipCountry varchar(255),
+        ShipPostalCode varchar(255),
+        ShipRegion varchar(255),
+        OrderId bigint,
+        ShipAddress varchar(255),
+        ShipName varchar(255),
+        TrackId varchar(255),
+        version integer not null,
+        primary key (PackingSlipID)
+    ) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+    CREATE TABLE JSHIPPINGDETAILS (
+       PACKINGSLIPID BIGINT NOT NULL AUTO_INCREMENT,
+        SHIPCITY VARCHAR(255),
+        SHIPCOUNTRY VARCHAR(255),
+        SHIPPOSTALCODE VARCHAR(255),
+        SHIPREGION VARCHAR(255),
+        ORDERID BIGINT,
+        SHIPADDRESS VARCHAR(255),
+        SHIPNAME VARCHAR(255),
+        TRACKID VARCHAR(255),
+        VERSION INTEGER NOT NULL,
+        PRIMARY KEY (PACKINGSLIPID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jShippingDetails (
+       PackingSlipID bigint not null auto_increment,
+        ShipCity varchar(255),
+        ShipCountry varchar(255),
+        ShipPostalCode varchar(255),
+        ShipRegion varchar(255),
+        OrderId bigint,
+        ShipAddress varchar(255),
+        ShipName varchar(255),
+        TrackId varchar(255),
+        version integer not null,
+        primary key (PackingSlipID)
+    ) engine=InnoDB [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:243)
+	at org.h2.command.Parser.readColumnIdentifier(Parser.java:4976)
+	at org.h2.command.Parser.readUniqueIdentifier(Parser.java:4962)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8387)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,348 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table jOrderItems 
+       add constraint FKfc5dhoeufeegjgujeh17dpmb0 
+       foreign key (OrderID) 
+       references jOrders (OrderID)" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table jOrderItems 
+       add constraint FKfc5dhoeufeegjgujeh17dpmb0 
+       foreign key (OrderID) 
+       references jOrders (OrderID)" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:374)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1237)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:17)
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not found; SQL statement:
+
+    alter table jOrderItems 
+       add constraint FKfc5dhoeufeegjgujeh17dpmb0 
+       foreign key (OrderID) 
+       references jOrders (OrderID) [42102-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:108)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:78)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 34 common frames omitted
+2020-04-14 21:11:37,371 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-14 21:11:37,416 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-14 21:11:39,724 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-14 21:11:40,059 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-14 21:11:40,074 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-04-14 21:11:40,075 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-14 21:11:40,088 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-04-14 21:11:40,089 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-14 21:11:40,288 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-14 21:11:41,692 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-04-14 21:11:41,743 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-04-14 21:11:41,834 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-04-14 21:11:42,314 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: getCategoriesUsingGET_1
+2020-04-14 21:11:42,406 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: saveUsingPOST_1
+2020-04-14 21:11:42,453 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: postProductUsingPOST_1
+2020-04-14 21:11:42,530 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-7009"]
+2020-04-14 21:11:42,597 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 7009 (http) with context path ''
+2020-04-14 21:11:43,367 INFO org.springframework.boot.StartupInfoLogger [main] Started JewelryStoreApplication in 16.934 seconds (JVM running for 19.07)

@@ -39,6 +39,9 @@ CREATE TABLE jProducts (
   CollectionID INT(11) NOT NULL,
   InStockQuantity INT(22) DEFAULT 0,
   Price DECIMAL(10,2) DEFAULT 0000.00,
+  Discount DECIMAL(10,2) DEFAULT 0000.00,
+  CreateDate datetime DEFAULT NULL,
+  UpdateDate datetime DEFAULT NULL,
   ImagePath VARCHAR(250),
   version INT(11) DEFAULT 1,
   FOREIGN KEY (`CategoryID`) REFERENCES `jcategories`(`CategoryID`),
@@ -122,3 +125,38 @@ FOREIGN KEY (`ProductID`) REFERENCES `jProducts` (`ProductID`)
 INSERT INTO jOrderItems(OrderID,ProductID) values
 (1,1);
 
+DROP TABLE IF EXISTS jShippingDetails;
+
+CREATE TABLE jShippingDetails(
+  `ShippingID` int(11) NOT NULL AUTO_INCREMENT,
+  `OrderID` int(11) DEFAULT NULL,
+  `TrackId` varchar(40) DEFAULT NULL,
+  `ShipName` varchar(40) DEFAULT NULL,
+  `ShipAddress` varchar(60) DEFAULT NULL,
+  `ShipCity` varchar(15) DEFAULT NULL,
+  `ShipRegion` varchar(15) DEFAULT NULL,
+  `ShipPostalCode` varchar(10) DEFAULT NULL,
+  `ShipCountry` varchar(15) DEFAULT NULL,
+  `Version` int(11) NOT NULL DEFAULT '1',
+  `ObjectID` binary(16) DEFAULT NULL,
+  PRIMARY KEY (`ShippingID`),
+  FOREIGN KEY (`OrderID`) REFERENCES `jOrders` (`OrderID`)
+);
+
+INSERT INTO jShippingDetails(OrderID,ShipName) values
+(1,'USPS');
+
+DROP TABLE IF EXISTS jHomePageSlidingImages;
+
+CREATE TABLE jHomePageSlidingImages(
+  `ImageID` int(11) NOT NULL AUTO_INCREMENT,
+  `ImageUrl` varchar(200) DEFAULT NULL,
+  `ImageDescription` varchar(200) DEFAULT NULL,
+  `ImageOrientation` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`ImageID`)
+);
+
+INSERT INTO jHomePageSlidingImages(ImageUrl,ImageDescription,ImageOrientation) values
+('image1.url','Gift it to your Wife','LEFT'),
+('image2.url','Gift it to your SON','RIGHT'),
+('image3.url','Gift it to your Mom','UP');
