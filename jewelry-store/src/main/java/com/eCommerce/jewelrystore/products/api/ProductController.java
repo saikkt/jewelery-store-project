@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Calendar;
 import java.util.List;
 
 @RestController
@@ -40,6 +42,8 @@ public class ProductController {
 
     @PostMapping("/postProduct")
     public ResponseEntity<Product> postProduct(@RequestBody Product product){
+        product.setCreateDate(Calendar.getInstance().getTime());
+        product.setUpdateDate(Calendar.getInstance().getTime());
         Product savedProduct = productService.saveProduct(product);
         if(savedProduct==null)
             return ResponseEntity.unprocessableEntity().build();
@@ -48,17 +52,30 @@ public class ProductController {
 
     @PostMapping("/postProductsList")
     public ResponseEntity<List<Product>> postProducts(@RequestBody List<Product> products){
-
+        products.stream().forEach(product->{
+            product.setCreateDate(Calendar.getInstance().getTime());
+            product.setUpdateDate(Calendar.getInstance().getTime());
+        });
         List<Product> savedProducts = productService.saveProducts(products);
         return ResponseEntity.ok().body(savedProducts);
     }
 
     @PutMapping("/updateProduct")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product){
+        product.setUpdateDate(Calendar.getInstance().getTime());
         Product savedProduct = productService.saveProduct(product);
         if(savedProduct==null)
             return ResponseEntity.unprocessableEntity().build();
         return ResponseEntity.ok().body(savedProduct);
+    }
+
+    @PostMapping("/updateProductsList")
+    public ResponseEntity<List<Product>> updateProductsList(@RequestBody List<Product> products){
+        products.stream().forEach(product->{
+            product.setUpdateDate(Calendar.getInstance().getTime());
+        });
+        List<Product> savedProducts = productService.saveProducts(products);
+        return ResponseEntity.ok().body(savedProducts);
     }
 
     @DeleteMapping("/deleteProduct/{productId}")
@@ -67,4 +84,9 @@ public class ProductController {
          return ResponseEntity.ok().build();
     }
 
+    //Retrieving latest three Products created
+    @GetMapping("/getLatestThreeProducts")
+    public ResponseEntity<List<Product>> getLatestThreeProducts(){
+        return  ResponseEntity.ok().body(productService.getLatestThreeProducts());
+    }
 }

@@ -37016,4 +37016,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 2020-04-13 16:35:01,003 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-04-13 16:35:01,006 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
 2020-04-13 16:35:01,028 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 20 ms
+<<<<<<< HEAD
 2020-04-13 19:25:45,702 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h26s740ms79µs900ns).
+=======
+>>>>>>> 29d64e98c61f7863625410dd0265f12cc7ec3f46

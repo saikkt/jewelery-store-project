@@ -1,7 +1,11 @@
 package com.eCommerce.jewelrystore.products.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "jProducts")
@@ -26,6 +30,14 @@ public class Product {
     private BigDecimal price;
     @Column(name = "ImagePath")
     private String imagePath;
+    @Column(name = "Discount")
+    private BigDecimal discount;
+    @Column(name = "CreateDate")
+    @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm:ss")
+    private Date createDate;
+    @Column(name = "UpdateDate")
+    @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm:ss")
+    private Date updateDate;
     @Version
     private int version;
 
@@ -69,24 +81,13 @@ public class Product {
         return categoryID;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
-    }
 
     public long getSectionID() {
         return sectionID;
     }
 
-    public void setSectionID(int sectionID) {
-        this.sectionID = sectionID;
-    }
-
     public long getCollectionID() {
         return collectionID;
-    }
-
-    public void setCollectionID(int collectionID) {
-        this.collectionID = collectionID;
     }
 
     public int getInStockQuantity() {
@@ -128,4 +129,41 @@ public class Product {
 //    public void setObjectID(UUID objectID) {
 //        this.objectID = objectID;
 //    }
+
+
+    public void setCategoryID(long categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public void setSectionID(long sectionID) {
+        this.sectionID = sectionID;
+    }
+
+    public void setCollectionID(long collectionID) {
+        this.collectionID = collectionID;
+    }
+
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
 }
