@@ -1,18 +1,13 @@
 package com.eCommerce.jewelrystore.order.domain;
 
-import org.apache.commons.logging.LogFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "jOrders")
@@ -26,10 +21,10 @@ public class Order {
     @Column(name = "CustomerID")
     private long customerID;
 
-    @Temporal(TemporalType.DATE)
+  //  @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm:ss")
     @Column(name = "OrderDate")
-    private Date orderDate;
+    private LocalDate orderDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "OrderStatus")
@@ -56,8 +51,8 @@ public class Order {
 
     public Order(long customerID) {
         this.customerID = customerID;
-        this.orderDate = Calendar.getInstance().getTime();
-        this.orderStatus = OrderStatus.PROCESSING;
+        this.orderDate = LocalDate.now();
+        this.orderStatus = OrderStatus.CART;
         this.objectID = UUID.randomUUID();
     }
 
@@ -77,11 +72,11 @@ public class Order {
         this.customerID = customerID;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 

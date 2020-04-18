@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @JsonSerialize
 public class OrderModel {
@@ -17,7 +16,7 @@ public class OrderModel {
     @JsonProperty
     private long customerID;
     @JsonProperty
-    private Date orderDate;
+    private LocalDate orderDate;
     @JsonProperty
     private OrderStatus orderStatus;
     @JsonProperty
@@ -43,11 +42,11 @@ public class OrderModel {
         this.customerID = customerID;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 

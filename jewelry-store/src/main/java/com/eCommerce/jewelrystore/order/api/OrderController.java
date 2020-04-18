@@ -73,17 +73,19 @@ public class OrderController {
 
     //Admin Access Only
     @PutMapping("/{orderID}")
-    public ResponseEntity<OrderModel> update(@PathVariable(name = "orderID") long orderID, @RequestBody Order order) {
+    public ResponseEntity<OrderModel> update(@PathVariable(name = "orderID") long orderID, @RequestBody OrderModel orderModel) {
         Optional<Order> orderOptional = orderService.getByOrderID(orderID);
         if (!orderOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        if (order.getVersion() != orderOptional.get().getVersion()) {
-            return new ResponseEntity<>(OrderMapper.toModel(orderOptional.get()), HttpStatus.CONFLICT);
-        }
-        return ResponseEntity.ok(OrderMapper.toModel(orderService.save(order)));
+//        if (order.getVersion() != orderOptional.get().getVersion()) {
+//            return new ResponseEntity<>(OrderMapper.toModel(orderOptional.get()), HttpStatus.CONFLICT);
+//        }
+        Order updatedOrder = orderService.save(OrderMapper.merge(orderOptional.get(),orderModel));
+        return ResponseEntity.ok(OrderMapper.toModel(orderService.save(updatedOrder)));
     }
 
+    //Order Shipped
     // Admin/Admin Trusted API Access Only
     @PutMapping("/orderShipped/{orderID}")
     public ResponseEntity<OrderModel> updateShippingStatus(@PathVariable(name = "orderID") long orderID) {

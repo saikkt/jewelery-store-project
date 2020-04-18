@@ -1,6 +1,6 @@
 package com.eCommerce.jewelrystore.order.service;
 
-import com.eCommerce.jewelrystore.order.adapter.ProductClient;
+import com.eCommerce.jewelrystore.adapter.ProductClient;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class OrderService {
 
@@ -33,7 +34,6 @@ public class OrderService {
         return orderRepository.findByCustomerID(customerID);
     }
 
-    @Transactional
     public Order save(Order order) {
         //Set Order
         //Get Unit Price
@@ -55,6 +55,9 @@ public class OrderService {
         order.setCheckoutPrice(checkOutPrice);
         return orderRepository.save(order);
     }
+
+
+
 
     public Optional<Order> getByOrderID(long orderID) {
         return orderRepository.findById(orderID);

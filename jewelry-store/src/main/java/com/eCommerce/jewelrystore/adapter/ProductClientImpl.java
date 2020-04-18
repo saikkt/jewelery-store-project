@@ -1,6 +1,7 @@
-package com.eCommerce.jewelrystore.order.adapter;
+package com.eCommerce.jewelrystore.adapter;
 
 import java.math.BigDecimal;
+
 import com.eCommerce.jewelrystore.products.service.ProductService;
 import org.springframework.stereotype.Component;
 
@@ -16,5 +17,11 @@ public class ProductClientImpl implements ProductClient {
     @Override
     public BigDecimal getProductPriceByID(long productID) {
         return productService.getByProductID(productID).getPrice();
+    }
+
+    @Override
+    public boolean isProductIDExists(long productID) {
+        final boolean isProductExists = productService.getByProductID(productID) != null;
+        return isProductExists;
     }
 }

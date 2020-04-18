@@ -1,8 +1,10 @@
 package com.eCommerce.jewelrystore.order.api;
 
 import com.eCommerce.jewelrystore.order.domain.Order;
+import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.dto.OrderModel;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 class OrderMapper {
@@ -28,5 +30,17 @@ class OrderMapper {
                 order.getOrderItems().stream().map(OrderItemMapper::toModel).collect(Collectors.toList())
         );
         return orderModel;
+    }
+
+    static Order merge(Order entity, OrderModel orderModel) {
+        //entity.
+        entity.setOrderItems(
+                orderModel
+                        .getOrderItems()
+                        .stream()
+                        .map(orderItemModel -> OrderItemMapper.toEntity(entity, orderItemModel))
+                        .collect(Collectors.toList())
+        );
+        return entity;
     }
 }
