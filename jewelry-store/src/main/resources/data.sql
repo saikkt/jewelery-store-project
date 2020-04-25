@@ -304,3 +304,45 @@
 --('image1.url','Gift it to your Wife','LEFT'),
 --('image2.url','Gift it to your SON','RIGHT'),
 --('image3.url','Gift it to your Mom','UP');
+
+
+--CREATE TABLE `jguest` (
+--  `GuestID` int(11) NOT NULL AUTO_INCREMENT,
+--  `FirstName` varchar(120) NOT NULL,
+--  `LastName` varchar(120) NOT NULL,
+--`EmailAddress` varchar(255) NOT NULL,
+--  `StreetAddress` varchar(255) NOT NULL,
+--  `ApartmentNumber` varchar(10) DEFAULT NULL,
+--  `City` varchar(25) NOT NULL,
+--  `State` varchar(30) NOT NULL,
+--  `ZipCode` int(10) NOT NULL,
+--  `Version` int(11) Default 1 Not null,
+--  `ObjectID` binary(16) default null,
+--  PRIMARY KEY (`GuestID`)
+--) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--CREATE TABLE `jguestorders` (
+--  `GuestOrderID` int(11) NOT NULL AUTO_INCREMENT,
+--  `GuestID` int(11) DEFAULT NULL,
+--  `OrderDate` datetime DEFAULT NULL,
+--  `OrderStatus` varchar(15) DEFAULT NULL,
+--  `CheckoutPrice` decimal(10,2) DEFAULT '0.00',
+--  `Version` int(11) NOT NULL DEFAULT '1',
+--  `ObjectID` binary(16) DEFAULT NULL,
+--  PRIMARY KEY (`GuestOrderID`),
+--  FOREIGN KEY (`GuestID`) REFERENCES `jguest` (`GuestID`)
+--  ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--CREATE TABLE `jguestorderitems` (
+--  `GuestOrderItemID` int(11) NOT NULL AUTO_INCREMENT,
+--  `GuestOrderID` int(11) NOT NULL,
+--  `ProductID` int(11) NOT NULL,
+--  `UnitPrice` decimal(10,2) NOT NULL DEFAULT '0.00',
+--  `Quantity` int(11) NOT NULL DEFAULT '1',
+--  `Discount` decimal(10,2) DEFAULT '0.00',
+--  `TotalPrice` decimal(10,2) NOT NULL DEFAULT '0.00',
+--  `Version` int(11) NOT NULL DEFAULT '1',
+--  `ObjectID` binary(16) DEFAULT NULL,
+--  PRIMARY KEY (`GuestOrderItemID`),
+-- FOREIGN KEY (`GuestOrderID`) REFERENCES `jguestorders` (`GuestOrderID`)
+--) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;

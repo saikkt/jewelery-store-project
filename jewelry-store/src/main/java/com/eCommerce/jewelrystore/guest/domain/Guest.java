@@ -3,6 +3,8 @@ package com.eCommerce.jewelrystore.guest.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table (name = "jGuest")
@@ -18,7 +20,7 @@ public class Guest {
     private String firstName;
 
     @NotNull
-    @Column (name = "lastName", length = 120)
+    @Column (name = "LastName", length = 120)
     private String lastName;
 
     @Email
@@ -45,7 +47,129 @@ public class Guest {
     @Column (name = "ZipCode", length = 5)
     private long zipCode;
 
+    @Version
+    private long version = 1;
+
+    @Column(name = "ObjectID")
+    private UUID objectID;
+
     protected Guest(){}
 
+    public Guest(@NotNull String firstName,
+                 @NotNull String lastName,
+                 @Email @NotNull String emailAddress,
+                 @NotNull String streetAddress,
+                 @NotNull String city,
+                 @NotNull String state,
+                 @NotNull long zipCode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.objectID = UUID.randomUUID();
+    }
 
+    public long getGuestID() {
+        return guestID;
+    }
+
+    public void setGuestID(long guestID) {
+        this.guestID = guestID;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getApartmentNumber() {
+        return apartmentNumber;
+    }
+
+    public void setApartmentNumber(String apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public long getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(long zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public long getVersion() {
+        return version;
+    }
+
+    public void setVersion(long version) {
+        this.version = version;
+    }
+
+    public UUID getObjectID() {
+        return objectID;
+    }
+
+    public void setObjectID(UUID objectID) {
+        this.objectID = objectID;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Guest guest = (Guest) o;
+        return guestID == guest.guestID;
+    }
+
+    @Override
+    public int hashCode() {
+        return objectID.hashCode();
+    }
 }

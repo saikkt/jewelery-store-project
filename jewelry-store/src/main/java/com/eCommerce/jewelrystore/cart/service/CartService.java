@@ -1,6 +1,5 @@
 package com.eCommerce.jewelrystore.cart.service;
 
-import com.eCommerce.jewelrystore.cart.domain.Cart;
 import com.eCommerce.jewelrystore.cart.domain.CartItem;
 import org.springframework.stereotype.Service;
 

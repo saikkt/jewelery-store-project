@@ -2,6 +2,7 @@ package com.eCommerce.jewelrystore.cart.service;
 
 import com.eCommerce.jewelrystore.adapter.ProductClient;
 import com.eCommerce.jewelrystore.cart.domain.CartItem;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
@@ -11,7 +12,8 @@ import java.util.List;
 @Component
 public class CartServiceImpl implements CartService {
 
-   // private ObjectMapper objectMapper = new ObjectMapper();
+    @Value("${cart.session.attribute.name}")
+    private String cartSessionAttributeName;
     private ProductClient productClient;
 
     public CartServiceImpl(ProductClient productClient) {
@@ -34,14 +36,14 @@ public class CartServiceImpl implements CartService {
         isProductIDExists(productID);
 
 
-        if (session.getAttribute("cartitems") == null) {
+        if (session.getAttribute(cartSessionAttributeName) == null) {
             List<CartItem> cartItems = new ArrayList<>();
             cartItems.add(new CartItem(productID, quantity));
-            session.setAttribute("cartitems", cartItems);
+            session.setAttribute(cartSessionAttributeName, cartItems);
             return cartItems;
         }
 
-        List<CartItem> cartItems = (List<CartItem>) session.getAttribute("cartitems");
+        List<CartItem> cartItems = (List<CartItem>) session.getAttribute(cartSessionAttributeName);
 
         // Find if product already exists and update quantity
         final int index = findCartItemIndex(cartItems, productID);
@@ -62,11 +64,11 @@ public class CartServiceImpl implements CartService {
         //check if product id exists
         if(!isProductIDExists(productID)) throw new Exception();
 
-        List<CartItem> cartItems = (List<CartItem>) session.getAttribute("cartitems");
+        List<CartItem> cartItems = (List<CartItem>) session.getAttribute(cartSessionAttributeName);
         final int index = findCartItemIndex(cartItems, productID);
         if (index != -1) {
             cartItems.remove(index);
-            session.setAttribute("cartitems", cartItems);
+            session.setAttribute(cartSessionAttributeName, cartItems);
             return cartItems;
         }
         return cartItems;
@@ -74,7 +76,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<CartItem> getCart(HttpSession session) {
-        return (List<CartItem>) session.getAttribute("cartitems");
+        return (List<CartItem>) session.getAttribute(cartSessionAttributeName);
     }
 
 
@@ -90,6 +92,6 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void emptyCart(HttpSession session) {
-        session.removeAttribute("cartitems");
+        session.removeAttribute(cartSessionAttributeName);
     }
 }
