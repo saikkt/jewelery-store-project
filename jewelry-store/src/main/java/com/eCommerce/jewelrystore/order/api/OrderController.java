@@ -98,17 +98,19 @@ public class OrderController {
         return new ResponseEntity<>(OrderMapper.toModel(savedOrder), HttpStatus.CREATED);
     }
 
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @PutMapping("/updateOrder/{orderID}")
-    public ResponseEntity<OrderModel> updateOrder(@PathVariable(name = "orderID") long orderID, @RequestBody Order order) {
+    public ResponseEntity<OrderModel> updateOrder(@PathVariable(name = "orderID") long orderID, @RequestBody OrderModel orderModel) {
         Optional<Order> orderOptional = orderService.getByOrderID(orderID);
         if (!orderOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        if (order.getVersion() != orderOptional.get().getVersion()) {
-            return new ResponseEntity<>(OrderMapper.toModel(orderOptional.get()), HttpStatus.CONFLICT);
-        }
-        return ResponseEntity.ok(OrderMapper.toModel(orderService.save(order)));
+//        if (order.getVersion() != orderOptional.get().getVersion()) {
+//            return new ResponseEntity<>(OrderMapper.toModel(orderOptional.get()), HttpStatus.CONFLICT);
+//        }
+        Order updatedOrder = orderService.save(OrderMapper.merge(orderOptional.get(),orderModel));
+        return ResponseEntity.ok(OrderMapper.toModel(orderService.save(updatedOrder)));
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
@@ -149,6 +151,7 @@ public class OrderController {
 //            return ResponseEntity.ok().body(OrderMapper.toModel(orderService.save(order)));
 return null;
     }
+
 
     // Admin/Admin Trusted API Access Only
     @PreAuthorize("hasRole('ROLE_ADMIN')")

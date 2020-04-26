@@ -1,79 +1,80 @@
-package com.eCommerce.jewelrystore.order.domain;
+package com.eCommerce.jewelrystore.guest.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.eCommerce.jewelrystore.order.domain.Order;
+import com.eCommerce.jewelrystore.order.domain.OrderItem;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "jOrders")
-public class Order {
+@Table (name = "jGuestOrders")
+public class GuestOrder {
 
-    @Column(name = "OrderID")
+    //DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long orderID;
+    @Column(name = "GuestOrderID")
+    private long guestOrderID;
 
-    @Column(name = "CustomerID")
-    private long customerID;
+    @Column(name = "GuestID")
+    private long guestID;
 
-  //  @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm:ss")
+    @Column(name = "GuestOrderNumber")
+    private UUID guestOrderNumber;
+
     @Column(name = "OrderDate")
     private LocalDate orderDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "OrderStatus")
+    @Column (name = "OrderStatus")
     private OrderStatus orderStatus;
 
-    @Column(name = "CheckoutPrice")
+    @Column (name = "CheckoutPrice")
     private BigDecimal checkoutPrice;
 
+    @Transient
+    List<GuestOrderItem> guestOrderItems;
     @Version
     private long version;
 
     @Column(name = "ObjectID")
     private UUID objectID;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
-    private List<OrderItem> orderItems = new ArrayList<>();
 
-    protected Order(){
+    public GuestOrder() {
 
     }
 
 
 
-    public Order(long customerID) {
-        this.customerID = customerID;
-<<<<<<< HEAD
-        this.orderDate = Calendar.getInstance().getTime();
-=======
-        this.orderDate = LocalDate.now();
->>>>>>> 3338cae6f096e130967b3b6d877a297d3dc719bb
-        this.orderStatus = OrderStatus.CART;
-        this.objectID = UUID.randomUUID();
+    public long getGuestOrderID() {
+        return guestOrderID;
     }
 
-    public long getOrderID() {
-        return orderID;
+    public void setGuestOrderID(long guestOrderID) {
+        this.guestOrderID = guestOrderID;
     }
 
-    public void setOrderID(long orderID) {
-        this.orderID = orderID;
+    public long getGuestID() {
+        return guestID;
     }
 
-    public long getCustomerID() {
-        return customerID;
+    public void setGuestID(long guestID) {
+        this.guestID = guestID;
     }
 
-    public void setCustomerID(long customerID) {
-        this.customerID = customerID;
+    public UUID getGuestOrderNumber() {
+        return guestOrderNumber;
+    }
+
+    public void setGuestOrderNumber(UUID guestOrderNumber) {
+        this.guestOrderNumber = guestOrderNumber;
     }
 
     public LocalDate getOrderDate() {
@@ -100,12 +101,12 @@ public class Order {
         this.checkoutPrice = checkoutPrice;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public List<GuestOrderItem> getGuestOrderItems() {
+        return guestOrderItems;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setGuestOrderItems(List<GuestOrderItem> guestOrderItems) {
+        this.guestOrderItems = guestOrderItems;
     }
 
     public long getVersion() {
@@ -121,15 +122,15 @@ public class Order {
     }
 
     public void setObjectID(UUID objectID) {
-        this.objectID = UUID.randomUUID();
+        this.objectID = objectID;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return orderID == order.orderID;
+        GuestOrder guestOrder = (GuestOrder) o;
+        return guestOrderID == guestOrder.guestOrderID;
     }
 
     @Override
