@@ -23,7 +23,12 @@ public class CustomerModel {
     @JsonProperty
     private boolean isGuest;
     @JsonProperty
+    private String userName;
+    @JsonProperty
+    private String password;
+    @JsonProperty
     private long version;
+
 
     public long getCustomerID() {
         return customerID;
@@ -79,5 +84,21 @@ public class CustomerModel {
 
     public void setVersion(long version) {
         this.version = version;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

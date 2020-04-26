@@ -22,4 +22,7 @@ public class ShippingDetailsService {
     }
 
 
+    public ShippingDetails postShipping(ShippingDetails shippingDetails) {
+        return shippingDetailsRepository.save(shippingDetails);
+    }
 }

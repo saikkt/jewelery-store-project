@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS jCategories;
+DROP TABLE IF EXISTS jSubCategories;
 DROP TABLE IF EXISTS jSections;
 DROP TABLE IF EXISTS jCollections;
 DROP TABLE IF EXISTS jProducts;
@@ -9,6 +10,17 @@ CREATE TABLE jCategories (
 );
 
 INSERT INTO jCategories (CategoryName) VALUES
+('RINGS'),
+('WATCHES');
+
+CREATE TABLE jSubCategories (
+    SubCategoryID INT(11) AUTO_INCREMENT  PRIMARY KEY,
+    CategoryID INT(11),
+    SubCategoryName VARCHAR(50) DEFAULT NOT NULL,
+    FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`)
+  );
+
+INSERT INTO jSubCategories (CategoryName) VALUES
 ('RINGS'),
 ('WATCHES');
 
@@ -44,9 +56,9 @@ CREATE TABLE jProducts (
   UpdateDate datetime DEFAULT NULL,
   ImagePath VARCHAR(250),
   version INT(11) DEFAULT 1,
-  FOREIGN KEY (`CategoryID`) REFERENCES `jcategories`(`CategoryID`),
-  FOREIGN KEY (`SectionID`) REFERENCES `jsections`(`SectionID`),
-  FOREIGN KEY (`CollectionID`) REFERENCES `jcollections`(`CollectionID`)
+  FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`),
+  FOREIGN KEY (`SectionID`) REFERENCES `jSections`(`SectionID`),
+  FOREIGN KEY (`CollectionID`) REFERENCES `jCollections`(`CollectionID`)
 );
 
 INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,InStockQuantity,Price,ImagePath) VALUES
@@ -69,6 +81,7 @@ Version INT (11) NOT NULL DEFAULT '1',
 ObjectID BINARY(16) DEFAULT NULL);
 
 INSERT INTO jCustomers(CustomerFirstName, CustomerLastName, Phone, EmailAddress) values
+('sarita','owner','4444444444','sarita.kkt@gmail.com'),
 ('sai','pothulapally','4444444444','sai.kkt@gmail.com');
 
 
@@ -129,7 +142,7 @@ DROP TABLE IF EXISTS jShippingDetails;
 
 CREATE TABLE jShippingDetails(
   `ShippingID` int(11) NOT NULL AUTO_INCREMENT,
-  `OrderID` int(11) DEFAULT NULL,
+  `OrderID` int(11) DEFAULT NOT NULL,
   `TrackId` varchar(40) DEFAULT NULL,
   `ShipName` varchar(40) DEFAULT NULL,
   `ShipAddress` varchar(60) DEFAULT NULL,
@@ -160,3 +173,30 @@ INSERT INTO jHomePageSlidingImages(ImageUrl,ImageDescription,ImageOrientation) v
 ('image1.url','Gift it to your Wife','LEFT'),
 ('image2.url','Gift it to your SON','RIGHT'),
 ('image3.url','Gift it to your Mom','UP');
+
+DROP TABLE IF EXISTS jUsers;
+
+create table jUsers(
+      `Id` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+      `UserName` varchar(50) not null,
+      `Password` varchar(300) not null,
+      `Active` BIT DEFAULT '1',
+      `Roles` varchar(100) DEFAULT 'ROLE_USER',
+      `CustomerID` INT(11),
+      FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
+      );
+
+INSERT INTO jUsers (UserName,Password,Active,Roles,CustomerId) values
+('admin','password',1,'ROLE_ADMIN',1),
+('user','password',1,'ROLE_USER',2);
+
+DROP TABLE IF EXISTS jVerificationToken;
+
+create table jVerificationToken(
+      `TokenId` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+      `Token` varchar(50) not null,
+      `ExpiryDate` datetime DEFAULT NULL,
+      `Id` INT(11) not null,
+      FOREIGN KEY (`Id`) REFERENCES `jUsers` (`Id`)
+      );
+

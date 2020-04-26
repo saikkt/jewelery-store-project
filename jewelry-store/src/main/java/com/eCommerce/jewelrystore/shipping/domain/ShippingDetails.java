@@ -43,10 +43,10 @@ public class ShippingDetails {
     public ShippingDetails(){
     }
 
-
-    public ShippingDetails(long packingSlipId){
-        this.packingSlipId = packingSlipId;
+    public ShippingDetails(long orderId){
+        this.orderId=orderId;
     }
+
 
     public long getPackingSlipId() {
         return packingSlipId;

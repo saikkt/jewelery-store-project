@@ -5,6 +5,9 @@ import com.eCommerce.jewelrystore.products.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Calendar;
@@ -19,6 +22,10 @@ public class ProductController {
 
     @GetMapping("/getAll")
     public ResponseEntity<List<Product>> getProducts(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username="";
+        System.out.println(principal instanceof UserDetails);
+
       return  ResponseEntity.ok().body(productService.getProducts());
     }
 
@@ -40,6 +47,7 @@ public class ProductController {
         return ResponseEntity.ok().body(products);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/postProduct")
     public ResponseEntity<Product> postProduct(@RequestBody Product product){
         product.setCreateDate(Calendar.getInstance().getTime());
@@ -50,6 +58,7 @@ public class ProductController {
         return ResponseEntity.ok().body(savedProduct);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/postProductsList")
     public ResponseEntity<List<Product>> postProducts(@RequestBody List<Product> products){
         products.stream().forEach(product->{
@@ -60,6 +69,7 @@ public class ProductController {
         return ResponseEntity.ok().body(savedProducts);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/updateProduct")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product){
         product.setUpdateDate(Calendar.getInstance().getTime());
@@ -69,6 +79,7 @@ public class ProductController {
         return ResponseEntity.ok().body(savedProduct);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/updateProductsList")
     public ResponseEntity<List<Product>> updateProductsList(@RequestBody List<Product> products){
         products.stream().forEach(product->{
@@ -78,6 +89,7 @@ public class ProductController {
         return ResponseEntity.ok().body(savedProducts);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/deleteProduct/{productId}")
     public ResponseEntity<HttpStatus> deleteProduct(@PathVariable long productId){
          productService.deleteProduct(productId);

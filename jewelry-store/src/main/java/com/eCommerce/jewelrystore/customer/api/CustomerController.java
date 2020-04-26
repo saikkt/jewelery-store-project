@@ -5,13 +5,31 @@
 
 package com.eCommerce.jewelrystore.customer.api;
 
+import com.eCommerce.jewelrystore.accounts.MyUserDetailsService;
+import com.eCommerce.jewelrystore.accounts.UserRepository;
+import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
+import com.eCommerce.jewelrystore.accounts.models.User;
+import com.eCommerce.jewelrystore.accounts.utilities.BcryptGenerator;
 import com.eCommerce.jewelrystore.customer.domain.Customer;
 import com.eCommerce.jewelrystore.customer.dto.CustomerModel;
+import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
 import com.eCommerce.jewelrystore.customer.service.CustomerService;
+import com.eCommerce.jewelrystore.email.accounts.verfication.utility.OnRegistrationCompleteEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,13 +39,53 @@ public class CustomerController {
 
     private CustomerService customerService;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    ApplicationEventPublisher eventPublisher;
+
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @PostMapping
-    public ResponseEntity<Customer> post(@RequestBody CustomerModel customer){
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @GetMapping("/login")
+    public Long checkUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String username="";
+//         if (principal instanceof UserDetails) {
+//            username = ((UserDetails) principal).getUsername();
+//      }
+//        else {
+//            username = principal.toString();
+//        }
+//        UserDetails userDetails = (UserDetails) principal;
+//        System.out.println(userDetails.getAuthorities());
+//        return ResponseEntity.ok().body(username);
+        return ((MyUserDetails) principal).getCustomerId();
+    }
+
+    @PostMapping("/registerCustomer")
+    public ResponseEntity<Customer> post(@RequestBody CustomerModel customer, HttpServletRequest request){
+
         final Customer savedCustomer = customerService.save(CustomerMapper.toEnity(customer));
+
+        //creating User for the Customer for login
+        User user = new User();
+        user.setUserName(customer.getUserName());
+       // user.setPassword(BcryptGenerator.getEncodedString(customer.getPassword()));
+        user.setPassword(customer.getPassword());
+        user.setCustomerId(savedCustomer.getCustomerID());
+        user.setRoles("ROLE_USER");
+        user.setActive(false);
+        User savedUser = userRepository.save(user);
+        String appUrl = request.getContextPath();
+
+        //publishing email event for customer verfication
+        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(savedUser,
+                request.getLocale(), appUrl));
+
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
 
@@ -40,6 +98,7 @@ public class CustomerController {
         return ResponseEntity.ok(customer.get());
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<Customer>> getAll(){
         return ResponseEntity.ok(customerService.getAll());

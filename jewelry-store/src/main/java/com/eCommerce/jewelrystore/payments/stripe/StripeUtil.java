@@ -1,6 +1,8 @@
 package com.eCommerce.jewelrystore.payments.stripe;
 
-public interface StripeUtil {
+import com.eCommerce.jewelrystore.payments.util.PaymentUtil;
+
+public interface StripeUtil extends PaymentUtil {
 
 
 }

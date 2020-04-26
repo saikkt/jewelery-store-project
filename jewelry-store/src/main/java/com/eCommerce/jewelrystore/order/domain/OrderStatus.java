@@ -1,7 +1,9 @@
 package com.eCommerce.jewelrystore.order.domain;
 
 public enum OrderStatus {
-    PROCESSING,
+    PLACED,
+    ACCEPTED,
     SHIPPED,
-    CANCELLED
+    CANCELLED,
+    CART
 }

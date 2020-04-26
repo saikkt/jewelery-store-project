@@ -6,6 +6,7 @@ import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.repository.OrderRepository;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -56,6 +57,10 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+    public Order updateOrder(Order order){
+       return orderRepository.save(order);
+    }
+
     public Optional<Order> getByOrderID(long orderID) {
         return orderRepository.findById(orderID);
     }
@@ -69,4 +74,16 @@ public class OrderService {
     }
 
 
+    public List<Order> getByCustomerIdInCart(long customerId) {
+        return orderRepository.findByCustomerIDCartStatus(customerId);
+    }
+
+    public void deleteFromCart(long customerID,long productID) {
+        Order order = getByCustomerIdInCart(customerID).get(0);
+        if(order==null)
+        {
+            return ;
+        }
+//        order.getOrderItems().remove()
+    }
 }

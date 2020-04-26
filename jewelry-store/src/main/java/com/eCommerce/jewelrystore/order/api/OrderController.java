@@ -1,13 +1,23 @@
 package com.eCommerce.jewelrystore.order.api;
 
+import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.order.domain.Order;
+import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.dto.OrderModel;
 import com.eCommerce.jewelrystore.order.service.OrderService;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,6 +33,7 @@ public class OrderController {
     }
 
     //Admin access only
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<OrderModel>> getAllOrders(@RequestParam(required = false) Optional<Integer> page,
                                                          @RequestParam(required = false) Optional<Integer> size) {
@@ -33,6 +44,7 @@ public class OrderController {
     }
 
     //Admin access only
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/order-status")
     public ResponseEntity<List<OrderModel>> getByOrderStatus(@RequestParam(name = "status") OrderStatus orderStatus) {
         List<OrderModel> orders = orderService.findByOrderStatus(orderStatus).stream()
@@ -42,6 +54,7 @@ public class OrderController {
     }
 
     //Admin and user access
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/history")
     public ResponseEntity<List<OrderModel>> getOrdersByCustomerID(@RequestParam(name = "customerID") long customerID) {
         List<OrderModel> customerOrders = orderService.getByCustomerID(customerID).stream()
@@ -51,6 +64,7 @@ public class OrderController {
     }
 
     //Admin Access only
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{orderID}")
     public ResponseEntity<OrderModel> getByOrderID(@PathVariable(name = "orderID") long orderID) {
         Optional<Order> orderOptional = orderService.getByOrderID(orderID);
@@ -60,20 +74,33 @@ public class OrderController {
         return ResponseEntity.ok(OrderMapper.toModel(orderOptional.get()));
     }
 
-
-    //Admin Access Only
-    @PostMapping
-    public ResponseEntity<OrderModel> save(@RequestBody OrderModel orderModel) {
+    @ApiOperation(value = "Called when an item is added to cart for the first time or buy now is pressed with only one item", response = Iterable.class)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PostMapping("/saveOrder")
+    public ResponseEntity<OrderModel> saveOrder(@RequestBody OrderModel orderModel) {
         if (orderModel.getOrderItems() == null || orderModel.getOrderItems().isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
-        Order savedOrder = orderService.save(OrderMapper.toEntity(orderModel));
+        Order order = OrderMapper.toEntity(orderModel);
+
+        //setting customer Id
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetails userDetails = (MyUserDetails) principal;
+        long customerId = userDetails.getCustomerId();
+        order.setCustomerID(customerId);
+
+        //setting order status to "CART"
+        order.setOrderStatus(OrderStatus.CART);
+
+        //saving order
+        Order savedOrder = orderService.save(order);
+
         return new ResponseEntity<>(OrderMapper.toModel(savedOrder), HttpStatus.CREATED);
     }
 
-    //Admin Access Only
-    @PutMapping("/{orderID}")
-    public ResponseEntity<OrderModel> update(@PathVariable(name = "orderID") long orderID, @RequestBody Order order) {
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PutMapping("/updateOrder/{orderID}")
+    public ResponseEntity<OrderModel> updateOrder(@PathVariable(name = "orderID") long orderID, @RequestBody Order order) {
         Optional<Order> orderOptional = orderService.getByOrderID(orderID);
         if (!orderOptional.isPresent()) {
             return ResponseEntity.notFound().build();
@@ -84,7 +111,47 @@ public class OrderController {
         return ResponseEntity.ok(OrderMapper.toModel(orderService.save(order)));
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PutMapping("/addToCart")
+    public ResponseEntity<OrderModel> addToCart(@RequestParam(name = "productID") long productID,@RequestParam(name = "quantity") int quantity) {
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetails userDetails = null;
+        userDetails = (MyUserDetails) principal;
+        Order order = orderService.getByCustomerIdInCart(userDetails.getCustomerId()).get(0);
+        if(order==null)
+        {
+            Order order_new = new Order(userDetails.getCustomerId());
+            OrderItem orderItem = new OrderItem(order_new,productID);
+            orderItem.setQuantity(quantity);
+            List<OrderItem> orderItemsList = new ArrayList<>();
+            orderItemsList.add(orderItem);
+            order_new.setOrderItems(orderItemsList);
+            return ResponseEntity.ok().body(OrderMapper.toModel(orderService.save(order_new)));
+        }
+        else
+        {
+            OrderItem orderItem = new OrderItem(order,productID);
+            orderItem.setQuantity(quantity);
+            order.getOrderItems().add(orderItem);
+            return ResponseEntity.ok().body(OrderMapper.toModel(orderService.save(order)));
+        }
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PutMapping("/deleteFromCart/{productID}")
+    public ResponseEntity<OrderModel> deleteFromCart(@PathVariable(name = "productID") long productID) {
+
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        MyUserDetails userDetails = null;
+//        userDetails = (MyUserDetails) principal;
+//            orderService.deleteFromCart(userDetails.getCustomerId(),productID);
+//            return ResponseEntity.ok().body(OrderMapper.toModel(orderService.save(order)));
+return null;
+    }
+
     // Admin/Admin Trusted API Access Only
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/orderShipped/{orderID}")
     public ResponseEntity<OrderModel> updateShippingStatus(@PathVariable(name = "orderID") long orderID) {
         Optional<Order> orderOptional = orderService.getByOrderID(orderID);
@@ -99,7 +166,8 @@ public class OrderController {
         return ResponseEntity.ok(OrderMapper.toModel(orderService.save(processingOrder)));
     }
 
-    //Admin and user Access
+    //Admin and user Access -- ADMIN FOR NOW
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/cancelOrder/{orderID}")
     public ResponseEntity<OrderModel> cancelOrder(@PathVariable(name = "orderID") long orderID) {
         Optional<Order> orderOptional = orderService.getByOrderID(orderID);
@@ -115,6 +183,7 @@ public class OrderController {
     }
 
     //Admin Access Only
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{orderID}")
     public ResponseEntity<Order> deleteOrder(@PathVariable(name = "orderID") long orderID) {
         orderService.deleteByOrderID(orderID);

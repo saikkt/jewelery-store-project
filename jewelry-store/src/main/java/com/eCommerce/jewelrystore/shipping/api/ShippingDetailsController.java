@@ -23,5 +23,8 @@ public class ShippingDetailsController {
         return  ResponseEntity.ok().body(shippingDetailsService.getAllShippingDetails());
     }
 
-
+     @PostMapping("/postShipping")
+    public ResponseEntity<ShippingDetails> postShipping(ShippingDetails shippingDetails){
+        return ResponseEntity.ok().body(shippingDetailsService.postShipping(shippingDetails));
+     }
 }
