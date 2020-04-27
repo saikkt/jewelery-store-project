@@ -5,7 +5,9 @@ import com.eCommerce.jewelrystore.payments.stripe.service.StripeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StripeUtilImpl implements StripeUtil {
 
     @Autowired

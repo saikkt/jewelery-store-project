@@ -1,14 +1,17 @@
 package com.eCommerce.jewelrystore.payments.util.api;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
+import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
+import com.eCommerce.jewelrystore.guest.domain.Guest;
+import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
+import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
 import com.eCommerce.jewelrystore.payments.stripe.dto.ChargeRequest;
 import com.eCommerce.jewelrystore.payments.stripe.service.StripeService;
 import com.eCommerce.jewelrystore.payments.util.PaymentUtil;
-import com.eCommerce.jewelrystore.products.api.CategoryController;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
 import com.eCommerce.jewelrystore.shipping.service.ShippingDetailsService;
 import com.stripe.exception.StripeException;
@@ -47,13 +50,16 @@ public class PaymentsController {
     @Autowired
     ShippingDetailsService shippingDetailsService;
 
+    @Autowired
+    GuestOrderClient guestOrderClient;
+
     Logger logger = LoggerFactory.getLogger(PaymentsController.class);
 
     //    @Value("${STRIPE_PUBLIC_KEY}")
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model) throws StripeException, GuestException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
@@ -69,10 +75,9 @@ public class PaymentsController {
             try {
                 charge = paymentUtil.sendPayment(chargeRequest);
             } catch (StripeException exception) {
-                logger.info("payment rejected by stripe for customer "+customerRepository.findById(userDetails.getCustomerId()).get().getEmailAddress());
-            }
-            catch (Exception ex){
-                logger.info("payment failed for customer "+customerRepository.findById(userDetails.getCustomerId()).get().getEmailAddress());
+                logger.info("payment rejected by stripe for customer " + customerRepository.findById(userDetails.getCustomerId()).get().getEmailAddress());
+            } catch (Exception ex) {
+                logger.info("payment failed for customer " + customerRepository.findById(userDetails.getCustomerId()).get().getEmailAddress());
             }
 
             model.addAttribute("id", charge.getId());
@@ -88,7 +93,7 @@ public class PaymentsController {
             orderService.updateOrder(customerOrders);
 
             //adding into shipping
-            ShippingDetails shippingDetails=new ShippingDetails(customerOrders.getOrderID());
+            ShippingDetails shippingDetails = new ShippingDetails(customerOrders.getOrderID());
             shippingDetailsService.postShipping(shippingDetails);
 
             //adding into payment
@@ -98,14 +103,42 @@ public class PaymentsController {
         }
 
         //payment for guest user
-        else{
+        else {
+            Charge charge = null;
+            //sending payment to stripe
+            try {
+                charge = paymentUtil.sendPayment(chargeRequest);
+            } catch (StripeException exception) {
+                logger.info("payment rejected by stripe for guest", exception);
+            } catch (Exception ex) {
+                logger.info("payment failed for guest", ex);
+            }
+            //To do -- change status to enum
+            if (charge.getStatus() == "succeeded") {
+                model.addAttribute("id", charge.getId());
+                model.addAttribute("status", charge.getStatus());
+                model.addAttribute("chargeId", charge.getId());
+                model.addAttribute("balance_transaction", charge.getBalanceTransaction());
 
+                //To do-- Try with Object Mapper...Use GuestModel instead of Guest
+                Guest guest = (Guest) model.getAttribute("guest");
+                guestOrderClient.persistOrderSummary(guest);
+
+                //To do -- Add data into payments
+
+                return ResponseEntity.ok().build();
+            }
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.status(401).build();
     }
 
+    /**
+     * To-do:
+     * Customer Order and Guest Order returns checkout price in $$. Figure out what Stripe payment takes amount in
+     * cents or dollars.
+     */
     @RequestMapping("/checkout")
-    public ResponseEntity<Model> checkout(Model model) {
+    public ResponseEntity<Model> checkout(Model model) throws GuestException {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long customerId;
@@ -115,19 +148,23 @@ public class PaymentsController {
             MyUserDetails userDetails = (MyUserDetails) principal;
             customerId = userDetails.getCustomerId();
             List<Order> customerOrders = orderService.getByCustomerIdInCart(customerId);
-            if(customerOrders.size()==0)
+            if (customerOrders.size() == 0)
                 return ResponseEntity.noContent().build();
             model.addAttribute("amount", customerOrders.get(0).getCheckoutPrice()); // in cents
             model.addAttribute("stripePublicKey", "pk_test_7XVj7rZoBH41H8SLaNekEnCk00XFj6ME1t");
             model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok().body(model);
         }
-
         //If the checkout is for guest
         else {
 
+            GuestOrder guestOrder = guestOrderClient.getGuestOrderSummary();
+            model.addAttribute("amount", guestOrder.getCheckoutPrice()); // in cents
+            model.addAttribute("stripePublicKey", "pk_test_7XVj7rZoBH41H8SLaNekEnCk00XFj6ME1t");
+            model.addAttribute("currency", ChargeRequest.Currency.USD);
+            return ResponseEntity.ok(model);
         }
-        return ResponseEntity.status(401).build();
+        // return ResponseEntity.status(401).build();
     }
 
     @ExceptionHandler(StripeException.class)

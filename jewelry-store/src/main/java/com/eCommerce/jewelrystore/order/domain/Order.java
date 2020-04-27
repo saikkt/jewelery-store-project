@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,18 +45,12 @@ public class Order {
     private List<OrderItem> orderItems = new ArrayList<>();
 
     protected Order(){
-
     }
-
-
 
     public Order(long customerID) {
         this.customerID = customerID;
-<<<<<<< HEAD
-        this.orderDate = Calendar.getInstance().getTime();
-=======
         this.orderDate = LocalDate.now();
->>>>>>> 3338cae6f096e130967b3b6d877a297d3dc719bb
+        this.orderDate = LocalDate.now();
         this.orderStatus = OrderStatus.CART;
         this.objectID = UUID.randomUUID();
     }

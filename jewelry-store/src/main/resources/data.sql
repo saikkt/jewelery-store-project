@@ -1,18 +1,32 @@
-
 DROP TABLE IF EXISTS jCategories;
 DROP TABLE IF EXISTS jSubCategories;
 DROP TABLE IF EXISTS jSections;
 DROP TABLE IF EXISTS jCollections;
+DROP TABLE IF EXISTS jMaterials;
+DROP TABLE IF EXISTS jMetalPurity;
+DROP TABLE IF EXISTS jDiscount;
 DROP TABLE IF EXISTS jProducts;
+
+CREATE TABLE `jCategories` (
+  `CategoryID` int(11) NOT NULL AUTO_INCREMENT,
+  `CategoryName` varchar(50) NOT NULL,
+  PRIMARY KEY (`CategoryID`)
+);
+
+INSERT INTO jCategories(CategoryName) values
+('CAT1'),
+('CAT2'),
+('CAT3');
+
 
 CREATE TABLE jSubCategories (
     SubCategoryID INT(11) AUTO_INCREMENT  PRIMARY KEY,
     CategoryID INT(11),
-    SubCategoryName VARCHAR(50) DEFAULT NOT NULL,
+    SubCategoryName VARCHAR(50) NOT NULL,
     FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`)
   );
 
-INSERT INTO jSubCategories (CategoryName) VALUES
+INSERT INTO jSubCategories (SubCategoryName) VALUES
 ('RINGS'),
 ('WATCHES');
 
@@ -35,27 +49,68 @@ INSERT INTO jCollections (CollectionName) VALUES
 ('DIWALI-COLLECTION'),
 ('ROMANTIC-COLLECTION');
 
-CREATE TABLE jProducts (
-  ProductID INT AUTO_INCREMENT  PRIMARY KEY,
-  ProductName VARCHAR(400) DEFAULT NOT NULL,
-  CategoryID INT(11) DEFAULT NOT NULL,
-  SectionID INT(11) NOT NULL,
-  CollectionID INT(11) NOT NULL,
-  InStockQuantity INT(22) DEFAULT 0,
-  Price DECIMAL(10,2) DEFAULT 0000.00,
-  Discount DECIMAL(10,2) DEFAULT 0000.00,
-  CreateDate datetime DEFAULT NULL,
-  UpdateDate datetime DEFAULT NULL,
-  ImagePath VARCHAR(250),
-  version INT(11) DEFAULT 1,
-  FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`),
-  FOREIGN KEY (`SectionID`) REFERENCES `jSections`(`SectionID`),
-  FOREIGN KEY (`CollectionID`) REFERENCES `jCollections`(`CollectionID`)
+CREATE TABLE `jMaterials` (
+  `MaterialID` int(11) NOT NULL AUTO_INCREMENT,
+  `MaterialType` varchar(50) NOT NULL,
+  PRIMARY KEY (`MaterialID`)
 );
 
-INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,InStockQuantity,Price,ImagePath) VALUES
-('2.6 Size Three-tone Bangle in 22K Gold',1,1,1,2,234.67,'http://aws.com/s3'),
-('6.25 Size Diamond Ring 18 Karat Rose Gold',2,2,2,3,444.56,'http://aws.com/s3');
+INSERT INTO jMaterials(MaterialType) values
+('GOLD'),
+('SILVER');
+
+CREATE TABLE `jMetalPurity` (
+  `MetalPurityID` int(11) NOT NULL AUTO_INCREMENT,
+  `Purity` varchar(50) NOT NULL,
+  PRIMARY KEY (`MetalPurityID`)
+);
+
+INSERT INTO jMetalPurity(Purity) values
+('24K'),
+('18K');
+
+CREATE TABLE `jDiscount` (
+  `DiscountID` int(11) NOT NULL AUTO_INCREMENT,
+  `DiscountType` varchar(50) NOT NULL,
+  `Percentage` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`DiscountID`)
+);
+
+INSERT INTO jDiscount(DiscountType,Percentage) values
+('DEFAULT',0.00),
+('10%',10.00),
+('20%',20.00),
+('Dummy Sale',5.99);
+
+
+CREATE TABLE `jProducts` (
+  `ProductID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductName` varchar(400) NOT NULL,
+  `CategoryID` int(11) NOT NULL,
+  `SectionID` int(11) NOT NULL,
+  `CollectionID` int(11) NOT NULL,
+  `MaterialID` int(11) NOT NULL,
+  `MetalPurityID` int(11) NOT NULL,
+  `DiscountID` int(11) DEFAULT 1 NOT NULL,
+  `InStockQuantity` int(22) DEFAULT '0',
+  `Price` decimal(10,2) DEFAULT '0.00',
+  `ImagePath` varchar(250) DEFAULT NULL,
+  `version` int(11) DEFAULT '1',
+  `CreateDate` datetime(6) DEFAULT NULL,
+  `Discount` decimal(19,2) DEFAULT NULL,
+  `UpdateDate` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`ProductID`),
+  FOREIGN KEY (`CategoryID`) REFERENCES `jCategories` (`CategoryID`),
+  FOREIGN KEY (`SectionID`) REFERENCES `jSections` (`SectionID`),
+  FOREIGN KEY (`CollectionID`) REFERENCES `jCollections` (`CollectionID`),
+  FOREIGN KEY (`MaterialID`) REFERENCES `jMaterials` (`MaterialID`),
+  FOREIGN KEY (`MetalPurityID`) REFERENCES `jMetalPurity` (`MetalPurityID`),
+  FOREIGN KEY (`DiscountID`) REFERENCES `jDiscount` (`DiscountID`)
+);
+
+INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,InStockQuantity,Price,ImagePath) VALUES
+('2.6 Size Three-tone Bangle in 22K Gold',1,1,1,1,1,1,12,234.67,'http://aws.com/s3'),
+('6.25 Size Diamond Ring 18 Karat Rose Gold',2,2,2,1,1,1,3,444.56,'http://aws.com/s3');
 
 DROP TABLE jCustomers IF EXISTS;
 DROP TABLE jAddresses IF EXISTS;
@@ -192,7 +247,28 @@ create table jVerificationToken(
       FOREIGN KEY (`Id`) REFERENCES `jUsers` (`Id`)
       );
 
-CREATE TABLE `jguestorders` (
+--Guest
+DROP TABLE IF EXISTS jGuest;
+DROP TABLE IF EXISTS jGuestOrders;
+DROP TABLE IF EXISTS jGuestOrderItems;
+
+CREATE TABLE `jGuest` (
+  `GuestID` int(11) NOT NULL AUTO_INCREMENT,
+  `FirstName` varchar(120) NOT NULL,
+  `LastName` varchar(120) NOT NULL,
+  `EmailAddress` varchar(255) NOT NULL,
+  `StreetAddress` varchar(255) NOT NULL,
+  `ApartmentNumber` varchar(10) DEFAULT NULL,
+  `City` varchar(25) NOT NULL,
+  `State` varchar(30) NOT NULL,
+  `ZipCode` int(10) NOT NULL,
+  `Version` int(11) NOT NULL DEFAULT '1',
+  `ObjectID` binary(16) DEFAULT NULL,
+  PRIMARY KEY (`GuestID`)
+);
+
+
+CREATE TABLE `jGuestOrders` (
   `GuestOrderID` int(11) NOT NULL AUTO_INCREMENT,
   `GuestID` int(11) DEFAULT NULL,
   `OrderDate` datetime DEFAULT NULL,
@@ -201,10 +277,10 @@ CREATE TABLE `jguestorders` (
   `Version` int(11) NOT NULL DEFAULT '1',
   `ObjectID` binary(16) DEFAULT NULL,
   PRIMARY KEY (`GuestOrderID`),
-  FOREIGN KEY (`GuestID`) REFERENCES `jguest` (`GuestID`)
-  ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  FOREIGN KEY (`GuestID`) REFERENCES `jGuest` (`GuestID`)
+  );
 
-CREATE TABLE `jguestorderitems` (
+CREATE TABLE `jGuestOrderItems` (
   `GuestOrderItemID` int(11) NOT NULL AUTO_INCREMENT,
   `GuestOrderID` int(11) NOT NULL,
   `ProductID` int(11) NOT NULL,
@@ -215,6 +291,7 @@ CREATE TABLE `jguestorderitems` (
   `Version` int(11) NOT NULL DEFAULT '1',
   `ObjectID` binary(16) DEFAULT NULL,
   PRIMARY KEY (`GuestOrderItemID`),
- FOREIGN KEY (`GuestOrderID`) REFERENCES `jguestorders` (`GuestOrderID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+ FOREIGN KEY (`GuestOrderID`) REFERENCES `jGuestOrders` (`GuestOrderID`)
+);
+
 
