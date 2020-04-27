@@ -10,11 +10,14 @@ import com.eCommerce.jewelrystore.accounts.UserRepository;
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.accounts.models.User;
 import com.eCommerce.jewelrystore.accounts.utilities.BcryptGenerator;
+import com.eCommerce.jewelrystore.adapter.CartClient;
 import com.eCommerce.jewelrystore.customer.domain.Customer;
 import com.eCommerce.jewelrystore.customer.dto.CustomerModel;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
 import com.eCommerce.jewelrystore.customer.service.CustomerService;
+import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.email.accounts.verfication.utility.OnRegistrationCompleteEvent;
+import com.eCommerce.jewelrystore.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -30,6 +33,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,24 +49,31 @@ public class CustomerController {
     @Autowired
     ApplicationEventPublisher eventPublisher;
 
+    @Autowired
+    CartLoaderUtility cartLoaderUtility;
+
+    @Autowired
+    CartClient cartClient;
+
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/login")
-    public Long checkUser() {
+    public Long checkUser(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String username="";
-//         if (principal instanceof UserDetails) {
-//            username = ((UserDetails) principal).getUsername();
-//      }
-//        else {
-//            username = principal.toString();
-//        }
-//        UserDetails userDetails = (UserDetails) principal;
-//        System.out.println(userDetails.getAuthorities());
-//        return ResponseEntity.ok().body(username);
+        cartLoaderUtility.loadCustomerToCart(httpSession,httpSession);
+        return ((MyUserDetails) principal).getCustomerId();
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @GetMapping("/logout")
+    public Long logOutUser(HttpSession httpSession) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        cartLoaderUtility.loadCartToCustomer(httpSession);
+        cartClient.emptyCart(httpSession);
+        SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
         return ((MyUserDetails) principal).getCustomerId();
     }
 

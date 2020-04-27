@@ -51,7 +51,7 @@ public class CartServiceImpl implements CartService {
         final int index = findCartItemIndex(cartItems, productID);
         if (index != -1) {
             CartItem cartItem = cartItems.get(index);
-            cartItem.setQuantity(quantity);
+            cartItem.setQuantity(quantity+cartItem.getQuantity());
             cartItems.set(index,cartItem);
             return cartItems;
         }
@@ -76,6 +76,23 @@ public class CartServiceImpl implements CartService {
         return cartItems;
     }
 
+
+    @Override
+    public List<CartItem> decreaseCartItem(long productID, HttpSession session,int quantity) throws Exception {
+
+        //check if product id exists
+        if(!isProductIDExists(productID)) throw new Exception();
+
+        List<CartItem> cartItems = (List<CartItem>) session.getAttribute(cartSessionAttributeName);
+        final int index = findCartItemIndex(cartItems, productID);
+        if (index != -1) {
+            int quantity_available = cartItems.get(index).getQuantity();
+            cartItems.get(index).setQuantity(quantity_available-quantity);
+            session.setAttribute(cartSessionAttributeName, cartItems);
+            return cartItems;
+        }
+        return cartItems;
+    }
     @Override
     public List<CartItem> getCart(HttpSession session) {
         return (List<CartItem>) session.getAttribute(cartSessionAttributeName);

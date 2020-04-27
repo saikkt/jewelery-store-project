@@ -1,6 +1,19 @@
 package com.eCommerce.jewelrystore.cart.domain;
 
+import com.eCommerce.jewelrystore.adapter.CartClient;
+import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PreDestroy;
+import javax.servlet.http.HttpSession;
+
+
 public class CartItem {
+
+    @Autowired
+    private CartLoaderUtility cartLoaderUtility;
+
     private long productID;
     private int quantity;
 
@@ -23,5 +36,10 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @PreDestroy
+    public void addItemsToCustomers(HttpSession httpSession){
+        cartLoaderUtility.loadCartToCustomer(httpSession);
     }
 }

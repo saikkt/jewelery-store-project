@@ -39,6 +39,14 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/decrease-cart-item/{productID}/{quantity}")
+    public ResponseEntity<List<CartItem>> decreaseCartItem(@PathVariable(name = "productID") long productID,
+                                                           @PathVariable(name = "quantity") int quantity,
+                                                         HttpSession session) throws Exception {
+        cartService.decreaseCartItem(productID, session,quantity);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/empty-cart")
     public ResponseEntity<List<CartItem>> emptyCart(HttpSession session) {
         cartService.emptyCart(session);

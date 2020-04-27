@@ -3,9 +3,13 @@ package com.eCommerce.jewelrystore.payments.util.api;
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
+<<<<<<< HEAD
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
+=======
+import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
+>>>>>>> 250ea034755a2fc122111bdc5c82e84113514690
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
@@ -29,6 +33,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -40,6 +45,9 @@ public class PaymentsController {
 
     @Autowired
     PaymentUtil paymentUtil;
+
+    @Autowired
+    CartLoaderUtility cartLoaderUtility;
 
     @Autowired
     OrderService orderService;
@@ -138,7 +146,11 @@ public class PaymentsController {
      * cents or dollars.
      */
     @RequestMapping("/checkout")
+<<<<<<< HEAD
     public ResponseEntity<Model> checkout(Model model) throws GuestException {
+=======
+    public ResponseEntity<Model> checkout(Model model, HttpSession httpSession) {
+>>>>>>> 250ea034755a2fc122111bdc5c82e84113514690
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long customerId;
@@ -147,6 +159,7 @@ public class PaymentsController {
         if (principal instanceof UserDetails) {
             MyUserDetails userDetails = (MyUserDetails) principal;
             customerId = userDetails.getCustomerId();
+            cartLoaderUtility.loadCartToCustomer(httpSession);
             List<Order> customerOrders = orderService.getByCustomerIdInCart(customerId);
             if (customerOrders.size() == 0)
                 return ResponseEntity.noContent().build();
