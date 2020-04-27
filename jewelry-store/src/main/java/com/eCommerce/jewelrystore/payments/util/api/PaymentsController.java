@@ -2,6 +2,7 @@ package com.eCommerce.jewelrystore.payments.util.api;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
+import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -37,6 +39,9 @@ public class PaymentsController {
 
     @Autowired
     PaymentUtil paymentUtil;
+
+    @Autowired
+    CartLoaderUtility cartLoaderUtility;
 
     @Autowired
     OrderService orderService;
@@ -105,7 +110,7 @@ public class PaymentsController {
     }
 
     @RequestMapping("/checkout")
-    public ResponseEntity<Model> checkout(Model model) {
+    public ResponseEntity<Model> checkout(Model model, HttpSession httpSession) {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long customerId;
@@ -114,6 +119,7 @@ public class PaymentsController {
         if (principal instanceof UserDetails) {
             MyUserDetails userDetails = (MyUserDetails) principal;
             customerId = userDetails.getCustomerId();
+            cartLoaderUtility.loadCartToCustomer(httpSession);
             List<Order> customerOrders = orderService.getByCustomerIdInCart(customerId);
             if(customerOrders.size()==0)
                 return ResponseEntity.noContent().build();

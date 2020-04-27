@@ -5,6 +5,16 @@ DROP TABLE IF EXISTS jSections;
 DROP TABLE IF EXISTS jCollections;
 DROP TABLE IF EXISTS jProducts;
 
+CREATE TABLE jCategories (
+  CategoryID INT(11) AUTO_INCREMENT  PRIMARY KEY,
+  CategoryName VARCHAR(50) DEFAULT NOT NULL
+);
+
+INSERT INTO jCategories (CategoryName) VALUES
+('CAT1'),
+('CAT2'),
+('CAT3');
+
 CREATE TABLE jSubCategories (
     SubCategoryID INT(11) AUTO_INCREMENT  PRIMARY KEY,
     CategoryID INT(11),
@@ -12,9 +22,9 @@ CREATE TABLE jSubCategories (
     FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`)
   );
 
-INSERT INTO jSubCategories (CategoryName) VALUES
-('RINGS'),
-('WATCHES');
+INSERT INTO jSubCategories (SubCategoryName) VALUES
+('GOLDEN-RINGS'),
+('SILVER-WATCHES');
 
 CREATE TABLE jSections (
   SectionID INT(11) AUTO_INCREMENT  PRIMARY KEY,
@@ -148,8 +158,8 @@ CREATE TABLE jShippingDetails(
   FOREIGN KEY (`OrderID`) REFERENCES `jOrders` (`OrderID`)
 );
 
-INSERT INTO jShippingDetails(OrderID,ShipName) values
-(1,'USPS');
+--INSERT INTO jShippingDetails(OrderID,ShipName) values
+--(1,'USPS');
 
 DROP TABLE IF EXISTS jHomePageSlidingImages;
 
@@ -192,29 +202,29 @@ create table jVerificationToken(
       FOREIGN KEY (`Id`) REFERENCES `jUsers` (`Id`)
       );
 
-CREATE TABLE `jguestorders` (
-  `GuestOrderID` int(11) NOT NULL AUTO_INCREMENT,
-  `GuestID` int(11) DEFAULT NULL,
-  `OrderDate` datetime DEFAULT NULL,
-  `OrderStatus` varchar(15) DEFAULT NULL,
-  `CheckoutPrice` decimal(10,2) DEFAULT '0.00',
-  `Version` int(11) NOT NULL DEFAULT '1',
-  `ObjectID` binary(16) DEFAULT NULL,
-  PRIMARY KEY (`GuestOrderID`),
-  FOREIGN KEY (`GuestID`) REFERENCES `jguest` (`GuestID`)
-  ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
-
-CREATE TABLE `jguestorderitems` (
-  `GuestOrderItemID` int(11) NOT NULL AUTO_INCREMENT,
-  `GuestOrderID` int(11) NOT NULL,
-  `ProductID` int(11) NOT NULL,
-  `UnitPrice` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `Quantity` int(11) NOT NULL DEFAULT '1',
-  `Discount` decimal(10,2) DEFAULT '0.00',
-  `TotalPrice` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `Version` int(11) NOT NULL DEFAULT '1',
-  `ObjectID` binary(16) DEFAULT NULL,
-  PRIMARY KEY (`GuestOrderItemID`),
- FOREIGN KEY (`GuestOrderID`) REFERENCES `jguestorders` (`GuestOrderID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+--CREATE TABLE `jguestorders` (
+--  `GuestOrderID` int(11) NOT NULL AUTO_INCREMENT,
+--  `GuestID` int(11) DEFAULT NULL,
+--  `OrderDate` datetime DEFAULT NULL,
+--  `OrderStatus` varchar(15) DEFAULT NULL,
+--  `CheckoutPrice` decimal(10,2) DEFAULT '0.00',
+--  `Version` int(11) NOT NULL DEFAULT '1',
+--  `ObjectID` binary(16) DEFAULT NULL,
+--  PRIMARY KEY (`GuestOrderID`),
+--  FOREIGN KEY (`GuestID`) REFERENCES `jguest` (`GuestID`)
+--  ) ;
+--
+--CREATE TABLE `jguestorderitems` (
+--  `GuestOrderItemID` int(11) NOT NULL AUTO_INCREMENT,
+--  `GuestOrderID` int(11) NOT NULL,
+--  `ProductID` int(11) NOT NULL,
+--  `UnitPrice` decimal(10,2) NOT NULL DEFAULT '0.00',
+--  `Quantity` int(11) NOT NULL DEFAULT '1',
+--  `Discount` decimal(10,2) DEFAULT '0.00',
+--  `TotalPrice` decimal(10,2) NOT NULL DEFAULT '0.00',
+--  `Version` int(11) NOT NULL DEFAULT '1',
+--  `ObjectID` binary(16) DEFAULT NULL,
+--  PRIMARY KEY (`GuestOrderItemID`),
+-- FOREIGN KEY (`GuestOrderID`) REFERENCES `jguestorders` (`GuestOrderID`)
+--);
 

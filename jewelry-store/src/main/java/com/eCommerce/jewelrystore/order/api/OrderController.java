@@ -1,6 +1,7 @@
 package com.eCommerce.jewelrystore.order.api;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
+import com.eCommerce.jewelrystore.cart.service.CartService;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
@@ -28,12 +29,15 @@ public class OrderController {
 
     private OrderService orderService;
 
-    public OrderController(OrderService orderService) {
+    private CartService cartService;
+
+    public OrderController(OrderService orderService,CartService cartService) {
         this.orderService = orderService;
+        this.cartService = cartService;
     }
 
     //Admin access only
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<OrderModel>> getAllOrders(@RequestParam(required = false) Optional<Integer> page,
                                                          @RequestParam(required = false) Optional<Integer> size) {
@@ -74,29 +78,29 @@ public class OrderController {
         return ResponseEntity.ok(OrderMapper.toModel(orderOptional.get()));
     }
 
-    @ApiOperation(value = "Called when an item is added to cart for the first time or buy now is pressed with only one item", response = Iterable.class)
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-    @PostMapping("/saveOrder")
-    public ResponseEntity<OrderModel> saveOrder(@RequestBody OrderModel orderModel) {
-        if (orderModel.getOrderItems() == null || orderModel.getOrderItems().isEmpty()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
-        Order order = OrderMapper.toEntity(orderModel);
-
-        //setting customer Id
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        MyUserDetails userDetails = (MyUserDetails) principal;
-        long customerId = userDetails.getCustomerId();
-        order.setCustomerID(customerId);
-
-        //setting order status to "CART"
-        order.setOrderStatus(OrderStatus.CART);
-
-        //saving order
-        Order savedOrder = orderService.save(order);
-
-        return new ResponseEntity<>(OrderMapper.toModel(savedOrder), HttpStatus.CREATED);
-    }
+//    @ApiOperation(value = "Called when an item is added to cart for the first time or buy now is pressed with only one item", response = Iterable.class)
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+//    @PostMapping("/saveOrder")
+//    public ResponseEntity<OrderModel> saveOrder(@RequestBody OrderModel orderModel) {
+//        if (orderModel.getOrderItems() == null || orderModel.getOrderItems().isEmpty()) {
+//            return ResponseEntity.unprocessableEntity().build();
+//        }
+//        Order order = OrderMapper.toEntity(orderModel);
+//
+//        //setting customer Id
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        MyUserDetails userDetails = (MyUserDetails) principal;
+//        long customerId = userDetails.getCustomerId();
+//        order.setCustomerID(customerId);
+//
+//        //setting order status to "CART"
+//        order.setOrderStatus(OrderStatus.CART);
+//
+//        //saving order
+//        Order savedOrder = orderService.save(order);
+//
+//        return new ResponseEntity<>(OrderMapper.toModel(savedOrder), HttpStatus.CREATED);
+//    }
 
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
@@ -113,43 +117,24 @@ public class OrderController {
         return ResponseEntity.ok(OrderMapper.toModel(orderService.save(updatedOrder)));
     }
 
+    //not used
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @PutMapping("/addToCart")
     public ResponseEntity<OrderModel> addToCart(@RequestParam(name = "productID") long productID,@RequestParam(name = "quantity") int quantity) {
 
+       return ResponseEntity.ok().body(OrderMapper.toModel(orderService.addToCart(productID,quantity)));
+    }
+
+    //not used
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PutMapping("/deleteFromCart/{productID}")
+    public ResponseEntity<OrderModel> deleteFromCart(@PathVariable(name = "productID") long productID,@RequestParam(name = "quantity") int quantity) {
+
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         MyUserDetails userDetails = null;
         userDetails = (MyUserDetails) principal;
-        Order order = orderService.getByCustomerIdInCart(userDetails.getCustomerId()).get(0);
-        if(order==null)
-        {
-            Order order_new = new Order(userDetails.getCustomerId());
-            OrderItem orderItem = new OrderItem(order_new,productID);
-            orderItem.setQuantity(quantity);
-            List<OrderItem> orderItemsList = new ArrayList<>();
-            orderItemsList.add(orderItem);
-            order_new.setOrderItems(orderItemsList);
-            return ResponseEntity.ok().body(OrderMapper.toModel(orderService.save(order_new)));
-        }
-        else
-        {
-            OrderItem orderItem = new OrderItem(order,productID);
-            orderItem.setQuantity(quantity);
-            order.getOrderItems().add(orderItem);
-            return ResponseEntity.ok().body(OrderMapper.toModel(orderService.save(order)));
-        }
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-    @PutMapping("/deleteFromCart/{productID}")
-    public ResponseEntity<OrderModel> deleteFromCart(@PathVariable(name = "productID") long productID) {
-
-//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        MyUserDetails userDetails = null;
-//        userDetails = (MyUserDetails) principal;
-//            orderService.deleteFromCart(userDetails.getCustomerId(),productID);
-//            return ResponseEntity.ok().body(OrderMapper.toModel(orderService.save(order)));
-return null;
+            Order order = orderService.deleteFromCart(userDetails.getCustomerId(),productID,quantity);
+            return ResponseEntity.ok().body(OrderMapper.toModel(order));
     }
 
 

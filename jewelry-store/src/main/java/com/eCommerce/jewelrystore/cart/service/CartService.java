@@ -10,6 +10,7 @@ import java.util.List;
 public interface CartService {
     List<CartItem> addItemToCart(long productID, int quantity, HttpSession session) throws Exception;
     List<CartItem> removeCartItem(long productID, HttpSession session) throws Exception;
+    List<CartItem> decreaseCartItem(long productID, HttpSession session,int quantity) throws Exception;
     List<CartItem> getCart(HttpSession session);
     void emptyCart(HttpSession session);
    // boolean decreaseQuantity(long productID);

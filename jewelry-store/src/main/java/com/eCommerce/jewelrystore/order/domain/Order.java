@@ -51,11 +51,7 @@ public class Order {
 
     public Order(long customerID) {
         this.customerID = customerID;
-<<<<<<< HEAD
-        this.orderDate = Calendar.getInstance().getTime();
-=======
         this.orderDate = LocalDate.now();
->>>>>>> 3338cae6f096e130967b3b6d877a297d3dc719bb
         this.orderStatus = OrderStatus.CART;
         this.objectID = UUID.randomUUID();
     }
