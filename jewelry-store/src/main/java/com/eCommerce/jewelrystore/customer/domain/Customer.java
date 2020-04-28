@@ -4,10 +4,11 @@
 package com.eCommerce.jewelrystore.customer.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.UUID;
 
 @Entity
-@Table(name = "JCustomers")
+@Table(name = "jCustomers")
 public class Customer {
 
     @Column(name = "CustomerID", length = 11)
@@ -25,6 +26,7 @@ public class Customer {
     private String phone;
 
     @Column(name = "EmailAddress")
+    @Email
     private String emailAddress;
 
     @Column(name = "IsGuest", length = 1)
@@ -74,7 +76,14 @@ public class Customer {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        String cleanPhone = null;
+        if (phone != null) {
+            cleanPhone = phone.trim();
+        }
+        if (cleanPhone != null && (cleanPhone.length() == 0 || cleanPhone.length() > 24 )) {
+            throw new IllegalArgumentException("Phone must be between 1 and 24 characters.");
+        }
+        this.phone = cleanPhone;
     }
 
     public String getEmailAddress() {

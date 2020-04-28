@@ -6,6 +6,7 @@ import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.repository.OrderRepository;
+import com.eCommerce.jewelrystore.products.service.ProductService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,10 +25,12 @@ public class OrderService {
 
     private OrderRepository orderRepository;
     private ProductClient productClient;
+    private ProductService productService;
 
-    public OrderService(OrderRepository orderRepository, ProductClient productClient) {
+    public OrderService(OrderRepository orderRepository, ProductClient productClient,ProductService productService) {
         this.orderRepository = orderRepository;
         this.productClient = productClient;
+        this.productService = productService;
     }
 
     public List<Order> getAll(int page, int size) {
@@ -45,9 +48,21 @@ public class OrderService {
         //******To Do******
         //Get Discount from discount table
         //Get Tax From tax table (Not Sure How tax is calculated. Either for individual product or total price)
+
+//        order.getOrderItems().stream().forEach(orderItem -> {
+//            System.out.println(productClient.getProductPriceByID(orderItem.getProductID()));
+//        });
+
+//        for(int i=0;i<order.getOrderItems().size();i++){
+//            System.out.println(productClient.getProductPriceByID(order.getOrderItems().get(i).getProductID()));
+//        }
+
         order.getOrderItems().stream()
                 .forEach(orderItem -> {
                     orderItem.setOrder(order);
+                   System.out.println(productService.getByProductID(orderItem.getProductID()));
+//                    orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
+                    orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
                     orderItem.setTotalPrice(orderItem.getUnitPrice().multiply(new BigDecimal(orderItem.getQuantity())));
                 });
         //Calculate CheckOut Price
@@ -73,6 +88,7 @@ public class OrderService {
             OrderItem orderItem = new OrderItem(order_new,productID);
             orderItem.setQuantity(quantity);
             orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
+            System.out.println(productClient.getProductPriceByID(orderItem.getProductID()));
             List<OrderItem> orderItemsList = new ArrayList<>();
             orderItemsList.add(orderItem);
             order_new.setOrderItems(orderItemsList);
@@ -83,6 +99,7 @@ public class OrderService {
             OrderItem orderItem = new OrderItem(order,productID);
             orderItem.setQuantity(quantity);
             orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
+            System.out.println(productClient.getProductPriceByID(orderItem.getProductID()));
             order.getOrderItems().add(orderItem);
             return save(order);
         }

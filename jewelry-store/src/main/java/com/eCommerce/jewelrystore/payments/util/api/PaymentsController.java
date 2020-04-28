@@ -3,6 +3,7 @@ package com.eCommerce.jewelrystore.payments.util.api;
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
 import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
+import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
@@ -22,10 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -58,7 +56,7 @@ public class PaymentsController {
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model, @RequestBody Guest guest) throws StripeException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
@@ -98,6 +96,9 @@ public class PaymentsController {
 
             //adding into payment
             //logic left
+
+            //send email for order confirmation
+
 
             return ResponseEntity.ok().build();
         }

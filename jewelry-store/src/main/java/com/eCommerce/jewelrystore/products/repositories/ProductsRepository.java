@@ -3,13 +3,16 @@ package com.eCommerce.jewelrystore.products.repositories;
 import com.eCommerce.jewelrystore.products.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.QueryHint;
 import java.util.List;
 
 @Repository
 public interface ProductsRepository extends JpaRepository<Product,Integer> {
 
+    @QueryHints(value = { @QueryHint(name = org.hibernate.annotations.QueryHints.FLUSH_MODE, value = "COMMIT") })
     Product findByProductID(long productID);
     List<Product> findByCategoryID(long categoryID);
     List<Product> findByCollectionID(long collectionID);

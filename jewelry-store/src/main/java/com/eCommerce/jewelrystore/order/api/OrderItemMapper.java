@@ -1,19 +1,32 @@
 package com.eCommerce.jewelrystore.order.api;
 
+import com.eCommerce.jewelrystore.adapter.ProductClient;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.dto.OrderItemModel;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 
 @JsonSerialize
+@Component
 class OrderItemMapper {
+
+    @Autowired
+    private static ProductClient productClient;
 
     static OrderItem toEntity(Order order, OrderItemModel orderItemModel){
         OrderItem orderItem = new OrderItem(order,orderItemModel.getProductID());
-       // orderItem.setDiscount(orderItemModel.getDiscount());
+        orderItem.setDiscount(orderItemModel.getDiscount());
         orderItem.setQuantity(orderItemModel.getQuantity());
-     //   orderItem.setUnitPrice(orderItemModel.getUnitPrice());
-     //   orderItem.setTotalPrice(orderItemModel.getTotalPrice());
+        orderItem.setProductID(orderItemModel.getProductID());
+//        System.out.println(productClient.getProductPriceByID(1));
+//        BigDecimal big = productClient.getProductPriceByID(orderItem.getProductID());
+//        orderItem.setUnitPrice(BigDecimal.ONE);
+      //  orderItem.setUnitPrice(orderItemModel.getUnitPrice());
+//        orderItem.setTotalPrice(orderItem.getUnitPrice().multiply(new BigDecimal(orderItem.getQuantity())));
         return orderItem;
     }
 

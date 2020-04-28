@@ -35,7 +35,7 @@ public class CartLoaderUtility {
     }
 
     @Transactional
-    public void loadCustomerToCart(HttpSession session, HttpSession httpSession) {
+    public void loadCustomerToCart(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         MyUserDetails userDetails = (MyUserDetails) principal;
         Order order = orderService.getByCustomerIdInCart(userDetails.getCustomerId()).get(0);
