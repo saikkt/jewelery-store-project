@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,10 +45,7 @@ public class Order {
     private List<OrderItem> orderItems = new ArrayList<>();
 
     protected Order(){
-
     }
-
-
 
     public Order(long customerID) {
         this.customerID = customerID;

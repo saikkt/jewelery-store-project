@@ -12,11 +12,13 @@ import java.util.List;
 @Component
 public class CartServiceImpl implements CartService {
 
-    @Value("${cart.session.attribute.name}")
+
     private String cartSessionAttributeName;
     private ProductClient productClient;
 
-    public CartServiceImpl(ProductClient productClient) {
+    public CartServiceImpl(@Value("${cart.session.attribute.name}") String cartSessionAttributeName,
+                           ProductClient productClient) {
+        this.cartSessionAttributeName = cartSessionAttributeName;
         this.productClient = productClient;
     }
 
@@ -43,7 +45,7 @@ public class CartServiceImpl implements CartService {
             return cartItems;
         }
 
-        List<CartItem> cartItems = (List<CartItem>) session.getAttribute(cartSessionAttributeName);
+        List<CartItem> cartItems = getCart(session);
 
         // Find if product already exists and update quantity
         final int index = findCartItemIndex(cartItems, productID);
@@ -64,7 +66,7 @@ public class CartServiceImpl implements CartService {
         //check if product id exists
         if(!isProductIDExists(productID)) throw new Exception();
 
-        List<CartItem> cartItems = (List<CartItem>) session.getAttribute(cartSessionAttributeName);
+        List<CartItem> cartItems =getCart(session);
         final int index = findCartItemIndex(cartItems, productID);
         if (index != -1) {
             cartItems.remove(index);

@@ -1,7 +1,6 @@
 package com.eCommerce.jewelrystore.email.accounts.verfication.domain;
 
 import com.eCommerce.jewelrystore.accounts.models.User;
-import org.graalvm.compiler.lir.CompositeValue;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

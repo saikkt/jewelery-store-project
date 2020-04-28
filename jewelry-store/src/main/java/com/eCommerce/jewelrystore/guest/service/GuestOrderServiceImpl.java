@@ -26,7 +26,6 @@ import java.util.UUID;
 @Component
 public class GuestOrderServiceImpl implements GuestOrderService {
 
-    @Value("${cart.session.attribute.name}")
     private String cartSessionAttributeName;
     private GuestOrderRepository guestOrderRepository;
     private GuestOrderItemRepository guestOrderItemRepository;
@@ -37,7 +36,14 @@ public class GuestOrderServiceImpl implements GuestOrderService {
 
     Logger logger = LoggerFactory.getLogger(GuestOrderServiceImpl.class);
 
-    public GuestOrderServiceImpl(GuestOrderRepository guestOrderRepository, GuestOrderItemRepository guestOrderItemRepository, GuestService guestService, CartClient cartClient, HttpSession httpSession, ProductClient productClient) {
+    public GuestOrderServiceImpl(@Value("${cart.session.attribute.name}") String cartSessionAttributeName,
+                                 GuestOrderRepository guestOrderRepository,
+                                 GuestOrderItemRepository guestOrderItemRepository,
+                                 GuestService guestService,
+                                 CartClient cartClient,
+                                 HttpSession httpSession,
+                                 ProductClient productClient) {
+        this.cartSessionAttributeName = cartSessionAttributeName;
         this.guestOrderRepository = guestOrderRepository;
         this.guestOrderItemRepository = guestOrderItemRepository;
         this.guestService = guestService;
@@ -53,31 +59,32 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         GuestOrder guestOrder;
         try {
             cartItems = cartClient.getCartItems(httpSession);
-             guestOrder = new GuestOrder();
+            guestOrder = new GuestOrder();
 
-        //generate order items using cart
-        List<GuestOrderItem> guestOrderItems = new ArrayList<>();
-        cartItems.forEach((productID,quantity)-> guestOrderItems.add(new GuestOrderItem(productID,quantity)));
+            //generate order items using cart
+            List<GuestOrderItem> guestOrderItems = new ArrayList<>();
+            cartItems.forEach((productID, quantity) -> guestOrderItems.add(new GuestOrderItem(productID, quantity)));
 
-        //handle taxes, discount, totalprice, unitprice
-        guestOrderItems.forEach(guestOrderItem -> {
-            guestOrderItem.setUnitPrice(productClient.getProductPriceByID(guestOrderItem.getProductID()));
-            guestOrderItem.setTotalPrice(guestOrderItem.getUnitPrice().multiply(new BigDecimal(guestOrderItem.getQuantity())));
-        });
+            //handle taxes, discount, totalprice, unitprice
+            guestOrderItems.forEach(guestOrderItem -> {
+                guestOrderItem.setUnitPrice(productClient.getProductPriceByID(guestOrderItem.getProductID()));
+                guestOrderItem.setTotalPrice(guestOrderItem.getUnitPrice().multiply(new BigDecimal(guestOrderItem.getQuantity())));
+            });
 
-        //Calculate CheckOut Price
-        BigDecimal checkOutPrice = guestOrderItems.stream()
-                .map(GuestOrderItem::getTotalPrice)
-                .reduce(new BigDecimal(0), BigDecimal::add);
+            //Calculate CheckOut Price
+            BigDecimal checkOutPrice = guestOrderItems.stream()
+                    .map(GuestOrderItem::getTotalPrice)
+                    .reduce(new BigDecimal(0), BigDecimal::add);
 
-        guestOrder.setCheckoutPrice(checkOutPrice);
-        //set order items list
-        guestOrder.setGuestOrderItems(guestOrderItems);
-        }catch (NullPointerException e){
-            logger.warn("Empty Cart Session is accessed to generate order summary");
-            throw new GuestException("Cart is empty, unable to generate order summary",e);
-        }catch (Exception e){
-            throw new GuestException("Error in generating order summary",e);
+            guestOrder.setCheckoutPrice(checkOutPrice);
+            //set order items list
+            guestOrder.setGuestOrderItems(guestOrderItems);
+        } catch (NullPointerException e) {
+            logger.info("Empty Cart Session is accessed to generate order summary");
+            throw new GuestException("Cart is empty, unable to generate order summary", e);
+        } catch (Exception e) {
+            logger.info("Error in generating order summary");
+            throw new GuestException("Error in generating order summary", e);
         }
         return guestOrder;
     }
@@ -117,9 +124,9 @@ public class GuestOrderServiceImpl implements GuestOrderService {
 
             //Clear cart session
             httpSession.removeAttribute(cartSessionAttributeName);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.warn("Unable to place guest order");
-            throw new GuestException("Unable to place guest order",e);
+            throw new GuestException("Unable to place guest order", e);
         }
         return savedGuestOrder;
     }
