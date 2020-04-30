@@ -31,4 +31,8 @@ public class MetalPurityService {
     public void deleteByID(long metalPurityID){
         metalPurityRepository.deleteById(metalPurityID);
     }
+
+    public MetalPurity findByPurity(String purity){
+        return metalPurityRepository.findByPurity(purity);
+    }
 }

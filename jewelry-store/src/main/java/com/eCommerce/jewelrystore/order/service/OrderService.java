@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
 @Service
 public class OrderService {
 
@@ -74,6 +73,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+
     public Order addToCart(long productID,int quantity){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         MyUserDetails userDetails = null;
@@ -87,8 +87,6 @@ public class OrderService {
             Order order_new = new Order(userDetails.getCustomerId());
             OrderItem orderItem = new OrderItem(order_new,productID);
             orderItem.setQuantity(quantity);
-            orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
-            System.out.println(productClient.getProductPriceByID(orderItem.getProductID()));
             List<OrderItem> orderItemsList = new ArrayList<>();
             orderItemsList.add(orderItem);
             order_new.setOrderItems(orderItemsList);
@@ -98,8 +96,6 @@ public class OrderService {
         {
             OrderItem orderItem = new OrderItem(order,productID);
             orderItem.setQuantity(quantity);
-            orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
-            System.out.println(productClient.getProductPriceByID(orderItem.getProductID()));
             order.getOrderItems().add(orderItem);
             return save(order);
         }

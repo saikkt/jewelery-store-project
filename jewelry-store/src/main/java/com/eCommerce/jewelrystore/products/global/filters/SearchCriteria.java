@@ -1,0 +1,53 @@
+package com.eCommerce.jewelrystore.products.global.filters;
+
+public class SearchCriteria {
+    private String key;
+    private String operation;
+    private Object value;
+    private Object maxVal;
+
+    public SearchCriteria(String key, String operation, Object value) {
+        this.key = key;
+        this.operation = operation;
+        this.value = value;
+    }
+
+    public SearchCriteria(String key, String operation, Object value, Object maxVal) {
+        this.key = key;
+        this.operation = operation;
+        this.value = value;
+        this.maxVal = maxVal;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
+
+    public Object getMaxVal() {
+        return maxVal;
+    }
+
+    public void setMaxVal(Object maxVal) {
+        this.maxVal = maxVal;
+    }
+}

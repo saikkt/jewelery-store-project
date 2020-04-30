@@ -35,4 +35,8 @@ public class MaterialService {
     public void deleteMaterialByID(long materialID){
         materialRepository.deleteById(materialID);
     }
+
+    public Material getByMaterialType(String materialType){
+        return materialRepository.findByMaterialType(materialType);
+    }
 }

@@ -35,4 +35,6 @@ public class DiscountService {
     public void delete(long discountID){
         discountRepository.deleteById(discountID);
     }
+
+    public Discount getByDiscountType(String discountType){return discountRepository.findByDiscountType(discountType);}
 }

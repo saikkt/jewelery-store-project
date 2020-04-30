@@ -109,10 +109,13 @@ CREATE TABLE `jProducts` (
 );
 
 INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,InStockQuantity,Price,ImagePath) VALUES
-('2.6 Size Three-tone Bangle in 22K Gold',1,1,1,1,1,1,12,234.67,'http://aws.com/s3'),
-('6.25 Size Diamond Ring 18 Karat Rose Gold',2,2,2,1,1,1,3,444.56,'http://aws.com/s3');
+('2.6 Size Three-tone Bangle in 22K Gold',1,3,1,1,1,1,12,234.67,'http://aws.com/s3'),
+('3.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,2,1,3,333,'http://aws.com/s3'),
+('4.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,2,3,444.56,'http://aws.com/s3'),
+('5.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,1,3,121,'http://aws.com/s3');
 
 DROP TABLE jCustomers IF EXISTS;
+DROP TABLE jWishList IF EXISTS;
 DROP TABLE jAddresses IF EXISTS;
 DROP TABLE jOrderItems IF EXISTS;
 DROP TABLE jOrders IF EXISTS;
@@ -131,6 +134,19 @@ INSERT INTO jCustomers(CustomerFirstName, CustomerLastName, Phone, EmailAddress)
 ('sarita','owner','4444444444','sarita.kkt@gmail.com'),
 ('sai','pothulapally','4444444444','sai.kkt@gmail.com');
 
+
+CREATE TABLE jWishList(
+Id INT(11) AUTO_INCREMENT PRIMARY KEY,
+CustomerID INT(11),
+ProductsList VARCHAR(200) NOT NULL,
+Version INT (11) NOT NULL DEFAULT '1',
+ObjectID BINARY(16) DEFAULT NULL,
+FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
+);
+
+INSERT INTO jWishList(CustomerID, ProductsList) values
+(1,'1~2'),
+(2,'1');
 
 
 CREATE TABLE jAddresses(
@@ -172,10 +188,10 @@ CREATE TABLE jOrderItems(
 OrderItemID INT(11) PRIMARY KEY AUTO_INCREMENT,
 OrderID INT(11) NOT NULL,
 ProductID INT(11) NOT NULL,
-UnitPrice DECIMAL(10,2) NOT NULL DEFAULT 0.0000,
+UnitPrice DECIMAL(10,2)  DEFAULT 0.0000,
 Quantity INT(11) NOT NULL DEFAULT '1',
 Discount DECIMAL(10,2) DEFAULT 0.0000,
-TotalPrice DECIMAL(10,2) NOT NULL DEFAULT 0.0000,
+TotalPrice DECIMAL(10,2) DEFAULT 0.0000,
 Version INT(11) NOT NULL DEFAULT '1',
 ObjectID BINARY(16) DEFAULT NULL,
 FOREIGN KEY (`OrderID`) REFERENCES `jOrders` (`OrderID`),
