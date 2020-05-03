@@ -2,19 +2,18 @@ package com.eCommerce.jewelrystore.payments.util.api;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
+import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
-<<<<<<< HEAD
+import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
-=======
-import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
->>>>>>> 250ea034755a2fc122111bdc5c82e84113514690
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
 import com.eCommerce.jewelrystore.payments.stripe.dto.ChargeRequest;
 import com.eCommerce.jewelrystore.payments.stripe.service.StripeService;
+import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
 import com.eCommerce.jewelrystore.payments.util.PaymentUtil;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
 import com.eCommerce.jewelrystore.shipping.service.ShippingDetailsService;
@@ -34,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -61,13 +61,16 @@ public class PaymentsController {
     @Autowired
     GuestOrderClient guestOrderClient;
 
+    @Autowired
+    TransactionClient transactionClient;
+
     Logger logger = LoggerFactory.getLogger(PaymentsController.class);
 
     //    @Value("${STRIPE_PUBLIC_KEY}")
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model) throws StripeException, GuestException {
+    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
@@ -121,7 +124,7 @@ public class PaymentsController {
             } catch (Exception ex) {
                 logger.info("payment failed for guest", ex);
             }
-            //To do -- change status to enum
+            //To do -- change charge status to enum
             if (charge.getStatus() == "succeeded") {
                 model.addAttribute("id", charge.getId());
                 model.addAttribute("status", charge.getStatus());
@@ -130,9 +133,18 @@ public class PaymentsController {
 
                 //To do-- Try with Object Mapper...Use GuestModel instead of Guest
                 Guest guest = (Guest) model.getAttribute("guest");
-                guestOrderClient.persistOrderSummary(guest);
+                GuestOrder guestOrder = guestOrderClient.placeGuestOrder(guest);
 
-                //To do -- Add data into payments
+                //Save Transaction
+                transactionClient.saveTransaction(
+                        transactionClient.getTransactionBuilder()
+                        .setGuestOrderID(guestOrder.getGuestOrderID())
+                        .setChargeID(charge.getId())
+                        .setChargeAmount(new BigDecimal(charge.getAmount()))
+                        .build()
+                );
+
+                //Order verification email is send in guest order service
 
                 return ResponseEntity.ok().build();
             }
@@ -146,12 +158,7 @@ public class PaymentsController {
      * cents or dollars.
      */
     @RequestMapping("/checkout")
-<<<<<<< HEAD
-    public ResponseEntity<Model> checkout(Model model) throws GuestException {
-=======
-    public ResponseEntity<Model> checkout(Model model, HttpSession httpSession) {
->>>>>>> 250ea034755a2fc122111bdc5c82e84113514690
-
+    public ResponseEntity<Model> checkout(Model model, HttpSession httpSession) throws GuestException {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long customerId;
 

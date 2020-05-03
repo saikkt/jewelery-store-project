@@ -6,5 +6,5 @@ import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 
 public interface GuestOrderClient {
     GuestOrder getGuestOrderSummary() throws GuestException;
-    GuestOrder persistOrderSummary(Guest guest) throws GuestException;
+    GuestOrder placeGuestOrder(Guest guest) throws GuestException;
 }

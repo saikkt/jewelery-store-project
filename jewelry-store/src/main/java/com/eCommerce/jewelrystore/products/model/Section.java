@@ -1,10 +1,14 @@
 package com.eCommerce.jewelrystore.products.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.*;
 
+@JsonSerialize
 @Entity
 @Table(name = "jSections")
 public class Section {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +36,7 @@ public class Section {
     public void setSectionName(String sectionName) {
         this.sectionName = sectionName;
     }
+
+
 }
 

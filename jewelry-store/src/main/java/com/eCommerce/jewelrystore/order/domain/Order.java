@@ -50,10 +50,6 @@ public class Order {
     public Order(long customerID) {
         this.customerID = customerID;
         this.orderDate = LocalDate.now();
-<<<<<<< HEAD
-        this.orderDate = LocalDate.now();
-=======
->>>>>>> 250ea034755a2fc122111bdc5c82e84113514690
         this.orderStatus = OrderStatus.CART;
         this.objectID = UUID.randomUUID();
     }

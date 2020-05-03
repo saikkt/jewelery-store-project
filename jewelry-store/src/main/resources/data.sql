@@ -10,13 +10,16 @@ DROP TABLE IF EXISTS jProducts;
 CREATE TABLE `jCategories` (
   `CategoryID` int(11) NOT NULL AUTO_INCREMENT,
   `CategoryName` varchar(50) NOT NULL,
+  `MEN` bit(1) default '0',
+  `WOMEN` bit(1) default '0',
+  `KIDS` bit(1) default '0',
   PRIMARY KEY (`CategoryID`)
 );
 
-INSERT INTO jCategories(CategoryName) values
-('CAT1'),
-('CAT2'),
-('CAT3');
+INSERT INTO jCategories(CategoryName,MEN,WOMEN,KIDS) values
+('Necklaces',1,1,1),
+('Earrings',1,1,1),
+('Bangles',0,1,0);
 
 
 CREATE TABLE jSubCategories (
@@ -26,9 +29,15 @@ CREATE TABLE jSubCategories (
     FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`)
   );
 
-INSERT INTO jSubCategories (SubCategoryName) VALUES
-('RINGS'),
-('WATCHES');
+INSERT INTO jSubCategories (CategoryID,SubCategoryName) VALUES
+(1,'Pendants'),
+(1,'Necklace Sets'),
+(1, 'Pattas'),
+(1, 'Mangalsutras'),
+(2,'Chandbali'),
+(2, 'Clipons'),
+(3,'Arm Braceletes'),
+(3, 'Braceletes');
 
 CREATE TABLE jSections (
   SectionID INT(11) AUTO_INCREMENT  PRIMARY KEY,
@@ -295,3 +304,18 @@ CREATE TABLE `jGuestOrderItems` (
 );
 
 
+CREATE TABLE `jTransactions`(
+`TransactionID` int(11) NOT NULL AUTO_INCREMENT,
+`OrderID` int(11) DEFAULT NULL,
+`GuestOrderID` int(11) DEFAULT NULL,
+`ChargeID` VARCHAR (250) NOT NULL,
+`ChargeAmount` DECIMAL(10,2) NOT NULL,
+`Version` int(11) NOT NULL DEFAULT '1',
+`ObjectID` binary(16) DEFAULT NULL,
+PRIMARY KEY (`TransactionID`)
+);
+
+INSERT INTO jTransactions(OrderID,ChargeID,ChargeAmount) VALUES
+(1,'abc-123',200.23);
+
+--Write a trigger to check if either one of the column is null (OrderID or GuestOrderID)

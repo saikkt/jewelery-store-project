@@ -21,7 +21,7 @@ public class GuestOrderClientImpl implements GuestOrderClient {
     }
 
     @Override
-    public GuestOrder persistOrderSummary(Guest guest) throws GuestException {
+    public GuestOrder placeGuestOrder(Guest guest) throws GuestException {
         return guestOrderService.saveGuestOrderAndItems(guest);
     }
 }
