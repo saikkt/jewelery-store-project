@@ -46,6 +46,8 @@ public class ProductService {
     DiscountService discountService;
     @Autowired
     SectionService sectionService;
+    @Autowired
+    SubCategoryService subCategoryService;
 
     Logger logger = LoggerFactory.getLogger(ProductService.class);
 
@@ -229,15 +231,15 @@ public class ProductService {
                 returnPredicate = getPredicate("categoryID",returnFilterSet);
             break;
 
-            //waiting for crud for sub category
-//            //sub-category-filter
-//            case "sub-category-filter":
-//                facetFilters = (List<FacetFilter>) p.getValue();
-//                System.out.println(facetFilters.get(0).getClass());
-//                facetFilters.stream().filter(a->a.isEnabled()==true).forEach(l->{
-//                    returnFilterSet.add(categoryService.getCategoryByName(l.getName()).getCategoryID());
-//                });
-//                break;
+            //sub-category-filter
+            case "sub-category-filter":
+                facetFilters = (List<FacetFilter>) p.getValue();
+                System.out.println(facetFilters.get(0).getClass());
+                facetFilters.stream().filter(a->a.isEnabled()==true).forEach(l->{
+                    returnFilterSet.add(subCategoryService.getBySubCategoryName(l.getName()).getSubCategoryID());
+                });
+                returnPredicate = getPredicate("subCategoryID",returnFilterSet);
+                break;
 
             //gender-filter
             case "gender":

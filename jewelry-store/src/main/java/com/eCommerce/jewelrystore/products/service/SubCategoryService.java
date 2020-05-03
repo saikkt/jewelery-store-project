@@ -19,6 +19,10 @@ public class SubCategoryService {
         return subCategoryRepository.findByCategoryID(categoryID);
     }
 
+    public SubCategory getBySubCategoryName(String subCategoryName){
+        return subCategoryRepository.findBySubCategoryName(subCategoryName).get();
+    }
+
     public List<SubCategory> getAll(){
         return subCategoryRepository.findAll();
     }
