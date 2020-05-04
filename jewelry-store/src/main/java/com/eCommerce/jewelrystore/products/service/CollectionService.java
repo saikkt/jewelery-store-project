@@ -83,4 +83,8 @@ public class CollectionService {
         }
         return savedCollection;
     }
+
+	public List<Collection> saveCollections(List<Collection> collections) {
+		return collectionsRepository.saveAll(collections);
+	}
 }

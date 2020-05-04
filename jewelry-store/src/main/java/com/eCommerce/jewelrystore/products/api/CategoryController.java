@@ -46,6 +46,14 @@ public class CategoryController {
             return ResponseEntity.unprocessableEntity().build();
         return ResponseEntity.ok().body(savedCategory);
     }
+    
+    @PostMapping("/postCategories")
+    public ResponseEntity<List<Category>> postProduct(@RequestBody List<Category> categories){
+    	List<Category> savedCategory = categoryService.saveCategories(categories);
+        if(savedCategory==null)
+            return ResponseEntity.unprocessableEntity().build();
+        return ResponseEntity.ok().body(savedCategory);
+    }
 
     @PutMapping("/updateCategory")
     public ResponseEntity<Category> updateCategory(@RequestBody Category category){

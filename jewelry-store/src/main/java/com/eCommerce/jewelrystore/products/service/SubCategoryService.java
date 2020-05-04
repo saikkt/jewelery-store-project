@@ -26,4 +26,8 @@ public class SubCategoryService {
     public List<SubCategory> getAll(){
         return subCategoryRepository.findAll();
     }
+
+	public List<SubCategory> saveSubCategories(List<SubCategory> subCategories) {
+		return subCategoryRepository.saveAll(subCategories);
+	}
 }

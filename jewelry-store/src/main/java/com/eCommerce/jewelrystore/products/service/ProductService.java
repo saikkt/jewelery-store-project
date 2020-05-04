@@ -190,7 +190,7 @@ public class ProductService {
                             System.out.println("here");
                             sort = Sort.by(Sort.Order.desc("price"));
                             break;
-                        case "New Listed":
+                        case "new listed":
                             sort = Sort.by(Sort.Order.desc("createDate"));
                             break;
                     }

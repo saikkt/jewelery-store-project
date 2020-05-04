@@ -37,6 +37,11 @@ public class MaterialController {
     public ResponseEntity<Material> save(@RequestBody Material material) {
         return new ResponseEntity<>(materialService.saveMaterial(material), HttpStatus.CREATED);
     }
+    
+    @PostMapping("/postMaterialsList")
+    public ResponseEntity<List<Material>> save(@RequestBody List<Material> materials) {
+        return new ResponseEntity<>(materialService.saveMaterials(materials), HttpStatus.CREATED);
+    }
 
     @PutMapping
     public ResponseEntity<Material> update(@RequestBody Material material) {

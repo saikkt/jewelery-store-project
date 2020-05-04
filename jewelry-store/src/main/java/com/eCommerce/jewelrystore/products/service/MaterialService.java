@@ -39,4 +39,8 @@ public class MaterialService {
     public Material getByMaterialType(String materialType){
         return materialRepository.findByMaterialType(materialType);
     }
+
+	public List<Material> saveMaterials(List<Material> materials) {
+		return materialRepository.saveAll(materials);
+	}
 }

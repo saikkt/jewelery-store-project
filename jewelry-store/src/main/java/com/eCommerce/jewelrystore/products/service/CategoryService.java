@@ -80,4 +80,9 @@ public class CategoryService {
         }
         return savedCategory;
     }
+
+	public List<Category> saveCategories(List<Category> categories) {
+		List<Category> savedCategories = categoryRepository.saveAll(categories);
+		return savedCategories;
+	}
 }
