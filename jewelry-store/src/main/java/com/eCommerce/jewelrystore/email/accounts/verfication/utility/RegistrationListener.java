@@ -44,7 +44,7 @@ public class RegistrationListener implements
         String recipientAddress = customerRepository.findById(user.getCustomerId()).get().getEmailAddress();
         String subject = "Registration Confirmation";
         String confirmationUrl
-                = event.getAppUrl() + "/regitrationConfirm.html?token=" + token;
+                = event.getAppUrl() + "/regitrationConfirm?token=" + token;
         //String message = messages.getMessage("message.regSucc", null, event.getLocale());
         String text = "relink" + "\r\n" + "http://localhost:7009" + confirmationUrl;
         mailSender.sendEmail(recipientAddress,subject,text);

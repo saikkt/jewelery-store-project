@@ -67,11 +67,11 @@ public class HomePageNavBarService {
     }
 
     public boolean checkIfSectionIsPresentInCategory(String sectionName, Category category) {
-        if (sectionName.equals("MEN"))
+        if (sectionName.equalsIgnoreCase("mens"))
             return category.isMenSection();
-        if (sectionName.equals("WOMEN"))
+        if (sectionName.equalsIgnoreCase("womens"))
             return category.isWomenSection();
-        if (sectionName.equals("KIDS"))
+        if (sectionName.equalsIgnoreCase("kids"))
             return category.isKidsSection();
 
         return false;
