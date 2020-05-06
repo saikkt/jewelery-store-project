@@ -58,4 +58,13 @@ public class MyUserDetailsService implements UserDetailsService {
        return  userRepository.saveAndFlush(user);
     }
 
+    public Optional<User> getUserByCustomerID(long customerId){
+        return userRepository.findByCustomerId(customerId);
+    }
+
+    public User updateUser(User user,CustomerModel customerModel) {
+        user.setUserName(customerModel.getUserName());
+        user.setPassword(customerModel.getPassword());
+        return  userRepository.save(user);
+    }
 }
