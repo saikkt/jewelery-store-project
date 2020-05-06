@@ -265,7 +265,7 @@ public class ProductService {
                 facetFilters.stream().filter(a->a.isEnabled()==true).forEach(l->{
                     returnFilterSet.add(metalPurityService.findByPurity(l.getName()).getMetalPurityID());
                 });
-                returnPredicate = getPredicate("materialPurityID",returnFilterSet);
+                returnPredicate = getPredicate("metalPurityID",returnFilterSet);
                 break;
 
             //discount-filter
