@@ -193,6 +193,9 @@ public class ProductService {
                         case "new listed":
                             sort = Sort.by(Sort.Order.desc("createDate"));
                             break;
+                        default:
+                        	sort = Sort.by(Sort.Order.desc("createDate"));
+                        	break;
                     }
 
                 }
