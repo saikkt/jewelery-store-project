@@ -29,6 +29,10 @@ public class Product {
     private BigDecimal price;
     @Column(name = "ImagePath")
     private String imagePath;
+    @Column(name = "MaterialID")
+    private String materialID;
+    @Column(name = "MetalPurityID")
+    private String metalPurityID;
     @Column(name = "Discount")
     private BigDecimal discount;
     @Column(name = "CreateDate")
@@ -164,5 +168,21 @@ public class Product {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public String getMaterialID() {
+        return materialID;
+    }
+
+    public void setMaterialID(String materialID) {
+        this.materialID = materialID;
+    }
+
+    public String getMetalPurityID() {
+        return metalPurityID;
+    }
+
+    public void setMetalPurityID(String metalPurityID) {
+        this.metalPurityID = metalPurityID;
     }
 }
