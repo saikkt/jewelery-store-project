@@ -29,6 +29,9 @@ public class Address {
 
     @Column(name = "Country")
     private String country;
+    
+    @Column(name = "Zipcode")
+    private String zipCode;
 
     @Column(name = "isDefaultShipping")
     private boolean isDefaultShipping;
@@ -44,12 +47,13 @@ public class Address {
 
     protected Address(){ }
 
-    public Address(long customerID, String street, String city, String state, String country) {
+    public Address(long customerID, String street, String city, String state, String country, String zipCode) {
         this.customerID = customerID;
         this.street = street;
         this.city = city;
         this.state = state;
         this.country = country;
+        this.zipCode = zipCode;
         this.objectID = UUID.randomUUID();
     }
 
@@ -107,6 +111,14 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public boolean isDefaultShipping() {
