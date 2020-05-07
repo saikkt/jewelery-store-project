@@ -9,4 +9,5 @@ import java.util.List;
 public interface SubCategoryClient {
 
     List<SubCategory> getAllSubCategoriesByCategoryID(long categoryID);
+    List<SubCategory> getAllSubCategories();
 }

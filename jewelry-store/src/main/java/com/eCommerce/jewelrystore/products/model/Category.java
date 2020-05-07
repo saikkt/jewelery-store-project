@@ -23,6 +23,9 @@ public class Category {
     @Column(name = "KIDS")
     private boolean kidsSection;
 
+    @Column(name = "POPULAR")
+    private boolean popular;
+
 //    @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 //    private List<Product> products;
 
@@ -67,5 +70,13 @@ public class Category {
 
     public void setKidsSection(boolean kidsSection) {
         this.kidsSection = kidsSection;
+    }
+
+    public boolean isPopular() {
+        return popular;
+    }
+
+    public void setPopular(boolean popular) {
+        this.popular = popular;
     }
 }

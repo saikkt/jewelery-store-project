@@ -4,7 +4,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -28,6 +27,10 @@ public class Product {
     private int inStockQuantity;
     @Column(name = "Price")
     private BigDecimal price;
+    @Column(name = "BestSeller")
+    private boolean bestSeller;
+    @Column(name = "TopProduct")
+    private boolean topProduct;
     @Column(name = "ImagePath")
     private String imagePath;
     @Column(name = "Discount")
@@ -104,6 +107,22 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public boolean isBestSeller() {
+        return bestSeller;
+    }
+
+    public void setBestSeller(boolean bestSeller) {
+        this.bestSeller = bestSeller;
+    }
+
+    public boolean isTopProduct() {
+        return topProduct;
+    }
+
+    public void setTopProduct(boolean topProduct) {
+        this.topProduct = topProduct;
     }
 
     public String getImagePath() {

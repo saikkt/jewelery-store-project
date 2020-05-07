@@ -19,4 +19,9 @@ public class SubCategoryImpl implements SubCategoryClient {
     public List<SubCategory> getAllSubCategoriesByCategoryID(long categoryID) {
         return subCategoryService.getByCategoryID(categoryID);
     }
+
+    @Override
+    public List<SubCategory> getAllSubCategories() {
+        return subCategoryService.getAll();
+    }
 }

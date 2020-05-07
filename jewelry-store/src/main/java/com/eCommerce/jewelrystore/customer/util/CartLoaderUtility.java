@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Component
 public class CartLoaderUtility {
@@ -20,26 +21,32 @@ public class CartLoaderUtility {
     @Autowired
     CartClient cartClient;
 
-    @Transactional
     public void loadCartToCustomer(HttpSession session){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         MyUserDetails userDetails = (MyUserDetails) principal;
-        Order order = orderService.getByCustomerIdInCart(userDetails.getCustomerId()).get(0);
+        List<Order> order = orderService.getByCustomerIdInCart(userDetails.getCustomerId());
         //exception handling pending
-        if(order==null)
+        System.out.println(order.size());
+        if(order.size()==0) {
+            System.out.println(order.size());
+            cartClient.getCartItems(session).entrySet().stream().forEach(p -> {
+                orderService.addToCart(p.getKey(), p.getValue());
+            });
             return;
-        orderService.deleteByOrderID(order.getOrderID());
+        }
+        orderService.deleteByOrderID(order.get(0).getOrderID());
        cartClient.getCartItems(session).entrySet().stream().forEach(p->{
            orderService.addToCart(p.getKey(),p.getValue());
        });
     }
 
-    @Transactional
-    public void loadCustomerToCart(HttpSession session, HttpSession httpSession) {
+    public void loadCustomerToCart(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         MyUserDetails userDetails = (MyUserDetails) principal;
-        Order order = orderService.getByCustomerIdInCart(userDetails.getCustomerId()).get(0);
-        order.getOrderItems().stream().forEach(p->{
+        List<Order> order = orderService.getByCustomerIdInCart(userDetails.getCustomerId());
+        if(order.size()==0)
+            return;
+        order.get(0).getOrderItems().stream().forEach(p->{
             try {
                 cartClient.addItemToCart(p.getProductID(),p.getQuantity(),httpSession);
             } catch (Exception e) {

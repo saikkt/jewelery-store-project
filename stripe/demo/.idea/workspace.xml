@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1494c8c-d90d-4281-961e-b06f7b5ea1aa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/config/AsynchronousSpringEventsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/wishlist/api/WishListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/wishlist/api/WishListMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/wishlist/domain/WishList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/wishlist/model/WishListModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/wishlist/repository/WishListRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/wishlist/service/WishListService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/landingpage/service/LandingPageBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/filters/ProductSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/filters/SearchCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalapi/ProductGlobalMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/CategoryType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/CollectionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/DiscountType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/MaterialPurityType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/MaterialType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/ProductGlobalModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/SectionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/pricefilter/FacetFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/global/globalmodel/pricefilter/PriceFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/logs/spring-boot-logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/logs/spring-boot-logger.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/JewelryStoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/JewelryStoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/accounts/MyUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/accounts/MyUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/accounts/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/accounts/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/adapter/ProductClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/adapter/ProductClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/api/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/api/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/domain/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/util/CartLoaderUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/customer/util/CartLoaderUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/navbar/api/HomePageNavBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/landingpage/api/LandingPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/navbar/domain/HomePageNavBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/landingpage/domain/LandingPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/navbar/service/HomePageNavBarBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/navbar/service/HomePageNavBarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/landingpage/service/LandingPageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/api/OrderItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/api/OrderItemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/api/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/api/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/order/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/payments/util/api/PaymentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/payments/util/api/PaymentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/api/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/api/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/model/SubCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/model/SubCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/repositories/MaterialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/repositories/MaterialRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/repositories/MetalPurityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/repositories/MetalPurityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/repositories/ProductsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/repositories/ProductsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/DiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/DiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/MaterialService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/MaterialService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/MetalPurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/MetalPurityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/SectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/java/com/eCommerce/jewelrystore/products/service/SectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jewelry-store/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../jewelry-store/src/main/resources/data.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1bEZ9mmmWgjcMVUDIhorGlUnmLH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
+      <module name="demo.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DemoApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1494c8c-d90d-4281-961e-b06f7b5ea1aa" name="Default Changelist" comment="" />
+      <created>1588199063505</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588199063505</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1237" height="111" key="GridCell.Tab.0.bottom" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+    <state width="1237" height="111" key="GridCell.Tab.0.center" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+    <state width="1237" height="111" key="GridCell.Tab.0.left" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+    <state width="1237" height="111" key="GridCell.Tab.0.right" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+    <state width="1237" height="111" key="GridCell.Tab.1.bottom" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+    <state width="1237" height="111" key="GridCell.Tab.1.center" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+    <state width="1237" height="111" key="GridCell.Tab.1.left" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+    <state width="1237" height="111" key="GridCell.Tab.1.right" timestamp="1588202916560">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="111" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1588202916560" />
+  </component>
+</project>

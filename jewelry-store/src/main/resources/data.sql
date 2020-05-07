@@ -13,31 +13,35 @@ CREATE TABLE `jCategories` (
   `MEN` bit(1) default '0',
   `WOMEN` bit(1) default '0',
   `KIDS` bit(1) default '0',
+  `POPULAR` bit(1) default '0',
   PRIMARY KEY (`CategoryID`)
 );
 
-INSERT INTO jCategories(CategoryName,MEN,WOMEN,KIDS) values
-('Necklaces',1,1,1),
-('Earrings',1,1,1),
-('Bangles',0,1,0);
+INSERT INTO jCategories(CategoryName,MEN,WOMEN,KIDS,POPULAR) values
+('Necklaces',1,1,1,0),
+('Earrings',1,1,1,1),
+('Bangles',0,1,0,1);
 
 
 CREATE TABLE jSubCategories (
     SubCategoryID INT(11) AUTO_INCREMENT  PRIMARY KEY,
     CategoryID INT(11),
     SubCategoryName VARCHAR(50) NOT NULL,
+    MEN bit(1) default '0',
+    WOMEN bit(1) default '0',
+    KIDS bit(1) default '0',
     FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`)
   );
 
-INSERT INTO jSubCategories (CategoryID,SubCategoryName) VALUES
-(1,'Pendants'),
-(1,'Necklace Sets'),
-(1, 'Pattas'),
-(1, 'Mangalsutras'),
-(2,'Chandbali'),
-(2, 'Clipons'),
-(3,'Arm Braceletes'),
-(3, 'Braceletes');
+INSERT INTO jSubCategories (CategoryID,SubCategoryName,MEN,WOMEN,KIDS) VALUES
+(1,'Pendants',0,1,0),
+(1,'Necklace Sets',0,1,0),
+(1, 'Pattas',0,1,0),
+(1, 'Mangalsutras',0,1,0),
+(2,'Chandbali',0,1,0),
+(2, 'Clipons',1,1,0),
+(3,'Arm Braceletes',1,1,1),
+(3, 'Braceletes',1,1,1);
 
 CREATE TABLE jSections (
   SectionID INT(11) AUTO_INCREMENT  PRIMARY KEY,
@@ -102,6 +106,8 @@ CREATE TABLE `jProducts` (
   `MetalPurityID` int(11) NOT NULL,
   `DiscountID` int(11) DEFAULT 1 NOT NULL,
   `InStockQuantity` int(22) DEFAULT '0',
+  `BestSeller` bit(1) DEFAULT '0',
+  `TopProduct` bit(1) DEFAULT '0',
   `Price` decimal(10,2) DEFAULT '0.00',
   `ImagePath` varchar(250) DEFAULT NULL,
   `version` int(11) DEFAULT '1',
@@ -117,11 +123,14 @@ CREATE TABLE `jProducts` (
   FOREIGN KEY (`DiscountID`) REFERENCES `jDiscount` (`DiscountID`)
 );
 
-INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,InStockQuantity,Price,ImagePath) VALUES
-('2.6 Size Three-tone Bangle in 22K Gold',1,1,1,1,1,1,12,234.67,'http://aws.com/s3'),
-('6.25 Size Diamond Ring 18 Karat Rose Gold',2,2,2,1,1,1,3,444.56,'http://aws.com/s3');
+INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,InStockQuantity,Price,ImagePath,CreateDate,BestSeller,TopProduct) VALUES
+('2.6 Size Three-tone Bangle in 22K Gold',1,3,1,1,1,1,12,234.67,'http://aws.com/s3','2020-04-06',0,1),
+('3.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,2,1,3,333,'http://aws.com/s3','2020-05-05',1,1),
+('4.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,2,3,444.56,'http://aws.com/s3','2020-05-04',1,0),
+('5.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,1,3,121,'http://aws.com/s3','2020-04-20',1,1);
 
 DROP TABLE jCustomers IF EXISTS;
+DROP TABLE jWishList IF EXISTS;
 DROP TABLE jAddresses IF EXISTS;
 DROP TABLE jOrderItems IF EXISTS;
 DROP TABLE jOrders IF EXISTS;
@@ -140,6 +149,19 @@ INSERT INTO jCustomers(CustomerFirstName, CustomerLastName, Phone, EmailAddress)
 ('sarita','owner','4444444444','sarita.kkt@gmail.com'),
 ('sai','pothulapally','4444444444','sai.kkt@gmail.com');
 
+
+CREATE TABLE jWishList(
+Id INT(11) AUTO_INCREMENT PRIMARY KEY,
+CustomerID INT(11),
+ProductsList VARCHAR(200) NOT NULL,
+Version INT (11) NOT NULL DEFAULT '1',
+ObjectID BINARY(16) DEFAULT NULL,
+FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
+);
+
+INSERT INTO jWishList(CustomerID, ProductsList) values
+(1,'1~2'),
+(2,'1');
 
 
 CREATE TABLE jAddresses(
@@ -181,10 +203,10 @@ CREATE TABLE jOrderItems(
 OrderItemID INT(11) PRIMARY KEY AUTO_INCREMENT,
 OrderID INT(11) NOT NULL,
 ProductID INT(11) NOT NULL,
-UnitPrice DECIMAL(10,2) NOT NULL DEFAULT 0.0000,
+UnitPrice DECIMAL(10,2)  DEFAULT 0.0000,
 Quantity INT(11) NOT NULL DEFAULT '1',
 Discount DECIMAL(10,2) DEFAULT 0.0000,
-TotalPrice DECIMAL(10,2) NOT NULL DEFAULT 0.0000,
+TotalPrice DECIMAL(10,2) DEFAULT 0.0000,
 Version INT(11) NOT NULL DEFAULT '1',
 ObjectID BINARY(16) DEFAULT NULL,
 FOREIGN KEY (`OrderID`) REFERENCES `jOrders` (`OrderID`),
@@ -319,3 +341,26 @@ INSERT INTO jTransactions(OrderID,ChargeID,ChargeAmount) VALUES
 (1,'abc-123',200.23);
 
 --Write a trigger to check if either one of the column is null (OrderID or GuestOrderID)
+
+CREATE TABLE `jCarouselImages`(
+`ImageID` int(11) NOT NULL AUTO_INCREMENT,
+`ImageURL` varchar(250) NOT NULL,
+`ImageDescription` varchar(250) NOT NULL,
+`SecondSentence` varchar(250) NOT NULL,
+`ImageOrientation` varchar(20) NOT NULL,
+PRIMARY KEY (`ImageID`)
+);
+
+INSERT INTO jCarouselImages(ImageURL,ImageDescription,SecondSentence,ImageOrientation) values
+('/abc/def','Dummy Desc','Dummy Second Sentence','LEFT');
+
+CREATE TABLE `jCombos`(
+`ComboID` int(11) NOT NULL AUTO_INCREMENT,
+`ComboImagePath` varchar(250) NOT NULL,
+`ComboName` varchar(250) NOT NULL,
+PRIMARY KEY (`ComboID`)
+);
+
+INSERT INTO jCombos(ComboImagePath,ComboName) values
+('dummy/path/1','dummy combo 1'),
+('dummy/path/2','dummy combo 2');

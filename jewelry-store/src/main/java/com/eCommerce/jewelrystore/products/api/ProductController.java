@@ -1,5 +1,7 @@
 package com.eCommerce.jewelrystore.products.api;
 
+import com.eCommerce.jewelrystore.products.global.globalapi.ProductGlobalMapper;
+import com.eCommerce.jewelrystore.products.global.globalmodel.ProductGlobalModel;
 import com.eCommerce.jewelrystore.products.model.Product;
 import com.eCommerce.jewelrystore.products.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,5 +102,16 @@ public class ProductController {
     @GetMapping("/getLatestThreeProducts")
     public ResponseEntity<List<Product>> getLatestThreeProducts(){
         return  ResponseEntity.ok().body(productService.getLatestThreeProducts());
+    }
+
+    @GetMapping("/getAllProductsPages/{a}/{b}")
+    public ResponseEntity<ProductGlobalModel> getAllParoductsPagenated(@RequestBody ProductGlobalModel productGlobalModel,@PathVariable int a, @PathVariable int b){
+        return ResponseEntity.ok().body(ProductGlobalMapper.toModel(new ProductGlobalModel(),productService.getAllProductsPageable(productGlobalModel,a,b)));
+    }
+
+    @GetMapping("/getAllProductsByFilters/{a}/{b}")
+    public ResponseEntity<ProductGlobalModel> getAllProductsByFilters(@RequestBody ProductGlobalModel productGlobalModel,@PathVariable int a, @PathVariable int b){
+        productGlobalModel.setResults(productService.getAllProductsPageable(productGlobalModel,a,b));
+        return ResponseEntity.ok().body(productGlobalModel);
     }
 }

@@ -119,12 +119,19 @@ public class Order {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return orderID == order.orderID;
-    }
+    public boolean equals(Object obj) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Order order = (Order) o;
+//        return orderID == order.orderID;
+
+            if (!(obj instanceof Order))
+                return false;
+
+            Order other = (Order)obj;
+            return this.objectID.equals(other.objectID);
+
+   }
 
     @Override
     public int hashCode() {

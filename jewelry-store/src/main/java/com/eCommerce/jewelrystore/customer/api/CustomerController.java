@@ -63,7 +63,7 @@ public class CustomerController {
     @GetMapping("/login")
     public Long checkUser(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        cartLoaderUtility.loadCustomerToCart(httpSession,httpSession);
+        cartLoaderUtility.loadCustomerToCart(httpSession);
         return ((MyUserDetails) principal).getCustomerId();
     }
 
@@ -80,11 +80,22 @@ public class CustomerController {
     @PostMapping("/registerCustomer")
     public ResponseEntity<Customer> post(@RequestBody CustomerModel customer, HttpServletRequest request){
 
+        //if account with email id exists or by user name
+        if(customerService.findByEmailAddress(customer.getEmailAddress())!=null )
+            return ResponseEntity.unprocessableEntity().build();
+
+        if(userRepository.findByUserName(customer.getUserName()).isPresent())
+            return ResponseEntity.unprocessableEntity().build();
+
+        if(customerService.findByEmailAddress(customer.getEmailAddress())!=null )
+            return ResponseEntity.unprocessableEntity().build();
+        //save new entity into customer
         final Customer savedCustomer = customerService.save(CustomerMapper.toEnity(customer));
 
         //creating User for the Customer for login
         User user = new User();
         user.setUserName(customer.getUserName());
+        //yet to include encoder
        // user.setPassword(BcryptGenerator.getEncodedString(customer.getPassword()));
         user.setPassword(customer.getPassword());
         user.setCustomerId(savedCustomer.getCustomerID());

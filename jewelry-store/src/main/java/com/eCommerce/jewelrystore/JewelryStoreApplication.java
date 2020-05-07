@@ -19,4 +19,6 @@ public class JewelryStoreApplication {
 		SpringApplication.run(JewelryStoreApplication.class, args);
 	}
 
+
+
 }

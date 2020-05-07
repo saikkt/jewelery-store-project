@@ -12,6 +12,6 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order,Long> {
     List<Order> findByCustomerID(long customerID);
     List<Order> findByOrderStatus(OrderStatus orderStatus);
-    @Query(value = "select * from jOrders o order by o.customerID=?1 and o.OrderStatus='CART' DESC LIMIT 1",nativeQuery = true)
+    @Query(value = "select * from jOrders o where o.CustomerID=?1 and o.OrderStatus='CART'",nativeQuery = true)
     List<Order> findByCustomerIDCartStatus(long customerID);
 }

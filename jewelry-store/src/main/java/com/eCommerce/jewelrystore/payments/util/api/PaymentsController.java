@@ -8,6 +8,10 @@ import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
+import com.eCommerce.jewelrystore.guest.domain.Guest;
+import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
+import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
+import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
@@ -27,10 +31,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
@@ -110,6 +111,9 @@ public class PaymentsController {
             //adding into payment
             //logic left
 
+            //send email for order confirmation
+
+
             return ResponseEntity.ok().build();
         }
 
@@ -159,6 +163,7 @@ public class PaymentsController {
      */
     @RequestMapping("/checkout")
     public ResponseEntity<Model> checkout(Model model, HttpSession httpSession) throws GuestException {
+
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long customerId;
 

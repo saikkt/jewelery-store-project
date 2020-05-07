@@ -2,6 +2,7 @@ package com.eCommerce.jewelrystore.accounts;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.accounts.models.User;
+import com.eCommerce.jewelrystore.customer.domain.Customer;
 import com.eCommerce.jewelrystore.customer.dto.CustomerModel;
 import com.eCommerce.jewelrystore.email.accounts.verfication.controller.VerificationController;
 import com.eCommerce.jewelrystore.email.accounts.verfication.domain.VerificationToken;
@@ -56,4 +57,5 @@ public class MyUserDetailsService implements UserDetailsService {
     public User save(User user) {
        return  userRepository.saveAndFlush(user);
     }
+
 }
