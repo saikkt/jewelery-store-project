@@ -19,9 +19,10 @@ public class CartServiceImpl implements CartService {
     private ProductService productService;
 
     public CartServiceImpl(@Value("${cart.session.attribute.name}") String cartSessionAttributeName,
-                           ProductClient productClient) {
+                           ProductClient productClient,ProductService productService) {
         this.cartSessionAttributeName = cartSessionAttributeName;
         this.productClient = productClient;
+        this.productService=productService;
     }
 
     //Auxiliary method to check if product id exists

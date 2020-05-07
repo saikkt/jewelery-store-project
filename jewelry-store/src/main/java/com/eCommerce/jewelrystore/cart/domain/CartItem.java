@@ -12,8 +12,6 @@ import javax.servlet.http.HttpSession;
 
 public class CartItem {
 
-    @Autowired
-    private CartLoaderUtility cartLoaderUtility;
 
     private long productID;
     private int quantity;
@@ -39,14 +37,6 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public CartLoaderUtility getCartLoaderUtility() {
-        return cartLoaderUtility;
-    }
-
-    public void setCartLoaderUtility(CartLoaderUtility cartLoaderUtility) {
-        this.cartLoaderUtility = cartLoaderUtility;
     }
 
     public Product getProduct() {
