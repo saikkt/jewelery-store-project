@@ -47,6 +47,15 @@ public class CollectionController {
         return ResponseEntity.ok().body(savedCollection);
     }
 
+
+    @PostMapping("/postCollections")
+    public ResponseEntity<List<Collection>> postCollections(@RequestBody List<Collection> collections){
+    	List<Collection> savedCollections = collectionService.saveCollections(collections);
+        if(savedCollections==null)
+            return ResponseEntity.unprocessableEntity().build();
+        return ResponseEntity.ok().body(savedCollections);
+    }
+
     @PutMapping("/updateCollection")
     public ResponseEntity<Collection> updateCollection(@RequestBody Collection collection){
         Collection savedCollection = collectionService.updateCollection(collection);

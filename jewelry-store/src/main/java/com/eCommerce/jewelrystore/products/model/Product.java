@@ -19,6 +19,8 @@ public class Product {
     private String productName;
     @Column(name = "CategoryID")
     private long categoryID;
+//    @Column(name = "SubCategoryID")
+//    private long subCategoryID;
     @Column(name = "SectionID")
     private long sectionID;
     @Column(name = "CollectionID")
@@ -33,6 +35,10 @@ public class Product {
     private boolean topProduct;
     @Column(name = "ImagePath")
     private String imagePath;
+    @Column(name = "MaterialID")
+    private String materialID;
+    @Column(name = "MetalPurityID")
+    private String metalPurityID;
     @Column(name = "Discount")
     private BigDecimal discount;
     @Column(name = "CreateDate")
@@ -84,6 +90,9 @@ public class Product {
         return categoryID;
     }
 
+//    public long getSubCategoryID() {
+//        return subCategoryID;
+//    }
 
     public long getSectionID() {
         return sectionID;
@@ -153,6 +162,10 @@ public class Product {
     public void setCategoryID(long categoryID) {
         this.categoryID = categoryID;
     }
+    
+//    public void setSubCategoryID(long subCategoryID) {
+//        this.subCategoryID = subCategoryID;
+//    }
 
     public void setSectionID(long sectionID) {
         this.sectionID = sectionID;
@@ -184,5 +197,21 @@ public class Product {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public String getMaterialID() {
+        return materialID;
+    }
+
+    public void setMaterialID(String materialID) {
+        this.materialID = materialID;
+    }
+
+    public String getMetalPurityID() {
+        return metalPurityID;
+    }
+
+    public void setMetalPurityID(String metalPurityID) {
+        this.metalPurityID = metalPurityID;
     }
 }

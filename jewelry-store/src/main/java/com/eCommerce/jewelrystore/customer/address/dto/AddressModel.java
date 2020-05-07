@@ -23,6 +23,8 @@ public class AddressModel {
     @JsonProperty
     private String country;
     @JsonProperty
+    private String zipCode;
+    @JsonProperty
     private boolean isDefaultShipping;
     @JsonProperty
     private boolean isDefaultBilling;
@@ -85,6 +87,14 @@ public class AddressModel {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public boolean isDefaultShipping() {

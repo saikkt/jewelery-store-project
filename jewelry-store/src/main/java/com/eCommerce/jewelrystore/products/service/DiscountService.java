@@ -37,4 +37,8 @@ public class DiscountService {
     }
 
     public Discount getByDiscountType(String discountType){return discountRepository.findByDiscountType(discountType);}
+
+    public List<Discount> saveAll(List<Discount> discounts) {
+		return discountRepository.saveAll(discounts);
+	}
 }

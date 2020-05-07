@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-05-06 14:11:47,666 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
 2020-05-06 14:11:48,978 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2020-05-06 14:11:49,337 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 342ms. Found 20 JPA repository interfaces.
@@ -21,6 +22,36 @@
 2020-05-06 14:11:52,035 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
 2020-05-06 14:11:52,207 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
 2020-05-06 14:11:53,534 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:10,260 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
+2020-05-06 18:34:14,517 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-06 18:34:15,442 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 895ms. Found 20 JPA repository interfaces.
+2020-05-06 18:34:16,189 INFO org.springframework.cloud.context.scope.GenericScope [main] BeanFactory id=c89ee2cc-d297-3517-a805-1348217d8569
+2020-05-06 18:34:16,829 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#d54d0f5' of type [com.amazonaws.auth.BasicAWSCredentials] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:16,833 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#4d98e41b' of type [com.amazonaws.auth.AWSStaticCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:16,852 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#1953bc95' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:16,857 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:16,857 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:17,011 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:17,022 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:17,027 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7418d76e' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:17,034 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:17,042 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:34:18,412 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 7009 (http)
+2020-05-06 18:34:18,438 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-7009"]
+2020-05-06 18:34:18,440 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-05-06 18:34:18,441 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-06 18:34:19,366 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-05-06 18:34:19,368 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 9045 ms
+2020-05-06 18:34:19,494 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-05-06 18:34:20,066 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-05-06 18:34:20,083 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2020-05-06 18:34:20,827 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-06 18:34:21,085 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-06 18:34:21,624 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-06 18:34:22,083 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-05-06 18:34:25,555 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        drop 
        foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
@@ -90,7 +121,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,534 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,558 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        drop 
        foreign key FK6rkp7t5lne5pmqrs4pnarekna" via JDBC Statement
@@ -160,7 +195,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,550 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,599 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jAddresses (
        AddressID bigint not null auto_increment,
         ApartmentNumber varchar(255),
@@ -173,6 +212,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -188,6 +231,10 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -238,6 +285,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         STATE VARCHAR(255),
         STREET VARCHAR(255),
         VERSION BIGINT NOT NULL,
+<<<<<<< HEAD
+=======
+        ZIPCODE VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (ADDRESSID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
@@ -253,6 +304,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -275,7 +330,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,550 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,603 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCategories (
        CategoryID bigint not null auto_increment,
         CategoryName varchar(255),
@@ -366,7 +425,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,550 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,626 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCollections (
        CollectionID bigint not null auto_increment,
         CollectionName varchar(255),
@@ -445,7 +508,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,550 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,649 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCustomers (
        CustomerID bigint not null auto_increment,
         CustomerLastName varchar(120),
@@ -548,7 +615,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,550 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,666 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jDiscount (
        DiscountID bigint not null auto_increment,
         DiscountType varchar(255),
@@ -631,7 +702,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,693 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuest (
        GuestID bigint not null auto_increment,
         ApartmentNumber varchar(10),
@@ -746,7 +821,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,710 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrderItems (
        GuestOrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -853,7 +932,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,730 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrders (
        GuestOrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -956,7 +1039,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,737 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jHomePageSlidingImages (
        ImageID bigint not null auto_increment,
         ImageDescription varchar(255),
@@ -1043,7 +1130,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,752 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMaterials (
        MaterialID bigint not null auto_increment,
         MaterialType varchar(255),
@@ -1122,7 +1213,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,764 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMetalPurity (
        MetalPurityID bigint not null auto_increment,
         Purity varchar(255),
@@ -1201,7 +1296,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,779 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrderItems (
        OrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -1308,7 +1407,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,566 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,795 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrders (
        OrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -1407,7 +1510,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,828 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jProducts (
        ProductID bigint not null auto_increment,
         CategoryID bigint,
@@ -1416,6 +1523,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -1432,6 +1544,11 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -1483,6 +1600,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         DISCOUNT DECIMAL(19,2),
         IMAGEPATH VARCHAR(255),
         INSTOCKQUANTITY INTEGER,
+<<<<<<< HEAD
+=======
+        MATERIALID VARCHAR(255),
+        METALPURITYID VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRICE DECIMAL(19,2),
         PRODUCTNAME VARCHAR(255),
         SECTIONID BIGINT,
@@ -1499,6 +1621,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -1526,7 +1653,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,870 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jSections (
        SectionID bigint not null auto_increment,
         SectionName varchar(255),
@@ -1605,7 +1736,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,907 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jShippingDetails (
        PackingSlipID bigint not null auto_increment,
         ShipCity varchar(255),
@@ -1716,6 +1851,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
@@ -1724,16 +1860,27 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+2020-05-06 18:34:25,935 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jSubCategories (
+       SubCategoryID bigint not null auto_increment,
+        CategoryID bigint,
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -1775,20 +1922,28 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
     CREATE TABLE JSUBCATEGORIES (
        SUBCATEGORYID BIGINT NOT NULL AUTO_INCREMENT,
         CATEGORYID BIGINT,
+<<<<<<< HEAD
         KIDS BIT,
         MEN BIT,
         SUBCATEGORYNAME VARCHAR(255),
         WOMEN BIT,
+=======
+        SUBCATEGORYNAME VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (SUBCATEGORYID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -1811,7 +1966,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:25,972 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jTransactions (
        TransactionID bigint not null auto_increment,
         ChargeAmount decimal(19,2),
@@ -1910,7 +2069,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:26,001 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jUsers (
        Id bigint not null auto_increment,
         Active bit,
@@ -2005,7 +2168,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:26,018 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jVerificationToken (
        TokenId bigint not null auto_increment,
         ExpiryDate datetime(6),
@@ -2092,7 +2259,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:26,032 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table JWishList (
        Id bigint not null auto_increment,
         CustomerID bigint,
@@ -2183,7 +2354,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:26,040 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        add constraint FKfc5dhoeufeegjgujeh17dpmb0 
        foreign key (OrderID) 
@@ -2248,7 +2423,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:26,050 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        add constraint FK6rkp7t5lne5pmqrs4pnarekna 
        foreign key (Id) 
@@ -2313,6 +2492,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:11:53,581 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 2020-05-06 14:11:53,597 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
 2020-05-06 14:11:54,378 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
@@ -2371,6 +2551,118 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 2020-05-06 14:13:57,503 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
 2020-05-06 14:13:57,660 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
 2020-05-06 14:13:59,112 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:34:26,066 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-06 18:34:26,095 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 18:34:27,603 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-06 18:34:30,352 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'imageController': Unsatisfied dependency expressed through field 'amazonS3Client'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3': Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+2020-05-06 18:34:30,361 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 18:34:30,362 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2020-05-06 18:34:30,365 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0
+2020-05-06 18:34:30,367 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jVerificationToken 
+       drop 
+       foreign key FK6rkp7t5lne5pmqrs4pnarekna
+2020-05-06 18:34:30,378 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCategories
+2020-05-06 18:34:30,380 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCollections
+2020-05-06 18:34:30,381 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCustomers
+2020-05-06 18:34:30,382 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jDiscount
+2020-05-06 18:34:30,383 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jGuest
+2020-05-06 18:34:30,390 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMaterials
+2020-05-06 18:34:30,392 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMetalPurity
+2020-05-06 18:34:30,396 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jOrders
+2020-05-06 18:34:30,408 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jUsers
+2020-05-06 18:34:30,417 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2020-05-06 18:34:30,427 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2020-05-06 18:34:30,431 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2020-05-06 18:34:30,467 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-05-06 18:34:30,473 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'imageController': Unsatisfied dependency expressed through field 'amazonS3Client'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3': Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:882)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:19)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3': Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1290)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1210)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 19 common frames omitted
+Caused by: java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.util.Assert.state(Assert.java:73)
+	at org.springframework.cloud.aws.core.region.Ec2MetadataRegionProvider.getRegion(Ec2MetadataRegionProvider.java:40)
+	at org.springframework.cloud.aws.core.config.AmazonWebserviceClientFactoryBean.createInstance(AmazonWebserviceClientFactoryBean.java:105)
+	at org.springframework.cloud.aws.core.config.AmazonWebserviceClientFactoryBean.createInstance(AmazonWebserviceClientFactoryBean.java:47)
+	at org.springframework.beans.factory.config.AbstractFactoryBean.afterPropertiesSet(AbstractFactoryBean.java:142)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 29 common frames omitted
+2020-05-06 18:36:39,699 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
+2020-05-06 18:36:44,001 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-06 18:36:45,259 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 1228ms. Found 20 JPA repository interfaces.
+2020-05-06 18:36:46,356 INFO org.springframework.cloud.context.scope.GenericScope [main] BeanFactory id=c89ee2cc-d297-3517-a805-1348217d8569
+2020-05-06 18:36:46,986 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#549ac12c' of type [com.amazonaws.auth.BasicAWSCredentials] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:46,991 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#54ffa561' of type [com.amazonaws.auth.AWSStaticCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,012 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#2506e949' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,018 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,019 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,230 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,242 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,246 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4aebee4b' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,257 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:47,265 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 18:36:48,464 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 7009 (http)
+2020-05-06 18:36:48,486 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-7009"]
+2020-05-06 18:36:48,487 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-05-06 18:36:48,489 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-06 18:36:49,263 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-05-06 18:36:49,264 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 9469 ms
+2020-05-06 18:36:49,380 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-05-06 18:36:50,014 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-05-06 18:36:50,036 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2020-05-06 18:36:50,770 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-06 18:36:50,997 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-06 18:36:51,447 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-06 18:36:51,709 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-05-06 18:36:54,554 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        drop 
        foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
@@ -2440,7 +2732,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,128 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,556 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        drop 
        foreign key FK6rkp7t5lne5pmqrs4pnarekna" via JDBC Statement
@@ -2510,7 +2806,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,128 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,585 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jAddresses (
        AddressID bigint not null auto_increment,
         ApartmentNumber varchar(255),
@@ -2523,6 +2823,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -2538,6 +2842,10 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -2588,6 +2896,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         STATE VARCHAR(255),
         STREET VARCHAR(255),
         VERSION BIGINT NOT NULL,
+<<<<<<< HEAD
+=======
+        ZIPCODE VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (ADDRESSID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
@@ -2603,6 +2915,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -2625,7 +2941,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,128 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,588 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCategories (
        CategoryID bigint not null auto_increment,
         CategoryName varchar(255),
@@ -2716,7 +3036,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,128 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,600 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCollections (
        CollectionID bigint not null auto_increment,
         CollectionName varchar(255),
@@ -2795,7 +3119,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,607 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCustomers (
        CustomerID bigint not null auto_increment,
         CustomerLastName varchar(120),
@@ -2898,7 +3226,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,618 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jDiscount (
        DiscountID bigint not null auto_increment,
         DiscountType varchar(255),
@@ -2981,7 +3313,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,629 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuest (
        GuestID bigint not null auto_increment,
         ApartmentNumber varchar(10),
@@ -3096,7 +3432,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,637 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrderItems (
        GuestOrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -3203,7 +3543,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,646 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrders (
        GuestOrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -3306,7 +3650,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,651 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jHomePageSlidingImages (
        ImageID bigint not null auto_increment,
         ImageDescription varchar(255),
@@ -3393,7 +3741,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,656 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMaterials (
        MaterialID bigint not null auto_increment,
         MaterialType varchar(255),
@@ -3472,7 +3824,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,663 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMetalPurity (
        MetalPurityID bigint not null auto_increment,
         Purity varchar(255),
@@ -3551,7 +3907,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,670 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrderItems (
        OrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -3658,7 +4018,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,676 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrders (
        OrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -3757,7 +4121,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,683 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jProducts (
        ProductID bigint not null auto_increment,
         CategoryID bigint,
@@ -3766,6 +4134,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -3782,6 +4155,11 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -3833,6 +4211,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         DISCOUNT DECIMAL(19,2),
         IMAGEPATH VARCHAR(255),
         INSTOCKQUANTITY INTEGER,
+<<<<<<< HEAD
+=======
+        MATERIALID VARCHAR(255),
+        METALPURITYID VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRICE DECIMAL(19,2),
         PRODUCTNAME VARCHAR(255),
         SECTIONID BIGINT,
@@ -3849,6 +4232,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -3876,7 +4264,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,692 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jSections (
        SectionID bigint not null auto_increment,
         SectionName varchar(255),
@@ -3955,7 +4347,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,707 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jShippingDetails (
        PackingSlipID bigint not null auto_increment,
         ShipCity varchar(255),
@@ -4066,6 +4462,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,144 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
@@ -4074,16 +4471,27 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+2020-05-06 18:36:54,716 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jSubCategories (
+       SubCategoryID bigint not null auto_increment,
+        CategoryID bigint,
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -4125,20 +4533,28 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
     CREATE TABLE JSUBCATEGORIES (
        SUBCATEGORYID BIGINT NOT NULL AUTO_INCREMENT,
         CATEGORYID BIGINT,
+<<<<<<< HEAD
         KIDS BIT,
         MEN BIT,
         SUBCATEGORYNAME VARCHAR(255),
         WOMEN BIT,
+=======
+        SUBCATEGORYNAME VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (SUBCATEGORYID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -4161,7 +4577,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,159 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,723 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jTransactions (
        TransactionID bigint not null auto_increment,
         ChargeAmount decimal(19,2),
@@ -4260,7 +4680,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,159 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,728 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jUsers (
        Id bigint not null auto_increment,
         Active bit,
@@ -4355,7 +4779,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,159 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,737 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jVerificationToken (
        TokenId bigint not null auto_increment,
         ExpiryDate datetime(6),
@@ -4442,7 +4870,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,159 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,746 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table JWishList (
        Id bigint not null auto_increment,
         CustomerID bigint,
@@ -4533,7 +4965,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,159 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,752 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        add constraint FKfc5dhoeufeegjgujeh17dpmb0 
        foreign key (OrderID) 
@@ -4598,7 +5034,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,159 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,757 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        add constraint FK6rkp7t5lne5pmqrs4pnarekna 
        foreign key (Id) 
@@ -4663,6 +5103,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 14:13:59,159 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 2020-05-06 14:13:59,159 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
 2020-05-06 14:13:59,862 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
@@ -4721,6 +5162,117 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 2020-05-06 15:31:14,311 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
 2020-05-06 15:31:14,436 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
 2020-05-06 15:31:15,716 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 18:36:54,766 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-06 18:36:54,781 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 18:36:55,809 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-06 18:36:58,556 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'imageController': Unsatisfied dependency expressed through field 'amazonS3Client'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3': Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+2020-05-06 18:36:58,576 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 18:36:58,578 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2020-05-06 18:36:58,584 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0
+2020-05-06 18:36:58,587 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jVerificationToken 
+       drop 
+       foreign key FK6rkp7t5lne5pmqrs4pnarekna
+2020-05-06 18:36:58,608 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCategories
+2020-05-06 18:36:58,612 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCollections
+2020-05-06 18:36:58,616 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCustomers
+2020-05-06 18:36:58,620 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jDiscount
+2020-05-06 18:36:58,624 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jGuest
+2020-05-06 18:36:58,644 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMaterials
+2020-05-06 18:36:58,645 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMetalPurity
+2020-05-06 18:36:58,651 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jOrders
+2020-05-06 18:36:58,663 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jUsers
+2020-05-06 18:36:58,673 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2020-05-06 18:36:58,679 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2020-05-06 18:36:58,681 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2020-05-06 18:36:58,702 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-05-06 18:36:58,708 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'imageController': Unsatisfied dependency expressed through field 'amazonS3Client'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3': Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:882)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:19)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3': Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1290)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1210)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 19 common frames omitted
+Caused by: java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.util.Assert.state(Assert.java:73)
+	at org.springframework.cloud.aws.core.region.Ec2MetadataRegionProvider.getRegion(Ec2MetadataRegionProvider.java:40)
+	at org.springframework.cloud.aws.core.config.AmazonWebserviceClientFactoryBean.createInstance(AmazonWebserviceClientFactoryBean.java:105)
+	at org.springframework.cloud.aws.core.config.AmazonWebserviceClientFactoryBean.createInstance(AmazonWebserviceClientFactoryBean.java:47)
+	at org.springframework.beans.factory.config.AbstractFactoryBean.afterPropertiesSet(AbstractFactoryBean.java:142)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 29 common frames omitted
+2020-05-06 19:00:59,830 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
+2020-05-06 19:01:03,684 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-06 19:01:04,614 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 906ms. Found 20 JPA repository interfaces.
+2020-05-06 19:01:05,267 INFO org.springframework.cloud.context.scope.GenericScope [main] BeanFactory id=d8ad9434-65f9-36f7-bd93-ba4f3a725ab5
+2020-05-06 19:01:05,793 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#15c6027d' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:05,813 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#6371cf2f' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:05,817 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:05,818 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:05,976 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:05,987 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:05,991 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2d28fb02' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:05,997 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:06,011 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:01:07,296 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 7009 (http)
+2020-05-06 19:01:07,337 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-7009"]
+2020-05-06 19:01:07,338 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-05-06 19:01:07,340 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-06 19:01:07,540 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-05-06 19:01:07,542 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 7668 ms
+2020-05-06 19:01:07,686 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-05-06 19:01:08,430 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-05-06 19:01:08,449 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2020-05-06 19:01:09,317 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-06 19:01:09,616 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-06 19:01:10,210 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-06 19:01:10,616 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-05-06 19:01:13,053 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        drop 
        foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
@@ -4790,7 +5342,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,716 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,055 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        drop 
        foreign key FK6rkp7t5lne5pmqrs4pnarekna" via JDBC Statement
@@ -4860,7 +5416,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,732 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,081 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jAddresses (
        AddressID bigint not null auto_increment,
         ApartmentNumber varchar(255),
@@ -4873,6 +5433,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -4888,6 +5452,10 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -4938,6 +5506,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         STATE VARCHAR(255),
         STREET VARCHAR(255),
         VERSION BIGINT NOT NULL,
+<<<<<<< HEAD
+=======
+        ZIPCODE VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (ADDRESSID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
@@ -4953,6 +5525,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -4975,6 +5551,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,732 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
     create table jCarouselImages (
        ImageID bigint not null auto_increment,
@@ -5067,6 +5644,9 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
 2020-05-06 15:31:15,732 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,083 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCategories (
        CategoryID bigint not null auto_increment,
         CategoryName varchar(255),
@@ -5157,7 +5737,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,732 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,092 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCollections (
        CollectionID bigint not null auto_increment,
         CollectionName varchar(255),
@@ -5236,7 +5820,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,732 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,101 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCustomers (
        CustomerID bigint not null auto_increment,
         CustomerLastName varchar(120),
@@ -5339,7 +5927,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,732 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,108 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jDiscount (
        DiscountID bigint not null auto_increment,
         DiscountType varchar(255),
@@ -5422,7 +6014,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,732 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,118 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuest (
        GuestID bigint not null auto_increment,
         ApartmentNumber varchar(10),
@@ -5537,7 +6133,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,124 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrderItems (
        GuestOrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -5644,7 +6244,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,132 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrders (
        GuestOrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -5747,7 +6351,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,147 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jHomePageSlidingImages (
        ImageID bigint not null auto_increment,
         ImageDescription varchar(255),
@@ -5834,7 +6442,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,152 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMaterials (
        MaterialID bigint not null auto_increment,
         MaterialType varchar(255),
@@ -5913,7 +6525,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,157 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMetalPurity (
        MetalPurityID bigint not null auto_increment,
         Purity varchar(255),
@@ -5992,7 +6608,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,163 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrderItems (
        OrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -6099,7 +6719,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,170 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrders (
        OrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -6198,7 +6822,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,177 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jProducts (
        ProductID bigint not null auto_increment,
         CategoryID bigint,
@@ -6207,6 +6835,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -6223,6 +6856,11 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -6274,6 +6912,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         DISCOUNT DECIMAL(19,2),
         IMAGEPATH VARCHAR(255),
         INSTOCKQUANTITY INTEGER,
+<<<<<<< HEAD
+=======
+        MATERIALID VARCHAR(255),
+        METALPURITYID VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRICE DECIMAL(19,2),
         PRODUCTNAME VARCHAR(255),
         SECTIONID BIGINT,
@@ -6290,6 +6933,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -6317,7 +6965,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,748 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,184 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jSections (
        SectionID bigint not null auto_increment,
         SectionName varchar(255),
@@ -6396,7 +7048,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,192 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jShippingDetails (
        PackingSlipID bigint not null auto_increment,
         ShipCity varchar(255),
@@ -6507,6 +7163,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
@@ -6515,16 +7172,27 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+2020-05-06 19:01:13,207 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jSubCategories (
+       SubCategoryID bigint not null auto_increment,
+        CategoryID bigint,
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -6566,20 +7234,28 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
     CREATE TABLE JSUBCATEGORIES (
        SUBCATEGORYID BIGINT NOT NULL AUTO_INCREMENT,
         CATEGORYID BIGINT,
+<<<<<<< HEAD
         KIDS BIT,
         MEN BIT,
         SUBCATEGORYNAME VARCHAR(255),
         WOMEN BIT,
+=======
+        SUBCATEGORYNAME VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (SUBCATEGORYID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -6602,7 +7278,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,218 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jTransactions (
        TransactionID bigint not null auto_increment,
         ChargeAmount decimal(19,2),
@@ -6701,7 +7381,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,224 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jUsers (
        Id bigint not null auto_increment,
         Active bit,
@@ -6796,7 +7480,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,235 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jVerificationToken (
        TokenId bigint not null auto_increment,
         ExpiryDate datetime(6),
@@ -6883,7 +7571,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,247 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table JWishList (
        Id bigint not null auto_increment,
         CustomerID bigint,
@@ -6974,7 +7666,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,252 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        add constraint FKfc5dhoeufeegjgujeh17dpmb0 
        foreign key (OrderID) 
@@ -7039,7 +7735,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,763 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,264 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        add constraint FK6rkp7t5lne5pmqrs4pnarekna 
        foreign key (Id) 
@@ -7104,6 +7804,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:31:15,779 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 2020-05-06 15:31:15,795 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
 2020-05-06 15:31:16,466 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
@@ -7162,6 +7863,142 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 2020-05-06 15:34:09,255 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
 2020-05-06 15:34:09,380 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
 2020-05-06 15:34:10,653 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:01:13,278 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-06 19:01:13,307 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 19:01:14,689 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-06 19:01:17,095 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static com.eCommerce.jewelrystore.adapter.ProductClient com.eCommerce.jewelrystore.order.api.OrderItemMapper.productClient
+2020-05-06 19:01:18,159 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1621264e, org.springframework.security.web.context.SecurityContextPersistenceFilter@6a9861de, org.springframework.security.web.header.HeaderWriterFilter@3208e15, org.springframework.security.web.authentication.logout.LogoutFilter@4ac64dc2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1c61011b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6fca831e, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7a5b561b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d86d1ad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35b8b69f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5392c0a7, org.springframework.security.web.session.SessionManagementFilter@4cf99283, org.springframework.security.web.access.ExceptionTranslationFilter@5ceb6796]
+2020-05-06 19:01:18,213 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-05-06 19:01:18,237 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-05-06 19:01:18,237 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-05-06 19:01:18,257 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-05-06 19:01:18,258 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-05-06 19:01:18,514 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-06 19:01:20,892 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.aws.core.env.ResourceIdResolver.BEAN_NAME': Invocation of init method failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'stackResourceRegistryFactoryBean' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Unsatisfied dependency expressed through method 'stackResourceRegistryFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonCloudFormation' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+2020-05-06 19:01:20,896 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-06 19:01:20,941 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 19:01:20,944 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2020-05-06 19:01:20,947 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0
+2020-05-06 19:01:20,949 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jVerificationToken 
+       drop 
+       foreign key FK6rkp7t5lne5pmqrs4pnarekna
+2020-05-06 19:01:20,960 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCategories
+2020-05-06 19:01:20,961 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCollections
+2020-05-06 19:01:20,962 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCustomers
+2020-05-06 19:01:20,963 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jDiscount
+2020-05-06 19:01:20,964 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jGuest
+2020-05-06 19:01:20,970 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMaterials
+2020-05-06 19:01:20,971 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMetalPurity
+2020-05-06 19:01:20,973 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jOrders
+2020-05-06 19:01:20,982 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jUsers
+2020-05-06 19:01:20,989 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2020-05-06 19:01:20,998 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2020-05-06 19:01:21,000 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2020-05-06 19:01:21,018 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-05-06 19:01:21,022 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.aws.core.env.ResourceIdResolver.BEAN_NAME': Invocation of init method failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'stackResourceRegistryFactoryBean' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Unsatisfied dependency expressed through method 'stackResourceRegistryFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonCloudFormation' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:882)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:19)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'stackResourceRegistryFactoryBean' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Unsatisfied dependency expressed through method 'stackResourceRegistryFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonCloudFormation' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:539)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:608)
+	at org.springframework.cloud.aws.core.env.StackResourceRegistryDetectingResourceIdResolver.findSingleOptionalStackResourceRegistry(StackResourceRegistryDetectingResourceIdResolver.java:50)
+	at org.springframework.cloud.aws.core.env.StackResourceRegistryDetectingResourceIdResolver.afterPropertiesSet(StackResourceRegistryDetectingResourceIdResolver.java:99)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonCloudFormation' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1290)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1210)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 31 common frames omitted
+Caused by: java.lang.IllegalStateException: There is no EC2 meta data available, because the application is not running in the EC2 environment. Region detection is only possible if the application is running on a EC2 instance
+	at org.springframework.util.Assert.state(Assert.java:73)
+	at org.springframework.cloud.aws.core.region.Ec2MetadataRegionProvider.getRegion(Ec2MetadataRegionProvider.java:40)
+	at org.springframework.cloud.aws.core.config.AmazonWebserviceClientFactoryBean.createInstance(AmazonWebserviceClientFactoryBean.java:105)
+	at org.springframework.cloud.aws.core.config.AmazonWebserviceClientFactoryBean.createInstance(AmazonWebserviceClientFactoryBean.java:47)
+	at org.springframework.beans.factory.config.AbstractFactoryBean.afterPropertiesSet(AbstractFactoryBean.java:142)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 42 common frames omitted
+2020-05-06 19:03:44,613 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
+2020-05-06 19:03:48,324 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-06 19:03:49,138 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 792ms. Found 20 JPA repository interfaces.
+2020-05-06 19:03:49,788 INFO org.springframework.cloud.context.scope.GenericScope [main] BeanFactory id=d8ad9434-65f9-36f7-bd93-ba4f3a725ab5
+2020-05-06 19:03:50,311 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#1e98b788' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,333 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean '(inner bean)#57e5396b' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,340 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,342 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,558 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,571 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,578 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5f8a02cf' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,589 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:50,632 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-06 19:03:52,032 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 7009 (http)
+2020-05-06 19:03:52,069 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-7009"]
+2020-05-06 19:03:52,071 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-05-06 19:03:52,073 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-06 19:03:52,252 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-05-06 19:03:52,253 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 7592 ms
+2020-05-06 19:03:52,360 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-05-06 19:03:52,856 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-05-06 19:03:52,875 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2020-05-06 19:03:53,569 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-06 19:03:53,882 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-06 19:03:54,426 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-06 19:03:54,784 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-05-06 19:03:57,828 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        drop 
        foreign key FKfc5dhoeufeegjgujeh17dpmb0" via JDBC Statement
@@ -7231,7 +8068,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,653 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,830 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        drop 
        foreign key FK6rkp7t5lne5pmqrs4pnarekna" via JDBC Statement
@@ -7301,7 +8142,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 35 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,856 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jAddresses (
        AddressID bigint not null auto_increment,
         ApartmentNumber varchar(255),
@@ -7314,6 +8159,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -7329,6 +8178,10 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -7379,6 +8232,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         STATE VARCHAR(255),
         STREET VARCHAR(255),
         VERSION BIGINT NOT NULL,
+<<<<<<< HEAD
+=======
+        ZIPCODE VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (ADDRESSID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
@@ -7394,6 +8251,10 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         State varchar(255),
         Street varchar(255),
         version bigint not null,
+<<<<<<< HEAD
+=======
+        Zipcode varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (AddressID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -7416,6 +8277,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
     create table jCarouselImages (
        ImageID bigint not null auto_increment,
@@ -7433,6 +8295,25 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         ImageURL varchar(255),
         SecondSentence varchar(255),
         primary key (ImageID)
+=======
+2020-05-06 19:03:57,858 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        KIDS bit,
+        MEN bit,
+        WOMEN bit,
+        primary key (CategoryID)
+    ) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        KIDS bit,
+        MEN bit,
+        WOMEN bit,
+        primary key (CategoryID)
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
 	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
@@ -7470,6 +8351,7 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
 	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:19)
 Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "
+<<<<<<< HEAD
     CREATE TABLE JCAROUSELIMAGES (
        IMAGEID BIGINT NOT NULL AUTO_INCREMENT,
         IMAGEDESCRIPTION VARCHAR(255),
@@ -7486,6 +8368,24 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         ImageURL varchar(255),
         SecondSentence varchar(255),
         primary key (ImageID)
+=======
+    CREATE TABLE JCATEGORIES (
+       CATEGORYID BIGINT NOT NULL AUTO_INCREMENT,
+        CATEGORYNAME VARCHAR(255),
+        KIDS BIT,
+        MEN BIT,
+        WOMEN BIT,
+        PRIMARY KEY (CATEGORYID)
+    ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+
+    create table jCategories (
+       CategoryID bigint not null auto_increment,
+        CategoryName varchar(255),
+        KIDS bit,
+        MEN bit,
+        WOMEN bit,
+        primary key (CategoryID)
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
@@ -7507,6 +8407,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
     create table jCategories (
        CategoryID bigint not null auto_increment,
@@ -7599,6 +8500,9 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,864 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCollections (
        CollectionID bigint not null auto_increment,
         CollectionName varchar(255),
@@ -7677,7 +8581,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,871 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jCustomers (
        CustomerID bigint not null auto_increment,
         CustomerLastName varchar(120),
@@ -7780,7 +8688,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,875 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jDiscount (
        DiscountID bigint not null auto_increment,
         DiscountType varchar(255),
@@ -7863,7 +8775,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,887 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuest (
        GuestID bigint not null auto_increment,
         ApartmentNumber varchar(10),
@@ -7978,7 +8894,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,668 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,891 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrderItems (
        GuestOrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -8085,7 +9005,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,903 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jGuestOrders (
        GuestOrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -8188,7 +9112,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,911 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jHomePageSlidingImages (
        ImageID bigint not null auto_increment,
         ImageDescription varchar(255),
@@ -8275,7 +9203,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,919 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMaterials (
        MaterialID bigint not null auto_increment,
         MaterialType varchar(255),
@@ -8354,7 +9286,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,926 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jMetalPurity (
        MetalPurityID bigint not null auto_increment,
         Purity varchar(255),
@@ -8433,7 +9369,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,932 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrderItems (
        OrderItemID bigint not null auto_increment,
         Discount decimal(19,2),
@@ -8540,7 +9480,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,937 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jOrders (
        OrderID bigint not null auto_increment,
         CheckoutPrice decimal(19,2),
@@ -8639,7 +9583,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,943 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jProducts (
        ProductID bigint not null auto_increment,
         CategoryID bigint,
@@ -8648,6 +9596,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -8664,6 +9617,11 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -8715,6 +9673,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         DISCOUNT DECIMAL(19,2),
         IMAGEPATH VARCHAR(255),
         INSTOCKQUANTITY INTEGER,
+<<<<<<< HEAD
+=======
+        MATERIALID VARCHAR(255),
+        METALPURITYID VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRICE DECIMAL(19,2),
         PRODUCTNAME VARCHAR(255),
         SECTIONID BIGINT,
@@ -8731,6 +9694,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         Discount decimal(19,2),
         ImagePath varchar(255),
         InStockQuantity integer,
+<<<<<<< HEAD
+=======
+        MaterialID varchar(255),
+        MetalPurityID varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         Price decimal(19,2),
         ProductName varchar(255),
         SectionID bigint,
@@ -8758,7 +9726,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,947 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jSections (
        SectionID bigint not null auto_increment,
         SectionName varchar(255),
@@ -8837,7 +9809,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,955 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jShippingDetails (
        PackingSlipID bigint not null auto_increment,
         ShipCity varchar(255),
@@ -8948,6 +9924,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
@@ -8956,16 +9933,27 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+2020-05-06 19:03:57,959 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table jSubCategories (
+       SubCategoryID bigint not null auto_increment,
+        CategoryID bigint,
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
@@ -9007,20 +9995,28 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
     CREATE TABLE JSUBCATEGORIES (
        SUBCATEGORYID BIGINT NOT NULL AUTO_INCREMENT,
         CATEGORYID BIGINT,
+<<<<<<< HEAD
         KIDS BIT,
         MEN BIT,
         SUBCATEGORYNAME VARCHAR(255),
         WOMEN BIT,
+=======
+        SUBCATEGORYNAME VARCHAR(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         PRIMARY KEY (SUBCATEGORYID)
     ) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
 
     create table jSubCategories (
        SubCategoryID bigint not null auto_increment,
         CategoryID bigint,
+<<<<<<< HEAD
         KIDS bit,
         MEN bit,
         SubCategoryName varchar(255),
         WOMEN bit,
+=======
+        SubCategoryName varchar(255),
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
         primary key (SubCategoryID)
     ) engine=InnoDB [42001-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
@@ -9043,7 +10039,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,964 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jTransactions (
        TransactionID bigint not null auto_increment,
         ChargeAmount decimal(19,2),
@@ -9142,7 +10142,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,684 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,969 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jUsers (
        Id bigint not null auto_increment,
         Active bit,
@@ -9237,7 +10241,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,700 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,973 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table jVerificationToken (
        TokenId bigint not null auto_increment,
         ExpiryDate datetime(6),
@@ -9324,7 +10332,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,700 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,980 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     create table JWishList (
        Id bigint not null auto_increment,
         CustomerID bigint,
@@ -9415,7 +10427,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statemen
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,700 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,986 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jOrderItems 
        add constraint FKfc5dhoeufeegjgujeh17dpmb0 
        foreign key (OrderID) 
@@ -9480,7 +10496,11 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not foun
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,700 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+=======
+2020-05-06 19:03:57,993 WARN org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
     alter table jVerificationToken 
        add constraint FK6rkp7t5lne5pmqrs4pnarekna 
        foreign key (Id) 
@@ -9545,6 +10565,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 34 common frames omitted
+<<<<<<< HEAD
 2020-05-06 15:34:10,700 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 2020-05-06 15:34:10,715 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
 2020-05-06 15:34:11,403 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
@@ -9630,14 +10651,71 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
 	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+=======
+2020-05-06 19:03:58,001 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-06 19:03:58,044 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 19:03:59,238 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-06 19:04:02,299 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static com.eCommerce.jewelrystore.adapter.ProductClient com.eCommerce.jewelrystore.order.api.OrderItemMapper.productClient
+2020-05-06 19:04:03,455 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@296b758, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f50b08a, org.springframework.security.web.header.HeaderWriterFilter@1a819769, org.springframework.security.web.authentication.logout.LogoutFilter@1507bc3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@202ed88d, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7fb84ef7, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7f129873, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@333cedbd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@10d56aab, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ac0c3aa, org.springframework.security.web.session.SessionManagementFilter@135ec43a, org.springframework.security.web.access.ExceptionTranslationFilter@42b6acc2]
+2020-05-06 19:04:03,530 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-05-06 19:04:03,566 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-05-06 19:04:03,568 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-05-06 19:04:03,599 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2020-05-06 19:04:03,601 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-05-06 19:04:04,184 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-06 19:04:07,005 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.aws.core.env.ResourceIdResolver.BEAN_NAME': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stackResourceRegistryFactoryBean' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.aws.core.env.stack.config.StackResourceRegistryFactoryBean]: Factory method 'stackResourceRegistryFactoryBean' threw exception; nested exception is java.lang.IllegalArgumentException: No valid instance id defined
+2020-05-06 19:04:07,010 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-06 19:04:07,036 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-06 19:04:07,037 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2020-05-06 19:04:07,041 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jOrderItems 
+       drop 
+       foreign key FKfc5dhoeufeegjgujeh17dpmb0
+2020-05-06 19:04:07,042 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    alter table jVerificationToken 
+       drop 
+       foreign key FK6rkp7t5lne5pmqrs4pnarekna
+2020-05-06 19:04:07,055 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCategories
+2020-05-06 19:04:07,057 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCollections
+2020-05-06 19:04:07,059 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jCustomers
+2020-05-06 19:04:07,061 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jDiscount
+2020-05-06 19:04:07,063 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jGuest
+2020-05-06 19:04:07,074 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMaterials
+2020-05-06 19:04:07,075 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jMetalPurity
+2020-05-06 19:04:07,080 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jOrders
+2020-05-06 19:04:07,095 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [main] HHH000478: Unsuccessful: 
+    drop table if exists jUsers
+2020-05-06 19:04:07,101 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2020-05-06 19:04:07,110 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2020-05-06 19:04:07,112 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2020-05-06 19:04:07,135 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-05-06 19:04:07,140 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.aws.core.env.ResourceIdResolver.BEAN_NAME': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stackResourceRegistryFactoryBean' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.aws.core.env.stack.config.StackResourceRegistryFactoryBean]: Factory method 'stackResourceRegistryFactoryBean' threw exception; nested exception is java.lang.IllegalArgumentException: No valid instance id defined
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+<<<<<<< HEAD
 	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+=======
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:882)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
@@ -9646,6 +10724,7 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
 	at com.eCommerce.jewelrystore.JewelryStoreApplication.main(JewelryStoreApplication.java:19)
+<<<<<<< HEAD
 Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JORDERITEMS" not found; SQL statement:
 
     alter table jOrderItems 
@@ -9701,11 +10780,20 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+=======
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stackResourceRegistryFactoryBean' defined in class path resource [org/springframework/cloud/aws/autoconfigure/context/ContextStackAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.aws.core.env.stack.config.StackResourceRegistryFactoryBean]: Factory method 'stackResourceRegistryFactoryBean' threw exception; nested exception is java.lang.IllegalArgumentException: No valid instance id defined
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:656)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+<<<<<<< HEAD
 	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
@@ -48898,10 +49986,31 @@ java.lang.IllegalStateException: Global lists not initialized
 	at com.eCommerce.jewelrystore.landingpage.service.LandingPageBuilder.loadNavBarSectionsCategoryAndSubCategory(LandingPageBuilder.java:58)
 	at com.eCommerce.jewelrystore.landingpage.service.LandingPageService.getHomePageNavBar(LandingPageService.java:23)
 	at com.eCommerce.jewelrystore.landingpage.api.LandingPageController.getNavBar(LandingPageController.java:22)
+=======
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:608)
+	at org.springframework.cloud.aws.core.env.StackResourceRegistryDetectingResourceIdResolver.findSingleOptionalStackResourceRegistry(StackResourceRegistryDetectingResourceIdResolver.java:50)
+	at org.springframework.cloud.aws.core.env.StackResourceRegistryDetectingResourceIdResolver.afterPropertiesSet(StackResourceRegistryDetectingResourceIdResolver.java:99)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.aws.core.env.stack.config.StackResourceRegistryFactoryBean]: Factory method 'stackResourceRegistryFactoryBean' threw exception; nested exception is java.lang.IllegalArgumentException: No valid instance id defined
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651)
+	... 31 common frames omitted
+Caused by: java.lang.IllegalArgumentException: No valid instance id defined
+	at org.springframework.util.Assert.notNull(Assert.java:198)
+	at org.springframework.cloud.aws.core.env.stack.config.AutoDetectingStackNameProvider.autoDetectStackName(AutoDetectingStackNameProvider.java:85)
+	at org.springframework.cloud.aws.core.env.stack.config.AutoDetectingStackNameProvider.afterPropertiesSet(AutoDetectingStackNameProvider.java:70)
+	at org.springframework.cloud.aws.core.env.stack.config.AutoDetectingStackNameProvider.<init>(AutoDetectingStackNameProvider.java:58)
+	at org.springframework.cloud.aws.core.env.stack.config.AutoDetectingStackNameProvider.<init>(AutoDetectingStackNameProvider.java:63)
+	at org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration.stackResourceRegistryFactoryBean(ContextStackAutoConfiguration.java:75)
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+<<<<<<< HEAD
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
@@ -48983,3 +50092,7 @@ java.lang.IllegalStateException: Global lists not initialized
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+=======
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 32 common frames omitted
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf

@@ -37,6 +37,11 @@ public class MetalPurityController {
     public ResponseEntity<MetalPurity> save(@RequestBody MetalPurity metalPurity){
         return new ResponseEntity<>(metalPurityService.save(metalPurity), HttpStatus.CREATED);
     }
+    
+    @PostMapping("/postMetailPurityList")
+    public ResponseEntity<List<MetalPurity>> save(@RequestBody List<MetalPurity> metalPurities){
+        return new ResponseEntity<>(metalPurityService.saveAll(metalPurities), HttpStatus.CREATED);
+    }
 
     @PutMapping
     public ResponseEntity<MetalPurity> update(@RequestBody MetalPurity metalPurity){

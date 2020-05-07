@@ -15824,6 +15824,7 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 2020-05-03 02:28:18,820 INFO org.apache.juli.logging.DirectJDKLog [http-nio-7009-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-05-03 02:28:18,821 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-7009-exec-2] Initializing Servlet 'dispatcherServlet'
 2020-05-03 02:28:18,834 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-7009-exec-2] Completed initialization in 12 ms
+<<<<<<< HEAD
 2020-05-03 02:32:54,487 INFO org.springframework.boot.SpringApplication [main] The following profiles are active: dev
 2020-05-03 02:32:55,816 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2020-05-03 02:32:56,153 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 323ms. Found 20 JPA repository interfaces.
@@ -25170,3 +25171,5 @@ Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JVERIFICATIONTOKEN" n
 2020-05-03 21:09:34,923 INFO org.apache.juli.logging.DirectJDKLog [http-nio-7009-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-05-03 21:09:34,930 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-7009-exec-1] Initializing Servlet 'dispatcherServlet'
 2020-05-03 21:09:34,956 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-7009-exec-1] Completed initialization in 25 ms
+=======
+>>>>>>> 79f154b9cd8ed4fc39a0590a7b1920e373b801bf

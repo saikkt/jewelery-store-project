@@ -19,7 +19,15 @@ public class SubCategoryService {
         return subCategoryRepository.findByCategoryID(categoryID);
     }
 
+    public SubCategory getBySubCategoryName(String subCategoryName){
+        return subCategoryRepository.findBySubCategoryName(subCategoryName).get();
+    }
+
     public List<SubCategory> getAll(){
         return subCategoryRepository.findAll();
     }
+
+	public List<SubCategory> saveSubCategories(List<SubCategory> subCategories) {
+		return subCategoryRepository.saveAll(subCategories);
+	}
 }

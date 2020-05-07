@@ -47,6 +47,11 @@ public class DiscountController {
         return new ResponseEntity<>(discountService.save(discount), HttpStatus.CREATED);
     }
 
+    @PostMapping("/postDiscountList")
+    public ResponseEntity<List<Discount>> save(@RequestBody List<Discount> discounts){
+        return new ResponseEntity<>(discountService.saveAll(discounts), HttpStatus.CREATED);
+    }
+
     @PutMapping
     public ResponseEntity<Discount> update(@RequestBody Discount discount){
         Optional<Discount> discountOptional = discountService.findByID(discount.getDiscountID());

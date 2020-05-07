@@ -12,7 +12,8 @@ class AddressMapper {
                 addressModel.getStreet(),
                 addressModel.getCity(),
                 addressModel.getState(),
-                addressModel.getCountry());
+                addressModel.getCountry(),
+                addressModel.getZipCode());
         address.setApartmentNumber(addressModel.getApartmentNumber());
         address.setAddressID(addressModel.getAddressID());
         address.setDefaultBilling(addressModel.isDefaultBilling());

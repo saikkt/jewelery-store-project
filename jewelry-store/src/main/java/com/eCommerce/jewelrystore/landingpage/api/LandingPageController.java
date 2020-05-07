@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/navbar")
+@RequestMapping("/landing-page")
 public class LandingPageController {
 
     private LandingPageService landingPageService;

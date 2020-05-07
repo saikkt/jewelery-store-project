@@ -7,6 +7,7 @@ package com.eCommerce.jewelrystore.customer.api;
 
 import com.eCommerce.jewelrystore.accounts.MyUserDetailsService;
 import com.eCommerce.jewelrystore.accounts.UserRepository;
+import com.eCommerce.jewelrystore.accounts.exceptions.UserInActiveException;
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.accounts.models.User;
 import com.eCommerce.jewelrystore.accounts.utilities.BcryptGenerator;
@@ -44,7 +45,10 @@ public class CustomerController {
     private CustomerService customerService;
 
     @Autowired
-    private UserRepository userRepository;
+    private MyUserDetailsService userDetailsService;
+
+    @Autowired
+    private  UserRepository userRepository;
 
     @Autowired
     ApplicationEventPublisher eventPublisher;
@@ -124,6 +128,26 @@ public class CustomerController {
     @GetMapping
     public ResponseEntity<List<Customer>> getAll(){
         return ResponseEntity.ok(customerService.getAll());
+    }
+
+    @PutMapping("/updateCustomer")
+    public ResponseEntity<CustomerModel> delete(@RequestBody CustomerModel customerModel){
+        Optional<Customer> existingCustomer = customerService.get(customerModel.getCustomerID());
+        Optional<User> existingUser = userDetailsService.getUserByCustomerID(customerModel.getCustomerID());
+        if(!(existingCustomer.isPresent())){
+            return ResponseEntity.notFound().build();
+        }
+        if(!(existingUser.isPresent())){
+            return ResponseEntity.notFound().build();
+        }
+        if(!existingUser.get().isActive()){
+            throw new UserInActiveException("User not yet active. Please activate your account before editing");
+        }
+        Customer customerToBeSaved = CustomerMapper.merge(customerModel,existingCustomer.get());
+        Customer updatedCustomer = customerService.save(customerToBeSaved);
+        User updatedUser = userDetailsService.updateUser(existingUser.get(),customerModel);
+        CustomerModel savedCustomerModel = CustomerMapper.toModel(updatedCustomer,updatedUser);
+        return ResponseEntity.ok().body(savedCustomerModel);
     }
 
 //    @DeleteMapping("/{emailAddress}")

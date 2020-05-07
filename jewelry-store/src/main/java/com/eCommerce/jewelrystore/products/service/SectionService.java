@@ -84,5 +84,9 @@ public class SectionService {
         return savedSection;
     }
 
+	public List<Section> saveSections(List<Section> sections) {
+		return sectionsRepository.saveAll(sections);
+	}
+
 
 }

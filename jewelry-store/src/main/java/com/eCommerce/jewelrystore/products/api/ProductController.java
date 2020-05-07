@@ -60,7 +60,7 @@ public class ProductController {
         return ResponseEntity.ok().body(savedProduct);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/postProductsList")
     public ResponseEntity<List<Product>> postProducts(@RequestBody List<Product> products){
         products.stream().forEach(product->{
@@ -81,7 +81,7 @@ public class ProductController {
         return ResponseEntity.ok().body(savedProduct);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/updateProductsList")
     public ResponseEntity<List<Product>> updateProductsList(@RequestBody List<Product> products){
         products.stream().forEach(product->{
@@ -104,12 +104,12 @@ public class ProductController {
         return  ResponseEntity.ok().body(productService.getLatestThreeProducts());
     }
 
-    @GetMapping("/getAllProductsPages/{a}/{b}")
+    @PostMapping("/getAllProductsPages/{a}/{b}")
     public ResponseEntity<ProductGlobalModel> getAllParoductsPagenated(@RequestBody ProductGlobalModel productGlobalModel,@PathVariable int a, @PathVariable int b){
         return ResponseEntity.ok().body(ProductGlobalMapper.toModel(new ProductGlobalModel(),productService.getAllProductsPageable(productGlobalModel,a,b)));
     }
 
-    @GetMapping("/getAllProductsByFilters/{a}/{b}")
+    @PostMapping("/getAllProductsByFilters/{a}/{b}")
     public ResponseEntity<ProductGlobalModel> getAllProductsByFilters(@RequestBody ProductGlobalModel productGlobalModel,@PathVariable int a, @PathVariable int b){
         productGlobalModel.setResults(productService.getAllProductsPageable(productGlobalModel,a,b));
         return ResponseEntity.ok().body(productGlobalModel);

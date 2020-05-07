@@ -35,4 +35,8 @@ public class MetalPurityService {
     public MetalPurity findByPurity(String purity){
         return metalPurityRepository.findByPurity(purity);
     }
+
+	public List<MetalPurity> saveAll(List<MetalPurity> metalPurities) {
+		return metalPurityRepository.saveAll(metalPurities);
+	}
 }

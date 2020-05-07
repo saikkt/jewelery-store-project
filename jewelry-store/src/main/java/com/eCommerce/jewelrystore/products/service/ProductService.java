@@ -21,10 +21,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -50,6 +46,8 @@ public class ProductService {
     DiscountService discountService;
     @Autowired
     SectionService sectionService;
+    @Autowired
+    SubCategoryService subCategoryService;
 
     Logger logger = LoggerFactory.getLogger(ProductService.class);
 
@@ -192,9 +190,12 @@ public class ProductService {
                             System.out.println("here");
                             sort = Sort.by(Sort.Order.desc("price"));
                             break;
-                        case "New Listed":
+                        case "new listed":
                             sort = Sort.by(Sort.Order.desc("createDate"));
                             break;
+                        default:
+                        	sort = Sort.by(Sort.Order.desc("createDate"));
+                        	break;
                     }
 
                 }
@@ -233,15 +234,15 @@ public class ProductService {
                 returnPredicate = getPredicate("categoryID",returnFilterSet);
             break;
 
-            //waiting for crud for sub category
-//            //sub-category-filter
-//            case "sub-category-filter":
-//                facetFilters = (List<FacetFilter>) p.getValue();
-//                System.out.println(facetFilters.get(0).getClass());
-//                facetFilters.stream().filter(a->a.isEnabled()==true).forEach(l->{
-//                    returnFilterSet.add(categoryService.getCategoryByName(l.getName()).getCategoryID());
-//                });
-//                break;
+            //sub-category-filter
+            case "sub-category-filter":
+                facetFilters = (List<FacetFilter>) p.getValue();
+                System.out.println(facetFilters.get(0).getClass());
+                facetFilters.stream().filter(a->a.isEnabled()==true).forEach(l->{
+                    returnFilterSet.add(subCategoryService.getBySubCategoryName(l.getName()).getSubCategoryID());
+                });
+                returnPredicate = getPredicate("subCategoryID",returnFilterSet);
+                break;
 
             //gender-filter
             case "gender":
@@ -267,7 +268,7 @@ public class ProductService {
                 facetFilters.stream().filter(a->a.isEnabled()==true).forEach(l->{
                     returnFilterSet.add(metalPurityService.findByPurity(l.getName()).getMetalPurityID());
                 });
-                returnPredicate = getPredicate("materialPurityID",returnFilterSet);
+                returnPredicate = getPredicate("metalPurityID",returnFilterSet);
                 break;
 
             //discount-filter

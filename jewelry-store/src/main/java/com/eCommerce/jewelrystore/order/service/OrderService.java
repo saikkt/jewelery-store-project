@@ -61,7 +61,6 @@ public class OrderService {
                     orderItem.setOrder(order);
                    System.out.println(productService.getByProductID(orderItem.getProductID()));
 //                    orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
-                    orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
                     orderItem.setTotalPrice(orderItem.getUnitPrice().multiply(new BigDecimal(orderItem.getQuantity())));
                 });
         //Calculate CheckOut Price
@@ -87,6 +86,7 @@ public class OrderService {
             Order order_new = new Order(userDetails.getCustomerId());
             OrderItem orderItem = new OrderItem(order_new,productID);
             orderItem.setQuantity(quantity);
+            orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
             List<OrderItem> orderItemsList = new ArrayList<>();
             orderItemsList.add(orderItem);
             order_new.setOrderItems(orderItemsList);
@@ -96,6 +96,7 @@ public class OrderService {
         {
             OrderItem orderItem = new OrderItem(order,productID);
             orderItem.setQuantity(quantity);
+            orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
             order.getOrderItems().add(orderItem);
             return save(order);
         }

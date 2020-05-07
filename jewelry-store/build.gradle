@@ -46,6 +46,10 @@ dependencies {
 	//Stripe Payment Gateway
 	implementation 'com.stripe:stripe-java:4.2.0'
 
+	//aws
+//	implementation 'org.springframework.cloud:spring-cloud-starter-aws'
+
+//	implementation 'com.amazonaws:aws-java-sdk:1.11.133'
 	//Spring boot test
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

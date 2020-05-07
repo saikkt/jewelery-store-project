@@ -44,6 +44,15 @@ public class SectionController {
         return ResponseEntity.ok().body(savedSection);
     }
 
+
+    @PostMapping("/postSections")
+    public ResponseEntity<List<Section>> postSections(@RequestBody List<Section> sections){
+    	List<Section> savedSections = sectionService.saveSections(sections);
+        if(savedSections==null)
+            return ResponseEntity.unprocessableEntity().build();
+        return ResponseEntity.ok().body(savedSections);
+    }
+
     @PutMapping("/updateSection")
     public ResponseEntity<Section> updateSection(@RequestBody Section section){
         Section savedSection = sectionService.updateSection(section);
