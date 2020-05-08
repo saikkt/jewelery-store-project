@@ -19,8 +19,6 @@ public class Product {
     private String productName;
     @Column(name = "CategoryID")
     private long categoryID;
-    @Column(name = "SubCategoryID")
-    private long subCategoryID;
     @Column(name = "SectionID")
     private long sectionID;
     @Column(name = "CollectionID")
@@ -86,10 +84,6 @@ public class Product {
         return categoryID;
     }
 
-    public long getSubCategoryID() {
-        return subCategoryID;
-    }
-
     public long getSectionID() {
         return sectionID;
     }
@@ -141,10 +135,6 @@ public class Product {
 
     public void setCategoryID(long categoryID) {
         this.categoryID = categoryID;
-    }
-    
-    public void setSubCategoryID(long subCategoryID) {
-        this.subCategoryID = subCategoryID;
     }
 
     public void setSectionID(long sectionID) {

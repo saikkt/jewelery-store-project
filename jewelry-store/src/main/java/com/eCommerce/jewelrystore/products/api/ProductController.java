@@ -1,5 +1,6 @@
 package com.eCommerce.jewelrystore.products.api;
 
+import com.eCommerce.jewelrystore.aws.s3.util.AmazonClient;
 import com.eCommerce.jewelrystore.products.global.globalapi.ProductGlobalMapper;
 import com.eCommerce.jewelrystore.products.global.globalmodel.ProductGlobalModel;
 import com.eCommerce.jewelrystore.products.model.Product;
@@ -11,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Calendar;
 import java.util.List;
@@ -21,6 +23,9 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    AmazonClient amazonClient;
 
     @GetMapping("/getAll")
     public ResponseEntity<List<Product>> getProducts(){
@@ -51,9 +56,15 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/postProduct")
-    public ResponseEntity<Product> postProduct(@RequestBody Product product){
+    public ResponseEntity<Product> postProduct(@RequestBody Product product,@RequestPart(value = "file") MultipartFile file){
+
+        //setting product create and update date
         product.setCreateDate(Calendar.getInstance().getTime());
         product.setUpdateDate(Calendar.getInstance().getTime());
+
+        //saving the products image to s3 bucket and setting the file name in imagepath
+        product.setImagePath(amazonClient.uploadFile(file));
+
         Product savedProduct = productService.saveProduct(product);
         if(savedProduct==null)
             return ResponseEntity.unprocessableEntity().build();
@@ -81,6 +92,20 @@ public class ProductController {
         return ResponseEntity.ok().body(savedProduct);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/updateImage/{imageId}")
+    public ResponseEntity<Product> updateImage(@PathVariable long imageId,@RequestPart(value = "file") MultipartFile file){
+        Product product = productService.getByProductID(imageId);
+        String deleteMsg = amazonClient.deleteFileFromS3Bucket(product.getImagePath());
+        if(!deleteMsg.equals("Successfully deleted"))
+            return ResponseEntity.notFound().build();
+        product.setImagePath(amazonClient.uploadFile(file));
+        Product savedProduct = productService.saveProduct(product);
+        if(savedProduct==null)
+            return ResponseEntity.unprocessableEntity().build();
+        return ResponseEntity.ok().body(savedProduct);
+    }
+
 //    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/updateProductsList")
     public ResponseEntity<List<Product>> updateProductsList(@RequestBody List<Product> products){
@@ -94,6 +119,10 @@ public class ProductController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/deleteProduct/{productId}")
     public ResponseEntity<HttpStatus> deleteProduct(@PathVariable long productId){
+        Product product = productService.getByProductID(productId);
+        String deleteMsg = amazonClient.deleteFileFromS3Bucket(product.getImagePath());
+        if(!deleteMsg.equals("Successfully deleted"))
+            return ResponseEntity.notFound().build();
          productService.deleteProduct(productId);
          return ResponseEntity.ok().build();
     }
