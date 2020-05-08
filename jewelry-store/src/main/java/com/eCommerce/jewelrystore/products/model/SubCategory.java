@@ -17,7 +17,17 @@ public class SubCategory {
     @Column(name = "SubCategoryName")
     private String subCategoryName;
 
-    protected SubCategory(){}
+    @Column(name = "MEN")
+    private boolean menSection;
+
+    @Column(name = "WOMEN")
+    private boolean womenSection;
+
+    @Column(name = "KIDS")
+    private boolean kidsSection;
+
+    protected SubCategory() {
+    }
 
     public long getSubCategoryID() {
         return subCategoryID;
@@ -41,5 +51,29 @@ public class SubCategory {
 
     public void setSubCategoryName(String subCategoryName) {
         this.subCategoryName = subCategoryName;
+    }
+
+    public boolean isMenSection() {
+        return menSection;
+    }
+
+    public void setMenSection(boolean menSection) {
+        this.menSection = menSection;
+    }
+
+    public boolean isWomenSection() {
+        return womenSection;
+    }
+
+    public void setWomenSection(boolean womenSection) {
+        this.womenSection = womenSection;
+    }
+
+    public boolean isKidsSection() {
+        return kidsSection;
+    }
+
+    public void setKidsSection(boolean kidsSection) {
+        this.kidsSection = kidsSection;
     }
 }

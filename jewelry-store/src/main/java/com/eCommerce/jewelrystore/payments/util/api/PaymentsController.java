@@ -4,6 +4,13 @@ import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
 import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
+import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
+import com.eCommerce.jewelrystore.guest.domain.Guest;
+import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
+import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
+import com.eCommerce.jewelrystore.guest.domain.Guest;
+import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
+import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
@@ -138,10 +145,10 @@ public class PaymentsController {
                 //Save Transaction
                 transactionClient.saveTransaction(
                         transactionClient.getTransactionBuilder()
-                        .setGuestOrderID(guestOrder.getGuestOrderID())
-                        .setChargeID(charge.getId())
-                        .setChargeAmount(new BigDecimal(charge.getAmount()))
-                        .build()
+                                .setGuestOrderID(guestOrder.getGuestOrderID())
+                                .setChargeID(charge.getId())
+                                .setChargeAmount(new BigDecimal(charge.getAmount()))
+                                .build()
                 );
 
                 //Order verification email is send in guest order service
