@@ -95,30 +95,30 @@ public class LandingPageBuilder {
     }
 
     public boolean checkIfSectionIsPresentInCategory(String sectionName, Category category) {
-        if (sectionName.equals("MEN"))
+        if (sectionName.equalsIgnoreCase("mens"))
             return category.isMenSection();
-        if (sectionName.equals("WOMEN"))
+        if (sectionName.equalsIgnoreCase("womens"))
             return category.isWomenSection();
-        if (sectionName.equals("KIDS"))
+        if (sectionName.equalsIgnoreCase("kids"))
             return category.isKidsSection();
 
         return false;
     }
 
     public List<SubCategory> sectionWiseSubCategory(Category category, String sectionName) {
-        if (sectionName.equals("MEN")) {
+        if (sectionName.equalsIgnoreCase("mens")) {
             return subCategoryClient.getAllSubCategoriesByCategoryID(category.getCategoryID())
                     .stream()
                     .filter(SubCategory::isMenSection)
                     .collect(Collectors.toList());
         }
-        if (sectionName.equals("WOMEN")) {
+        if (sectionName.equalsIgnoreCase("womens")) {
             return subCategoryClient.getAllSubCategoriesByCategoryID(category.getCategoryID())
                     .stream()
                     .filter(SubCategory::isWomenSection)
                     .collect(Collectors.toList());
         }
-        if (sectionName.equals("KIDS")) {
+        if (sectionName.equalsIgnoreCase("kids")) {
             return subCategoryClient.getAllSubCategoriesByCategoryID(category.getCategoryID())
                     .stream()
                     .filter(SubCategory::isKidsSection)
@@ -157,6 +157,7 @@ public class LandingPageBuilder {
         landingPage.setTopProducts(landingPage.getGlobalProductList()
                 .stream()
                 .filter(Product::isTopProduct)
+                .limit(4)
                 .collect(Collectors.toList())
         );
         return this;
@@ -191,7 +192,7 @@ public class LandingPageBuilder {
         landingPage.setPopularCategory(landingPage.getGlobalCategoryList()
                 .stream()
                 .filter(Category::isPopular)
-                .limit(2)
+                .limit(4)
                 .collect(Collectors.toList()));
         return this;
     }
