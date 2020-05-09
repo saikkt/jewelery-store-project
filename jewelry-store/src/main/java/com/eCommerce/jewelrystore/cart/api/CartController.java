@@ -39,11 +39,18 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/decrease-cart-item/{productID}/{quantity}")
-    public ResponseEntity<List<CartItem>> decreaseCartItem(@PathVariable(name = "productID") long productID,
+    @DeleteMapping("/update-cart-item/{productID}/{quantity}")
+    public ResponseEntity<List<CartItem>> updateCartItem(@PathVariable(name = "productID") long productID,
                                                            @PathVariable(name = "quantity") int quantity,
                                                          HttpSession session) throws Exception {
-        cartService.decreaseCartItem(productID, session,quantity);
+        cartService.updateCartItem(productID, session,quantity);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/updateCart")
+    public ResponseEntity<List<CartItem>> updateCart(@RequestBody List<CartItem> cartItems,
+                                                         HttpSession session) throws Exception {
+        cartService.updateCart(cartItems,session);
         return ResponseEntity.ok().build();
     }
 
@@ -52,6 +59,5 @@ public class CartController {
         cartService.emptyCart(session);
         return ResponseEntity.ok().build();
     }
-
 
 }
