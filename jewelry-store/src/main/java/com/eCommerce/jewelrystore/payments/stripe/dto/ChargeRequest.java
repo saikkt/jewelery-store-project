@@ -10,6 +10,7 @@ public class ChargeRequest {
     private Currency currency;
     private String stripeEmail;
     private String stripeToken;
+    private String addressID;
 
     public String getDescription() {
         return description;
@@ -50,4 +51,14 @@ public class ChargeRequest {
     public void setStripeToken(String stripeToken) {
         this.stripeToken = stripeToken;
     }
+
+	public String getAddressID() {
+		return addressID;
+	}
+
+	public void setAddressID(String addressID) {
+		this.addressID = addressID;
+	}
+    
+    
 }
