@@ -100,8 +100,10 @@ public class CartServiceImpl implements CartService {
         final int index = findCartItemIndex(cartItems, productID);
         if (index != -1) {
             int quantity_available = cartItems.get(index).getQuantity();
-            if(quantity_available<quantity)
-                throw new ProductOutOfStockException("Product stock limit reached "+product.getProductName());
+            if(quantity_available < quantity)
+                quantity = quantity_available;
+            else if(quantity < 0)
+                quantity = 0;
             cartItems.get(index).setQuantity(quantity);
             session.setAttribute(cartSessionAttributeName, cartItems);
             return cartItems;
@@ -133,7 +135,7 @@ public class CartServiceImpl implements CartService {
     public List<CartItem> updateCart(List<CartItem> cartItems,HttpSession session) {
         cartItems.stream().forEach(p->{
             try {
-                addItemToCart(p.getProductID(),p.getQuantity(),session);
+            	updateCartItem(p.getProductID(), session, p.getQuantity());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
