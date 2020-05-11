@@ -46,6 +46,15 @@ public class LandingPage {
     @JsonProperty
     private List<Collection> globalCollectionList;
 
+    @JsonProperty
+    private List<Material> globalMaterialList;
+
+    @JsonProperty
+    private List<MetalPurity> globalMetalPurityList;
+
+    @JsonProperty
+    private List<Discount> globalDiscountList;
+
 
     public HashMap<Object, Object> getNavBar() {
         return navBar;
@@ -61,18 +70,6 @@ public class LandingPage {
 
     public void setWelcomePageCarousel(List<CarouselImage> welcomePageCarousel) {
         this.welcomePageCarousel = welcomePageCarousel;
-    }
-
-    public List<Category> getPopularCategory() {
-        return popularCategories;
-    }
-
-    public void setPopularCategory(List<Category> popularCategories) {
-        this.popularCategories = popularCategories;
-    }
-
-    public List<Product> getNewArrivals() {
-        return newArrivals;
     }
 
     public void setNewArrivals(List<Product> newArrivals) {
@@ -141,5 +138,37 @@ public class LandingPage {
 
     public void setGlobalCollectionList(List<Collection> globalCollectionList) {
         this.globalCollectionList = globalCollectionList;
+    }
+
+    public List<Category> getPopularCategories() {
+        return popularCategories;
+    }
+
+    public void setPopularCategories(List<Category> popularCategories) {
+        this.popularCategories = popularCategories;
+    }
+
+    public List<Material> getGlobalMaterialList() {
+        return globalMaterialList;
+    }
+
+    public void setGlobalMaterialList(List<Material> globalMaterialList) {
+        this.globalMaterialList = globalMaterialList;
+    }
+
+    public List<MetalPurity> getGlobalMetalPurityList() {
+        return globalMetalPurityList;
+    }
+
+    public void setGlobalMetalPurityList(List<MetalPurity> globalMetalPurityList) {
+        this.globalMetalPurityList = globalMetalPurityList;
+    }
+
+    public List<Discount> getGlobalDiscountList() {
+        return globalDiscountList;
+    }
+
+    public void setGlobalDiscountList(List<Discount> globalDiscountList) {
+        this.globalDiscountList = globalDiscountList;
     }
 }

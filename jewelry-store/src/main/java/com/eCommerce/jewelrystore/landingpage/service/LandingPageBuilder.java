@@ -27,6 +27,9 @@ public class LandingPageBuilder {
     final private CategoryClient categoryClient;
     final private SubCategoryClient subCategoryClient;
     final private CollectionClient collectionClient;
+    final private MaterialClient materialClient;
+    final private MetalPurityClient metalPurityClient;
+    final private DiscountClient discountClient;
     final private CarouselImageService carouselImageService;
     final private ComboService comboService;
     final private ObjectMapper objectMapper = new ObjectMapper();
@@ -36,12 +39,15 @@ public class LandingPageBuilder {
                               SectionClient sectionClient,
                               CategoryClient categoryClient,
                               SubCategoryClient subCategoryClient,
-                              CollectionClient collectionClient, CarouselImageService carouselImageService, ComboService comboService) {
+                              CollectionClient collectionClient, MaterialClient materialClient, MetalPurityClient metalPurityClient, DiscountClient discountClient, CarouselImageService carouselImageService, ComboService comboService) {
         this.productClient = productClient;
         this.sectionClient = sectionClient;
         this.categoryClient = categoryClient;
         this.subCategoryClient = subCategoryClient;
         this.collectionClient = collectionClient;
+        this.materialClient = materialClient;
+        this.metalPurityClient = metalPurityClient;
+        this.discountClient = discountClient;
         this.carouselImageService = carouselImageService;
         this.comboService = comboService;
         landingPage = new LandingPage();
@@ -53,6 +59,9 @@ public class LandingPageBuilder {
         landingPage.setGlobalCategoryList(categoryClient.getAllCategories());
         landingPage.setGlobalSubCategory(subCategoryClient.getAllSubCategories());
         landingPage.setGlobalCollectionList(collectionClient.getAllCollections());
+        landingPage.setGlobalMaterialList(materialClient.getAllMaterials());
+        landingPage.setGlobalMetalPurityList(metalPurityClient.getAllMetalPurities());
+        landingPage.setGlobalDiscountList(discountClient.getAllDiscounts());
         return this;
     }
 
@@ -188,7 +197,7 @@ public class LandingPageBuilder {
 
     //Max 3 Popular Categories
     public LandingPageBuilder setPopularCategories() {
-        landingPage.setPopularCategory(landingPage.getGlobalCategoryList()
+        landingPage.setPopularCategories(landingPage.getGlobalCategoryList()
                 .stream()
                 .filter(Category::isPopular)
                 .limit(2)

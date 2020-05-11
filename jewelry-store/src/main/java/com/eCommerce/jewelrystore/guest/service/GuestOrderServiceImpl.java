@@ -36,16 +36,23 @@ public class GuestOrderServiceImpl implements GuestOrderService {
     private HttpSession httpSession;
     private ProductClient productClient;
     private MailSender mailSender;
+    private final String guestEmailSubject;
+    private final String guestEmailText;
     Logger logger = LoggerFactory.getLogger(GuestOrderServiceImpl.class);
 
-    public GuestOrderServiceImpl(@Value("${cart.session.attribute.name}") String cartSessionAttributeName,
+    public GuestOrderServiceImpl(@Value("${cart.session.attribute.name}")
+                                         String cartSessionAttributeName,
                                  GuestOrderRepository guestOrderRepository,
                                  GuestOrderItemRepository guestOrderItemRepository,
                                  GuestService guestService,
                                  CartClient cartClient,
                                  HttpSession httpSession,
                                  ProductClient productClient,
-                                 MailSender mailSender) {
+                                 MailSender mailSender,
+                                 @Value("guest.email.subject.name")
+                                         String guestEmailSubject,
+                                 @Value("guest.email.text.desc")
+                                         String guestEmailText) {
         this.cartSessionAttributeName = cartSessionAttributeName;
         this.guestOrderRepository = guestOrderRepository;
         this.guestOrderItemRepository = guestOrderItemRepository;
@@ -54,6 +61,8 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         this.httpSession = httpSession;
         this.productClient = productClient;
         this.mailSender = mailSender;
+        this.guestEmailSubject = guestEmailSubject;
+        this.guestEmailText = guestEmailText;
     }
 
     @Transactional
@@ -85,7 +94,6 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             guestOrder.setGuestOrderItems(guestOrderItems);
 
 
-
         } catch (NullPointerException e) {
             logger.info("Empty Cart Session is accessed to generate order summary");
             throw new GuestException("Cart is empty, unable to generate order summary", e);
@@ -96,6 +104,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         return guestOrder;
     }
 
+    //This Method is called when guest places order and payment is successful
     //To do-- Multiple data base operations. Optimize
     @Transactional
     public GuestOrder saveGuestOrderAndItems(Guest guest) throws GuestException {
@@ -132,10 +141,8 @@ public class GuestOrderServiceImpl implements GuestOrderService {
 
             //Send Email
             //To do --  Check if task is completed, retry if not completed.
-            CompletableFuture.runAsync(()->{
-                sendOrderConfirmationEmail(savedGuestOrder.getGuestOrderNumber().toString());
-            });
-
+            CompletableFuture.runAsync(() -> sendOrderConfirmationEmail(savedGuest.getEmailAddress(),
+                    savedGuestOrder.getGuestOrderNumber().toString()));
 
 
             //Clear cart session
@@ -147,9 +154,11 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         return savedGuestOrder;
     }
 
+    // Get Subject and text from application properties
+    public void sendOrderConfirmationEmail(String guestEmailAddress, String orderNumber) {
 
-    public void sendOrderConfirmationEmail(String orderNumber){
-        mailSender.sendEmail("sai.kkt@gmail.com","Order-Placed",
-                "Order tracking Number"+orderNumber);
+
+        mailSender.sendEmail(guestEmailAddress, guestEmailSubject,
+                guestEmailText +"\n"+ orderNumber);
     }
 }
