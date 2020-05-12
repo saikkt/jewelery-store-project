@@ -4,6 +4,8 @@ import com.eCommerce.jewelrystore.accounts.models.User;
 import com.eCommerce.jewelrystore.customer.domain.Customer;
 import com.eCommerce.jewelrystore.customer.dto.CustomerModel;
 
+import java.util.Optional;
+
 class CustomerMapper {
 
     static Customer toEnity(CustomerModel customerModel){
@@ -46,4 +48,5 @@ class CustomerMapper {
         return customerModel;
 
     }
+
 }

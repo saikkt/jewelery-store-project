@@ -25,9 +25,9 @@ public class GuestOrderController {
        return ResponseEntity.ok(GuestOrderMapper.toModel(guestOrderService.orderSummary()));
     }
 
-    @PostMapping("/place-order")
-    public ResponseEntity<GuestOrderModel> placeOrder(@RequestBody @NotNull GuestModel guestModel) throws GuestException {
-        GuestOrder placedOrder = guestOrderService.saveGuestOrderAndItems(GuestMapper.toEntity(guestModel));
-        return new ResponseEntity<>(GuestOrderMapper.toModel(placedOrder),HttpStatus.CREATED);
-    }
+//    @PostMapping("/place-order")
+//    public ResponseEntity<GuestOrderModel> placeOrder(@RequestBody @NotNull GuestModel guestModel) throws GuestException {
+//        GuestOrder placedOrder = guestOrderService.saveGuestOrderAndItems(GuestMapper.toEntity(guestModel));
+//        return new ResponseEntity<>(GuestOrderMapper.toModel(placedOrder),HttpStatus.CREATED);
+//    }
 }

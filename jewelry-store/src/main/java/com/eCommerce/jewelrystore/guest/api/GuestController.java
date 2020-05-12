@@ -1,6 +1,7 @@
 package com.eCommerce.jewelrystore.guest.api;
 
 import com.eCommerce.jewelrystore.guest.domain.Guest;
+import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.guest.service.GuestService;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class GuestController {
     //Guest is already created in guest order. Delete this if no longer needed
     @Deprecated
     @PostMapping
-    public ResponseEntity<GuestModel> create(@RequestBody GuestModel guestModel){
+    public ResponseEntity<GuestModel> create(@RequestBody GuestModel guestModel) throws GuestException {
        Guest savedGuest =  guestService.save(GuestMapper.toEntity(guestModel));
        if(savedGuest == null){
            return ResponseEntity.unprocessableEntity().build();
