@@ -67,18 +67,22 @@ public class CustomerController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/login")
-    public Long checkUser(HttpSession httpSession) {
+    public ResponseEntity<CustomerModel> checkUser(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         cartLoaderUtility.loadCustomerToCart(httpSession);
-        return ((MyUserDetails) principal).getCustomerId();
+        long id = ((MyUserDetails) principal).getCustomerId();
+        CustomerModel customerModel = CustomerMapper.toModel(customerService.get(id).get(),userDetailsService.getUserByCustomerID(id).get());
+        return ResponseEntity.ok().body(customerModel);
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/logout")
     public Long logOutUser(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        cartLoaderUtility.loadCartToCustomer(httpSession);
-        cartClient.emptyCart(httpSession);
+        if(cartClient.getCartItems(httpSession).size()!=0) {
+            cartLoaderUtility.loadCartToCustomer(httpSession);
+            cartClient.emptyCart(httpSession);
+        }
         SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
         return ((MyUserDetails) principal).getCustomerId();
     }

@@ -26,9 +26,7 @@ public class CartLoaderUtility {
         MyUserDetails userDetails = (MyUserDetails) principal;
         List<Order> order = orderService.getByCustomerIdInCart(userDetails.getCustomerId());
         //exception handling pending
-        System.out.println(order.size());
         if(order.size()==0) {
-            System.out.println(order.size());
             cartClient.getCartItems(session).entrySet().stream().forEach(p -> {
                 orderService.addToCart(p.getKey(), p.getValue());
             });
