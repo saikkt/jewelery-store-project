@@ -14,6 +14,7 @@ CREATE TABLE `jCategories` (
   `WOMEN` bit(1) default '0',
   `KIDS` bit(1) default '0',
   `POPULAR` bit(1) default '0',
+  `ImagePath` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`CategoryID`)
 );
 
@@ -24,12 +25,13 @@ INSERT INTO jCategories(CategoryName,MEN,WOMEN,KIDS,POPULAR) values
 
 
 CREATE TABLE jSubCategories (
-    SubCategoryID INT(11) AUTO_INCREMENT  PRIMARY KEY,
-    CategoryID INT(11),
-    SubCategoryName VARCHAR(50) NOT NULL,
-    MEN bit(1) default '0',
-    WOMEN bit(1) default '0',
-    KIDS bit(1) default '0',
+    `SubCategoryID` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+    `CategoryID` INT(11),
+    `SubCategoryName` VARCHAR(50) NOT NULL,
+   `MEN` bit(1) default '0',
+    `WOMEN` bit(1) default '0',
+    `KIDS` bit(1) default '0',
+    `ImagePath` varchar(250) DEFAULT NULL,
     FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`)
   );
 
@@ -44,8 +46,9 @@ INSERT INTO jSubCategories (CategoryID,SubCategoryName,MEN,WOMEN,KIDS) VALUES
 (3, 'Braceletes',1,1,1);
 
 CREATE TABLE jSections (
-  SectionID INT(11) AUTO_INCREMENT  PRIMARY KEY,
-  SectionName VARCHAR(50) DEFAULT NOT NULL
+  `SectionID` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+  `SectionName` VARCHAR(50) DEFAULT NOT NULL,
+  `ImagePath` varchar(250) DEFAULT NULL
 );
 
 INSERT INTO jSections (SectionName) VALUES
@@ -54,8 +57,9 @@ INSERT INTO jSections (SectionName) VALUES
 ('WOMEN');
 
 CREATE TABLE jCollections (
-  CollectionID INT(11) AUTO_INCREMENT  PRIMARY KEY,
-  CollectionName VARCHAR(50) DEFAULT NOT NULL
+  `CollectionID` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+  `CollectionName` VARCHAR(50) DEFAULT NOT NULL,
+  `ImagePath` varchar(250) DEFAULT NULL
 );
 
 INSERT INTO jCollections (CollectionName) VALUES
@@ -65,6 +69,7 @@ INSERT INTO jCollections (CollectionName) VALUES
 CREATE TABLE `jMaterials` (
   `MaterialID` int(11) NOT NULL AUTO_INCREMENT,
   `MaterialType` varchar(50) NOT NULL,
+  `ImagePath` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`MaterialID`)
 );
 
@@ -105,6 +110,7 @@ CREATE TABLE `jProducts` (
   `MaterialID` int(11) NOT NULL,
   `MetalPurityID` int(11) NOT NULL,
   `DiscountID` int(11) DEFAULT 1 NOT NULL,
+  `SubCategoryID` INT(11) NOT NULL,
   `InStockQuantity` int(22) DEFAULT '0',
   `BestSeller` bit(1) DEFAULT '0',
   `TopProduct` bit(1) DEFAULT '0',
@@ -112,7 +118,6 @@ CREATE TABLE `jProducts` (
   `ImagePath` varchar(250) DEFAULT NULL,
   `version` int(11) DEFAULT '1',
   `CreateDate` datetime(6) DEFAULT NULL,
-  `Discount` decimal(19,2) DEFAULT NULL,
   `UpdateDate` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`ProductID`),
   FOREIGN KEY (`CategoryID`) REFERENCES `jCategories` (`CategoryID`),
@@ -120,7 +125,8 @@ CREATE TABLE `jProducts` (
   FOREIGN KEY (`CollectionID`) REFERENCES `jCollections` (`CollectionID`),
   FOREIGN KEY (`MaterialID`) REFERENCES `jMaterials` (`MaterialID`),
   FOREIGN KEY (`MetalPurityID`) REFERENCES `jMetalPurity` (`MetalPurityID`),
-  FOREIGN KEY (`DiscountID`) REFERENCES `jDiscount` (`DiscountID`)
+  FOREIGN KEY (`DiscountID`) REFERENCES `jDiscount` (`DiscountID`),
+  FOREIGN KEY (`SubCategoryID`) REFERENCES `jSubCategory` (`SubCategoryID`)
 );
 
 INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,InStockQuantity,Price,ImagePath,CreateDate,BestSeller,TopProduct) VALUES

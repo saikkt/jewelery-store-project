@@ -26,6 +26,9 @@ public class SubCategory {
     @Column(name = "KIDS")
     private boolean kidsSection;
 
+    @Column(name = "ImagePath")
+    private String imagePath;
+
     protected SubCategory() {
     }
 
@@ -75,5 +78,13 @@ public class SubCategory {
 
     public void setKidsSection(boolean kidsSection) {
         this.kidsSection = kidsSection;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

@@ -17,36 +17,51 @@ public class Product {
 
     @Column(name = "ProductName")
     private String productName;
+
     @Column(name = "CategoryID")
     private long categoryID;
+
     @Column(name = "SubCategoryID")
     private long subCategoryID;
+
     @Column(name = "SectionID")
     private long sectionID;
+
     @Column(name = "CollectionID")
     private long collectionID;
-    @Column(name = "InStockQuantity")
-    private int inStockQuantity;
-    @Column(name = "Price")
-    private BigDecimal price;
-    @Column(name = "BestSeller")
-    private boolean bestSeller;
-    @Column(name = "TopProduct")
-    private boolean topProduct;
-    @Column(name = "ImagePath")
-    private String imagePath;
+
     @Column(name = "MaterialID")
     private String materialID;
+
     @Column(name = "MetalPurityID")
     private String metalPurityID;
-    @Column(name = "Discount")
-    private BigDecimal discount;
+
+    @Column(name = "DiscountID")
+    private int discountID;
+
+    @Column(name = "InStockQuantity")
+    private int inStockQuantity;
+
+    @Column(name = "Price")
+    private BigDecimal price;
+
+    @Column(name = "BestSeller")
+    private boolean bestSeller;
+
+    @Column(name = "TopProduct")
+    private boolean topProduct;
+
+    @Column(name = "ImagePath")
+    private String imagePath;
+
     @Column(name = "CreateDate")
     @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm:ss")
     private Date createDate;
+
     @Column(name = "UpdateDate")
     @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm:ss")
     private Date updateDate;
+
     @Version
     private int version;
 
@@ -175,12 +190,12 @@ public class Product {
         this.collectionID = collectionID;
     }
 
-    public BigDecimal getDiscount() {
-        return discount;
+    public int getDiscountID() {
+        return discountID;
     }
 
-    public void setDiscount(BigDecimal discount) {
-        this.discount = discount;
+    public void setDiscountID(int discountID) {
+        this.discountID = discountID;
     }
 
     public Date getCreateDate() {
@@ -214,4 +229,5 @@ public class Product {
     public void setMetalPurityID(String metalPurityID) {
         this.metalPurityID = metalPurityID;
     }
+
 }
