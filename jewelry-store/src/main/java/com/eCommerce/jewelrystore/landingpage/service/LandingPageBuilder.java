@@ -146,12 +146,9 @@ public class LandingPageBuilder {
         this.errorHandler();
         landingPage.setNewArrivals(landingPage.getGlobalProductList()
                 .stream()
-                .sorted(new Comparator<Product>() {
-                    @Override
-                    public int compare(Product o1, Product o2) {
-                        if (o1.getCreateDate() == null || o2.getCreateDate() == null) return 0;
-                        return o2.getCreateDate().compareTo(o1.getCreateDate());
-                    }
+                .sorted((o1, o2) -> {
+                    if (o1.getCreateDate() == null || o2.getCreateDate() == null) return 0;
+                    return o2.getCreateDate().compareTo(o1.getCreateDate());
                 }).limit(3)
                 .collect(Collectors.toList())
         );

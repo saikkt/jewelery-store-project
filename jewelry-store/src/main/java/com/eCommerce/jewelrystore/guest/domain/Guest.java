@@ -3,48 +3,47 @@ package com.eCommerce.jewelrystore.guest.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table (name = "jGuest")
+@Table(name = "jGuest")
 public class Guest {
 
-    @Column (name = "GuestID", length = 11)
+    @Column(name = "GuestID", length = 11)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long guestID;
 
     @NotNull
-    @Column (name = "FirstName", length = 120)
+    @Column(name = "FirstName", length = 120)
     private String firstName;
 
     @NotNull
-    @Column (name = "LastName", length = 120)
+    @Column(name = "LastName", length = 120)
     private String lastName;
 
     @Email
     @NotNull
-    @Column (name = "EmailAddress", length = 255)
+    @Column(name = "EmailAddress", length = 255)
     private String emailAddress;
 
     @NotNull
-    @Column (name = "StreetAddress", length = 255)
+    @Column(name = "StreetAddress", length = 255)
     private String streetAddress;
 
-    @Column (name = "ApartmentNumber", length = 10)
+    @Column(name = "ApartmentNumber", length = 10)
     private String apartmentNumber;
 
     @NotNull
-    @Column (name = "City", length = 25)
+    @Column(name = "City", length = 25)
     private String city;
 
     @NotNull
-    @Column (name = "State", length = 30)
+    @Column(name = "State", length = 30)
     private String state;
 
     @NotNull
-    @Column (name = "ZipCode", length = 5)
+    @Column(name = "ZipCode", length = 5)
     private long zipCode;
 
     @Version
@@ -53,7 +52,8 @@ public class Guest {
     @Column(name = "ObjectID")
     private UUID objectID;
 
-    protected Guest(){}
+    protected Guest() {
+    }
 
     public Guest(@NotNull String firstName,
                  @NotNull String lastName,

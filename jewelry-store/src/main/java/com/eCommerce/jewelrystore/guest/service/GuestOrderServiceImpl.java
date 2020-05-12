@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
 @Component
@@ -162,9 +161,8 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             savedGuestOrder.setGuestOrderItems(savedGuestOrderItems);
 
             //Send Email
-            //To do --  Check if task is completed, retry if not completed.
-            CompletableFuture.runAsync(() -> sendOrderConfirmationEmail(savedGuest.getEmailAddress(),
-                    savedGuestOrder.getGuestOrderNumber().toString()));
+            sendOrderConfirmationEmail(savedGuest.getEmailAddress(),
+                    savedGuestOrder.getGuestOrderNumber().toString());
 
             //save transaction details
             saveTransactionDetails(savedGuestOrder.getGuestOrderID(), charge);
@@ -199,8 +197,9 @@ public class GuestOrderServiceImpl implements GuestOrderService {
 
     /**
      * This method saves transaction details
+     *
      * @param guestOrderID Auto generated value
-     * @param charge receive from payment service
+     * @param charge       receive from payment service
      * @throws TransactionException is thrown when saving transaction details is failed
      */
     public void saveTransactionDetails(long guestOrderID, Charge charge) throws TransactionException {
