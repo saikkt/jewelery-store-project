@@ -7,6 +7,7 @@ package com.eCommerce.jewelrystore.customer.api;
 
 import com.eCommerce.jewelrystore.accounts.MyUserDetailsService;
 import com.eCommerce.jewelrystore.accounts.UserRepository;
+import com.eCommerce.jewelrystore.accounts.exceptions.UserForbiddenException;
 import com.eCommerce.jewelrystore.accounts.exceptions.UserInActiveException;
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.accounts.models.User;
@@ -36,6 +37,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -130,30 +132,94 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getAll());
     }
 
-    @PutMapping("/updateCustomer")
-    public ResponseEntity<CustomerModel> delete(@RequestBody CustomerModel customerModel){
-        Optional<Customer> existingCustomer = customerService.get(customerModel.getCustomerID());
-        Optional<User> existingUser = userDetailsService.getUserByCustomerID(customerModel.getCustomerID());
-        if(!(existingCustomer.isPresent())){
-            return ResponseEntity.notFound().build();
-        }
-        if(!(existingUser.isPresent())){
-            return ResponseEntity.notFound().build();
-        }
-        if(!existingUser.get().isActive()){
-            throw new UserInActiveException("User not yet active. Please activate your account before editing");
-        }
-        Customer customerToBeSaved = CustomerMapper.merge(customerModel,existingCustomer.get());
-        Customer updatedCustomer = customerService.save(customerToBeSaved);
-        User updatedUser = userDetailsService.updateUser(existingUser.get(),customerModel);
-        CustomerModel savedCustomerModel = CustomerMapper.toModel(updatedCustomer,updatedUser);
-        return ResponseEntity.ok().body(savedCustomerModel);
-    }
+//  @PutMapping("/updateCustomer")
+//  public ResponseEntity<CustomerModel> delete(@RequestBody CustomerModel customerModel){
+//      Optional<Customer> existingCustomer = customerService.get(customerModel.getCustomerID());
+//      Optional<User> existingUser = userDetailsService.getUserByCustomerID(customerModel.getCustomerID());
+//      if(!(existingCustomer.isPresent())){
+//          return ResponseEntity.notFound().build();
+//      }
+//      if(!(existingUser.isPresent())){
+//          return ResponseEntity.notFound().build();
+//      }
+//      if(!existingUser.get().isActive()){
+//          throw new UserInActiveException("User not yet active. Please activate your account before editing");
+//      }
+//      Customer customerToBeSaved = CustomerMapper.merge(customerModel,existingCustomer.get());
+//      Customer updatedCustomer = customerService.save(customerToBeSaved);
+//      User updatedUser = userDetailsService.updateUser(existingUser.get(),customerModel);
+//      CustomerModel savedCustomerModel = CustomerMapper.toModel(updatedCustomer,updatedUser);
+//      return ResponseEntity.ok().body(savedCustomerModel);
+//  }
 
-//    @DeleteMapping("/{emailAddress}")
-//    public ResponseEntity delete(@PathVariable(name = "emailAddress") String emailAddress){
-//        Customer customer = customerService.findByEmailAddress(emailAddress);
-//        customerService.delete(customer.getCustomerID());
-//        return ResponseEntity.noContent().build();
-//    }
+  @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+  @PutMapping("/updateCustomer")
+  public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
+  	
+  	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+  	long customerId = ((MyUserDetails) principal).getCustomerId();
+  	
+  	Customer savedCustomer = null;
+  	
+  	if(customer.getCustomerID() == customerId) {
+  		savedCustomer = customerService.save(customer);
+  	} else {
+  		throw new UserForbiddenException("You're not authorized to perform update on other user");
+  	}
+  	
+  	if(savedCustomer ==  null)
+  		return ResponseEntity.status(HttpStatus.CONFLICT).body(customer);
+  	
+  	return ResponseEntity.ok().body(savedCustomer);
+  }
+  
+
+  @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+  @PutMapping("/updateUserPersonal")
+  public ResponseEntity<Map<String, Object>> updateCustomer(@RequestBody Map<String, Object> model){
+  	
+  	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+  	long customerId = ((MyUserDetails) principal).getCustomerId();
+  	
+  	long modelCustomerID =  (int) model.get("customerID");
+  	String modelOldPassword = (String) model.get("oldPassword");
+  	String modelnewPassword = (String) model.get("newPassword");
+  	
+  	User existingUser = null;
+  	
+  	if(modelCustomerID == customerId) {
+  		Optional<User> existingUserOptional = userDetailsService.getUserByCustomerID(modelCustomerID);
+  		
+  		if(existingUserOptional.isPresent()) {
+  			existingUser = existingUserOptional.get();
+  			
+  			if(existingUser.getPassword().equals(modelOldPassword)) {
+  				existingUser.setPassword(modelnewPassword);
+  				existingUser = userDetailsService.save(existingUser);
+  				
+  					if(existingUser != null)
+  						model.put("status", "Password updated !!!");
+  					else
+  						model.put("status", "Update failed !!!");
+  			} else {
+  				model.put("status", "Incorrect previous password !!!");
+  			}
+  		} else {
+  			return ResponseEntity.notFound().build();
+  		}
+  		
+  		
+  	} else {
+  		throw new UserForbiddenException("You're not authorized to perform update on other user");
+  	}
+
+		return ResponseEntity.ok().body(model);
+  }
+  
+//  @DeleteMapping("/{emailAddress}")
+//  public ResponseEntity delete(@PathVariable(name = "emailAddress") String emailAddress){
+//      Customer customer = customerService.findByEmailAddress(emailAddress);
+//      customerService.delete(customer.getCustomerID());
+//      return ResponseEntity.noContent().build();
+//  }
 }

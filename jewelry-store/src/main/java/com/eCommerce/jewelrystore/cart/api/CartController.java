@@ -29,29 +29,36 @@ public class CartController {
     public ResponseEntity<List<CartItem>> addToCart(@PathVariable(name = "productID") long productID,
                                                     @PathVariable(name = "quantity") int quantity,
                                                     HttpSession session) throws Exception {
-        return ResponseEntity.ok(cartService.addItemToCart(productID, quantity, session));
+    	cartService.addItemToCart(productID, quantity, session);
+        return ResponseEntity.ok(cartService.getCart(session));
     }
 
     @DeleteMapping("/delete-cart-item/{productID}")
     public ResponseEntity<List<CartItem>> deleteCartItem(@PathVariable(name = "productID") long productID,
                                                          HttpSession session) throws Exception {
         cartService.removeCartItem(productID, session);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok((cartService.getCart(session)));
     }
 
-    @DeleteMapping("/decrease-cart-item/{productID}/{quantity}")
-    public ResponseEntity<List<CartItem>> decreaseCartItem(@PathVariable(name = "productID") long productID,
+    @DeleteMapping("/update-cart-item/{productID}/{quantity}")
+    public ResponseEntity<List<CartItem>> updateCartItem(@PathVariable(name = "productID") long productID,
                                                            @PathVariable(name = "quantity") int quantity,
                                                          HttpSession session) throws Exception {
-        cartService.decreaseCartItem(productID, session,quantity);
-        return ResponseEntity.ok().build();
+        cartService.updateCartItem(productID, session,quantity);
+        return ResponseEntity.ok((cartService.getCart(session)));
+    }
+
+    @PutMapping("/updateCart")
+    public ResponseEntity<List<CartItem>> updateCart(@RequestBody List<CartItem> cartItems,
+                                                         HttpSession session) throws Exception {
+        cartService.updateCart(cartItems,session);
+        return ResponseEntity.ok((cartService.getCart(session)));
     }
 
     @DeleteMapping("/empty-cart")
     public ResponseEntity<List<CartItem>> emptyCart(HttpSession session) {
         cartService.emptyCart(session);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok((cartService.getCart(session)));
     }
-
 
 }
