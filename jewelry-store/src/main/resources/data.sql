@@ -228,6 +228,7 @@ CREATE TABLE jShippingDetails(
   `ShipRegion` varchar(15) DEFAULT NULL,
   `ShipPostalCode` varchar(10) DEFAULT NULL,
   `ShipCountry` varchar(15) DEFAULT NULL,
+  `isGuest` bit(1) DEFAULT '0',
   `Version` int(11) NOT NULL DEFAULT '1',
   `ObjectID` binary(16) DEFAULT NULL,
   PRIMARY KEY (`ShippingID`),

@@ -2,6 +2,8 @@ package com.eCommerce.jewelrystore.guest.service;
 
 import com.eCommerce.jewelrystore.adapter.CartClient;
 import com.eCommerce.jewelrystore.adapter.ProductClient;
+import com.eCommerce.jewelrystore.adapter.ShippingDetailsClient;
+import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.email.util.MailSender;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
@@ -10,6 +12,9 @@ import com.eCommerce.jewelrystore.guest.domain.OrderStatus;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderItemRepository;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderRepository;
+import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
+import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
+import com.stripe.model.Charge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,17 +30,20 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+@SuppressWarnings("unused")
 @Component
 public class GuestOrderServiceImpl implements GuestOrderService {
 
-    private String cartSessionAttributeName;
-    private GuestOrderRepository guestOrderRepository;
-    private GuestOrderItemRepository guestOrderItemRepository;
-    private GuestService guestService;
-    private CartClient cartClient;
-    private HttpSession httpSession;
-    private ProductClient productClient;
-    private MailSender mailSender;
+    private final String cartSessionAttributeName;
+    private final GuestOrderRepository guestOrderRepository;
+    private final GuestOrderItemRepository guestOrderItemRepository;
+    private final GuestService guestService;
+    private final CartClient cartClient;
+    private final ShippingDetailsClient shippingDetailsClient;
+    private final TransactionClient transactionClient;
+    private final HttpSession httpSession;
+    private final ProductClient productClient;
+    private final MailSender mailSender;
     private final String guestEmailSubject;
     private final String guestEmailText;
     Logger logger = LoggerFactory.getLogger(GuestOrderServiceImpl.class);
@@ -46,7 +54,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
                                  GuestOrderItemRepository guestOrderItemRepository,
                                  GuestService guestService,
                                  CartClient cartClient,
-                                 HttpSession httpSession,
+                                 ShippingDetailsClient shippingDetailsClient, TransactionClient transactionClient, HttpSession httpSession,
                                  ProductClient productClient,
                                  MailSender mailSender,
                                  @Value("guest.email.subject.name")
@@ -58,6 +66,8 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         this.guestOrderItemRepository = guestOrderItemRepository;
         this.guestService = guestService;
         this.cartClient = cartClient;
+        this.shippingDetailsClient = shippingDetailsClient;
+        this.transactionClient = transactionClient;
         this.httpSession = httpSession;
         this.productClient = productClient;
         this.mailSender = mailSender;
@@ -65,6 +75,12 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         this.guestEmailText = guestEmailText;
     }
 
+    /**
+     * This method generates guest order summary
+     *
+     * @return GuestOrder with only required fields for order summary
+     * @throws GuestException is thrown when empty cart is accessed to generate order summary
+     */
     @Transactional
     @Override
     public GuestOrder orderSummary() throws GuestException {
@@ -104,10 +120,16 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         return guestOrder;
     }
 
-    //This Method is called when guest places order and payment is successful
-    //To do-- Multiple data base operations. Optimize
+    /**
+     * This method is called upon successful payment by guest
+     *
+     * @param guest model contains details of guest
+     * @return GuestOrder
+     * @throws GuestException is thrown when any event fails
+     */
     @Transactional
-    public GuestOrder saveGuestOrderAndItems(Guest guest) throws GuestException {
+    @Override
+    public GuestOrder saveGuestOrderAndItems(Guest guest, Charge charge) throws GuestException {
         Guest savedGuest;
         GuestOrder savedGuestOrder;
         List<GuestOrderItem> guestOrderItems;
@@ -120,7 +142,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             // Set all the fields to guest order
             GuestOrder guestOrder = orderSummary();
             guestOrderItems = guestOrder.getGuestOrderItems();
-            if (savedGuest != null) guestOrder.setGuestID(savedGuest.getGuestID());
+            guestOrder.setGuestID(savedGuest.getGuestID());
             guestOrder.setGuestOrderNumber(UUID.randomUUID());
             guestOrder.setOrderDate(LocalDate.now());
             guestOrder.setOrderStatus(OrderStatus.PLACED);
@@ -144,9 +166,18 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             CompletableFuture.runAsync(() -> sendOrderConfirmationEmail(savedGuest.getEmailAddress(),
                     savedGuestOrder.getGuestOrderNumber().toString()));
 
+            //save transaction details
+            saveTransactionDetails(savedGuestOrder.getGuestOrderID(), charge);
+
+            //save shipping details
+            saveShippingDetails(savedGuestOrder.getGuestOrderID());
+
 
             //Clear cart session
             httpSession.removeAttribute(cartSessionAttributeName);
+        } catch (NullPointerException e) {
+            logger.warn("Unable to place guest order");
+            throw new GuestException("Null pointer accessed, unable to place guest order", e);
         } catch (Exception e) {
             logger.warn("Unable to place guest order");
             throw new GuestException("Unable to place guest order", e);
@@ -154,11 +185,46 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         return savedGuestOrder;
     }
 
-    // Get Subject and text from application properties
+    /**
+     * This method sends order placed confirmation email to guest.
+     *
+     * @param guestEmailAddress Email Address submitted by guest
+     * @param orderNumber       Auto generated UUID to track guest orders
+     */
     public void sendOrderConfirmationEmail(String guestEmailAddress, String orderNumber) {
+        mailSender.sendEmail(guestEmailAddress,
+                guestEmailSubject,
+                guestEmailText + "\n" + orderNumber);
+    }
+
+    /**
+     * This method saves transaction details
+     * @param guestOrderID Auto generated value
+     * @param charge receive from payment service
+     * @throws TransactionException is thrown when saving transaction details is failed
+     */
+    public void saveTransactionDetails(long guestOrderID, Charge charge) throws TransactionException {
+        transactionClient.saveTransaction(transactionClient.getTransactionBuilder()
+                .setGuestOrderID(guestOrderID)
+                .setChargeID(charge.getId())
+                .setChargeAmount(new BigDecimal(charge.getAmount()))
+                .build());
+    }
 
 
-        mailSender.sendEmail(guestEmailAddress, guestEmailSubject,
-                guestEmailText +"\n"+ orderNumber);
+    /**
+     * This method saves shipping details and turns the guest flag to on.
+     *
+     * @param guestOrderID Auto generated value
+     * @throws GuestException is thrown when saving shipping details is failed
+     */
+    public void saveShippingDetails(long guestOrderID) throws GuestException {
+        ShippingDetails shippingDetails = new ShippingDetails(guestOrderID);
+        shippingDetails.setGuest(true);
+        try {
+            shippingDetailsClient.postShipping(shippingDetails);
+        } catch (Exception e) {
+            throw new GuestException("Unable to save shipping details for guest", e);
+        }
     }
 }

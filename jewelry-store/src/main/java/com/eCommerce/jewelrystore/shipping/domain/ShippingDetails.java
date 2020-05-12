@@ -35,6 +35,9 @@ public class ShippingDetails {
     @Column(name="ShipCountry")
     private String ShipCountry;
 
+    @Column(name = "isGuest")
+    private boolean guest;
+
     @Version
     public int version;
 
@@ -115,6 +118,14 @@ public class ShippingDetails {
             throw new IllegalArgumentException("shipCountry must be between 1 and 50 characters.");
         }
         this.ShipCountry = cleanName;
+    }
+
+    public boolean isGuest() {
+        return guest;
+    }
+
+    public void setGuest(boolean guest) {
+        this.guest = guest;
     }
 
     public int getVersion() {

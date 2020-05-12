@@ -8,13 +8,6 @@ import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
-import com.eCommerce.jewelrystore.guest.domain.Guest;
-import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
-import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
-import com.eCommerce.jewelrystore.guest.domain.Guest;
-import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
-import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
-import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
@@ -34,7 +27,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
@@ -110,13 +106,9 @@ public class PaymentsController {
             //adding into shipping
             ShippingDetails shippingDetails = new ShippingDetails(customerOrders.getOrderID());
             shippingDetailsService.postShipping(shippingDetails);
-
             //adding into payment
             //logic left
-
             //send email for order confirmation
-
-
             return ResponseEntity.ok().build();
         }
 
@@ -140,18 +132,11 @@ public class PaymentsController {
 
                 //To do-- Try with Object Mapper...Use GuestModel instead of Guest
                 Guest guest = (Guest) model.getAttribute("guest");
-                GuestOrder guestOrder = guestOrderClient.placeGuestOrder(guest);
+                GuestOrder guestOrder = guestOrderClient.placeGuestOrder(guest, charge);
 
-                //Save Transaction
-                transactionClient.saveTransaction(
-                        transactionClient.getTransactionBuilder()
-                                .setGuestOrderID(guestOrder.getGuestOrderID())
-                                .setChargeID(charge.getId())
-                                .setChargeAmount(new BigDecimal(charge.getAmount()))
-                                .build()
-                );
-
-                //Order verification email is send in guest order service
+                /*Shipping Details,
+                 Order Confirmation Email,
+                  Transaction details are handled in guest order service*/
 
                 return ResponseEntity.ok().build();
             }

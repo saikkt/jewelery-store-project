@@ -22,6 +22,7 @@ public class GuestController {
         this.httpSession = httpSession;
     }
 
+    //Admin Access Only
     @GetMapping("/{guestID}")
     public ResponseEntity<GuestModel> getByGuestID(@PathVariable(name = "guestID") long guestID){
         Optional<Guest> optionalGuest = guestService.findByGuestID(guestID);
@@ -29,7 +30,9 @@ public class GuestController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    //Admin or restricted Access
     //Guest is already created in guest order. Delete this if no longer needed
+    @Deprecated
     @PostMapping
     public ResponseEntity<GuestModel> create(@RequestBody GuestModel guestModel){
        Guest savedGuest =  guestService.save(GuestMapper.toEntity(guestModel));
