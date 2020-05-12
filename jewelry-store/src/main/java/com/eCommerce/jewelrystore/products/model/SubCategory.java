@@ -3,7 +3,7 @@ package com.eCommerce.jewelrystore.products.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "jSubCategories")
+@Table(name = "jSubCategory")
 public class SubCategory {
 
     @Id
