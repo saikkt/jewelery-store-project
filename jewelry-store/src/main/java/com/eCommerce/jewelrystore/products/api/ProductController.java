@@ -133,6 +133,11 @@ public class ProductController {
         return  ResponseEntity.ok().body(productService.getLatestThreeProducts());
     }
 
+    @GetMapping("/searchProductByKeyWord/{keyword}")
+    public ResponseEntity<List<Product>> searchProductByKeyWord(@PathVariable String keyword){
+       return ResponseEntity.ok().body(productService.searchProductByKeyWord(keyword));
+    }
+
     @PostMapping("/getAllProductsPages/{a}/{b}")
     public ResponseEntity<ProductGlobalModel> getAllParoductsPagenated(@RequestBody ProductGlobalModel productGlobalModel,@PathVariable int a, @PathVariable int b){
         return ResponseEntity.ok().body(ProductGlobalMapper.toModel(new ProductGlobalModel(),productService.getAllProductsPageable(productGlobalModel,a,b)));

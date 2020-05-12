@@ -294,6 +294,7 @@ CREATE TABLE `jGuest` (
   `City` varchar(25) NOT NULL,
   `State` varchar(30) NOT NULL,
   `ZipCode` int(10) NOT NULL,
+  `Country` varchar(30) NOT NULL,
   `Version` int(11) NOT NULL DEFAULT '1',
   `ObjectID` binary(16) DEFAULT NULL,
   PRIMARY KEY (`GuestID`)

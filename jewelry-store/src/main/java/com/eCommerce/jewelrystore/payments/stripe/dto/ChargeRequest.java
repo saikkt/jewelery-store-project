@@ -1,5 +1,8 @@
 package com.eCommerce.jewelrystore.payments.stripe.dto;
 
+import com.eCommerce.jewelrystore.guest.domain.Guest;
+import com.eCommerce.jewelrystore.guest.model.GuestModel;
+
 public class ChargeRequest {
 
     public enum Currency {
@@ -11,6 +14,7 @@ public class ChargeRequest {
     private String stripeEmail;
     private String stripeToken;
     private String addressID;
+    private GuestModel guest;
 
     public String getDescription() {
         return description;
@@ -59,6 +63,12 @@ public class ChargeRequest {
 	public void setAddressID(String addressID) {
 		this.addressID = addressID;
 	}
-    
-    
+
+    public GuestModel getGuestModel() {
+        return guest;
+    }
+
+    public void setGuestModel(GuestModel guest) {
+        this.guest = guest;
+    }
 }
