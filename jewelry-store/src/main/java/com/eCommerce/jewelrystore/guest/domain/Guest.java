@@ -43,6 +43,11 @@ public class Guest {
     @Column (name = "State", length = 30)
     private String state;
 
+
+    @NotNull
+    @Column (name = "Country", length = 30)
+    private String country;
+
     @NotNull
     @Column (name = "ZipCode", length = 5)
     private long zipCode;
@@ -144,6 +149,14 @@ public class Guest {
         this.zipCode = zipCode;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public long getVersion() {
         return version;
     }
@@ -172,4 +185,6 @@ public class Guest {
     public int hashCode() {
         return objectID.hashCode();
     }
+
+
 }

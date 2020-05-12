@@ -25,4 +25,7 @@ public interface ProductsRepository extends JpaRepository<Product,Integer>, JpaS
     List<Product> findProductsByLatestDate();
 
     Page<Product> findAll(Pageable pageable);
+
+    @Query(value = "select * from jProducts p where p.ProductName like '%?1%' order by p.CreateDate DESC",nativeQuery = true)
+    List<Product> findByProductKeyWord(String keyword);
 }
