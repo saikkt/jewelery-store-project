@@ -15,7 +15,7 @@ public class CustomerModel {
     @JsonProperty
     private String customerFirstName;
     @JsonProperty
-    private String CustomerLastName;
+    private String customerLastName;
     @JsonProperty
     private String phone;
     @JsonProperty
@@ -47,11 +47,11 @@ public class CustomerModel {
     }
 
     public String getCustomerLastName() {
-        return CustomerLastName;
+        return customerLastName;
     }
 
     public void setCustomerLastName(String customerLastName) {
-        CustomerLastName = customerLastName;
+        this.customerLastName = customerLastName;
     }
 
     public String getPhone() {

@@ -71,7 +71,9 @@ public class CustomerController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         cartLoaderUtility.loadCustomerToCart(httpSession);
         long id = ((MyUserDetails) principal).getCustomerId();
-        CustomerModel customerModel = CustomerMapper.toModel(customerService.get(id).get(),userDetailsService.getUserByCustomerID(id).get());
+        User user = userDetailsService.getUserByCustomerID(id).get();
+        user.setPassword("");
+        CustomerModel customerModel = CustomerMapper.toModel(customerService.get(id).get(), user);
         return ResponseEntity.ok().body(customerModel);
     }
 
