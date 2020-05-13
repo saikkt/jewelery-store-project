@@ -1,7 +1,7 @@
-package com.eCommerce.jewelrystore.images.homepageslidingimages.api;
+package com.eCommerce.jewelrystore.landingpage.homepageslidingimages.api;
 
-import com.eCommerce.jewelrystore.images.homepageslidingimages.domain.HomePageSlidingImage;
-import com.eCommerce.jewelrystore.images.homepageslidingimages.service.HomePageSlidingService;
+import com.eCommerce.jewelrystore.landingpage.homepageslidingimages.domain.HomePageSlidingImage;
+import com.eCommerce.jewelrystore.landingpage.homepageslidingimages.service.HomePageSlidingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

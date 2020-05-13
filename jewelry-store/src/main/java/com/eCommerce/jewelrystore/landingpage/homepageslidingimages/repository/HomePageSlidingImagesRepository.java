@@ -1,6 +1,6 @@
-package com.eCommerce.jewelrystore.images.homepageslidingimages.repository;
+package com.eCommerce.jewelrystore.landingpage.homepageslidingimages.repository;
 
-import com.eCommerce.jewelrystore.images.homepageslidingimages.domain.HomePageSlidingImage;
+import com.eCommerce.jewelrystore.landingpage.homepageslidingimages.domain.HomePageSlidingImage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

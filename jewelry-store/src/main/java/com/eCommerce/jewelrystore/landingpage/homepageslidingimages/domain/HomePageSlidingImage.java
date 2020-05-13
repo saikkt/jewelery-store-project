@@ -1,6 +1,6 @@
-package com.eCommerce.jewelrystore.images.homepageslidingimages.domain;
+package com.eCommerce.jewelrystore.landingpage.homepageslidingimages.domain;
 
-import com.eCommerce.jewelrystore.images.homepageslidingimages.utility.ImageOrientation;
+import com.eCommerce.jewelrystore.landingpage.homepageslidingimages.utility.ImageOrientation;
 
 import javax.persistence.*;
 

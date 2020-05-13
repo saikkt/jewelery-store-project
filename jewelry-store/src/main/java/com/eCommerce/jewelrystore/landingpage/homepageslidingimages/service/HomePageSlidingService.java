@@ -1,7 +1,7 @@
-package com.eCommerce.jewelrystore.images.homepageslidingimages.service;
+package com.eCommerce.jewelrystore.landingpage.homepageslidingimages.service;
 
-import com.eCommerce.jewelrystore.images.homepageslidingimages.domain.HomePageSlidingImage;
-import com.eCommerce.jewelrystore.images.homepageslidingimages.repository.HomePageSlidingImagesRepository;
+import com.eCommerce.jewelrystore.landingpage.homepageslidingimages.domain.HomePageSlidingImage;
+import com.eCommerce.jewelrystore.landingpage.homepageslidingimages.repository.HomePageSlidingImagesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
