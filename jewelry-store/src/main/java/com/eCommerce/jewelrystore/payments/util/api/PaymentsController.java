@@ -29,6 +29,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -70,7 +71,7 @@ public class PaymentsController {
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException {
+    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
@@ -124,14 +125,14 @@ public class PaymentsController {
                 logger.info("payment failed for guest", ex);
             }
             //To do -- change charge status to enum
-            if (charge.getStatus() == "succeeded") {
+            if (charge.getStatus().equalsIgnoreCase("succeeded")) {
                 model.addAttribute("id", charge.getId());
                 model.addAttribute("status", charge.getStatus());
                 model.addAttribute("chargeId", charge.getId());
                 model.addAttribute("balance_transaction", charge.getBalanceTransaction());
 
                 //To do-- Try with Object Mapper...Use GuestModel instead of Guest
-                Guest guest = (Guest) model.getAttribute("guest");
+                Guest guest = chargeRequest.getGuest();
                 GuestOrder guestOrder = guestOrderClient.placeGuestOrder(guest, charge);
 
                 /*Shipping Details,

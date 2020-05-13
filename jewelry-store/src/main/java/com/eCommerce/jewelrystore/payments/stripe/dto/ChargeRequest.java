@@ -14,7 +14,7 @@ public class ChargeRequest {
     private String stripeEmail;
     private String stripeToken;
     private String addressID;
-    private GuestModel guest;
+    private Guest guest; // Change to guest model when mapper is ready
 
     public String getDescription() {
         return description;
@@ -64,11 +64,11 @@ public class ChargeRequest {
 		this.addressID = addressID;
 	}
 
-    public GuestModel getGuestModel() {
+    public Guest getGuest() {
         return guest;
     }
 
-    public void setGuestModel(GuestModel guest) {
+    public void setGuest(Guest guest) {
         this.guest = guest;
     }
 }
