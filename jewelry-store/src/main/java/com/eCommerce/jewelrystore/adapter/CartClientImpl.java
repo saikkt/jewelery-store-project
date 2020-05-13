@@ -26,10 +26,10 @@ public class CartClientImpl implements CartClient {
         //To do -- handle exception if cart is empty
         List<CartItem> cartItems = cartService.getCart(session);
         HashMap<Long, Integer> cartItemsHashMap = new HashMap<>();
-
-        cartItems.forEach(
-                cartItem ->
-                        cartItemsHashMap.put(cartItem.getProductID(), cartItem.getQuantity()));
+        if(cartItems != null)
+        	cartItems.forEach(
+        			cartItem ->
+                        	cartItemsHashMap.put(cartItem.getProductID(), cartItem.getQuantity()));
         return cartItemsHashMap;
     }
 
