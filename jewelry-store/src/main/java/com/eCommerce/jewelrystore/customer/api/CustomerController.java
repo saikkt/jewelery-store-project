@@ -76,6 +76,15 @@ public class CustomerController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @GetMapping("/login/reload")
+    public ResponseEntity<CustomerModel> reloadBrowser(HttpSession httpSession) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long id = ((MyUserDetails) principal).getCustomerId();
+        CustomerModel customerModel = CustomerMapper.toModel(customerService.get(id).get(),userDetailsService.getUserByCustomerID(id).get());
+        return ResponseEntity.ok().body(customerModel);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/logout")
     public Long logOutUser(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
