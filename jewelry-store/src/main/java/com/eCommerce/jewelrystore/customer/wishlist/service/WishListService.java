@@ -18,4 +18,12 @@ public class WishListService {
     public WishList getByCustomerId(long customerId) {
         return wishListRepository.findByCustomerID(customerId);
     }
+
+    public WishList save(WishList wishListMapped) {
+       return wishListRepository.save(wishListMapped);
+    }
+
+    public WishList update(WishList wishListMapped) {
+        return save(wishListMapped);
+    }
 }

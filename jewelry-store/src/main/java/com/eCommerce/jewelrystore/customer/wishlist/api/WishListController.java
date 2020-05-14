@@ -9,18 +9,14 @@ import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.service.OrderService;
 import com.eCommerce.jewelrystore.products.model.Product;
 import com.eCommerce.jewelrystore.products.service.ProductService;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,9 +33,9 @@ public class WishListController {
     @Autowired
     private ProductService productService;
 
+
     @GetMapping("/getByLoggedUser")
     public ResponseEntity<WishListModel> getWishList(){
-
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         MyUserDetails userDetails = (MyUserDetails) principal;
         long customerId = userDetails.getCustomerId();
@@ -49,7 +45,7 @@ public class WishListController {
             List<String> products = Arrays.asList(wishList.getProductsList().split("~"));
             List<Product> wishListProducts = new ArrayList<>();
             products.stream().forEach(p->{
-               wishListProducts.add(productService.getByProductID(Integer.parseInt(p)));
+                wishListProducts.add(productService.getByProductID(Integer.parseInt(p)));
             });
             wishListModel.setWishListProducts(wishListProducts);
         }
@@ -64,6 +60,27 @@ public class WishListController {
         return ResponseEntity.ok().body(wishListModel);
     }
 
-//    @PostMapping("/postWishList")
-//    public WishListModel postWishList()
+    @PostMapping("/postWishList")
+    public ResponseEntity<WishListModel> postWishList(@RequestBody WishListModel wishListModel){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetails userDetails = (MyUserDetails) principal;
+        long customerId = userDetails.getCustomerId();
+        wishListModel.setCustomerID(customerId);
+            WishList wishListMapped = WishListMapper.toNewDomain(wishListModel);
+            WishList wishListSaved = wishListService.save(wishListMapped);
+            return ResponseEntity.ok().body(WishListMapper.toModel(wishListSaved));
+
+    }
+
+    @PutMapping("/updateWishList")
+    public ResponseEntity<WishListModel> updateWishList(@RequestBody WishListModel wishListModel){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetails userDetails = (MyUserDetails) principal;
+        long customerId = userDetails.getCustomerId();
+        wishListModel.setCustomerID(customerId);
+        WishList wishList = wishListService.getByCustomerId(customerId);
+        WishList wishListMapped = WishListMapper.merge(wishListModel,wishList);
+        WishList wishListSaved = wishListService.update(wishListMapped);
+        return ResponseEntity.ok().body(WishListMapper.toModel(wishListSaved));
+    }
 }
