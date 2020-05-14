@@ -41,4 +41,12 @@ public class DiscountService {
     public List<Discount> saveAll(List<Discount> discounts) {
 		return discountRepository.saveAll(discounts);
 	}
+
+    public Discount getByDiscountID(long discountID) {
+        Optional<Discount> discount = discountRepository.findById(discountID);
+        if(!discount.isPresent()){
+            throw new RuntimeException();
+        }
+        return discount.get();
+    }
 }
