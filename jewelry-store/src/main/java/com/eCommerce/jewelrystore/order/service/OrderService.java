@@ -30,10 +30,11 @@ public class OrderService {
     private ProductService productService;
     private DiscountClient discountClient;
 
-    public OrderService(OrderRepository orderRepository, ProductClient productClient,ProductService productService) {
+    public OrderService(OrderRepository orderRepository, ProductClient productClient,ProductService productService, DiscountClient discountClient) {
         this.orderRepository = orderRepository;
         this.productClient = productClient;
         this.productService = productService;
+        this.discountClient = discountClient;
     }
 
     public List<Order> getAll(int page, int size) {
