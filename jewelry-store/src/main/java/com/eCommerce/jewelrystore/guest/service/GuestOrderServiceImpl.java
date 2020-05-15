@@ -5,11 +5,13 @@ import com.eCommerce.jewelrystore.adapter.ProductClient;
 import com.eCommerce.jewelrystore.adapter.ShippingDetailsClient;
 import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.email.util.MailSender;
+import com.eCommerce.jewelrystore.guest.api.GuestMapper;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrderItem;
 import com.eCommerce.jewelrystore.guest.domain.OrderStatus;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
+import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderItemRepository;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderRepository;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
@@ -122,13 +124,14 @@ public class GuestOrderServiceImpl implements GuestOrderService {
     /**
      * This method is called upon successful payment by guest
      *
-     * @param guest model contains details of guest
+     * @param guestModel contains details of guest
      * @return GuestOrder
      * @throws GuestException is thrown when any event fails
      */
     @Transactional
     @Override
-    public GuestOrder saveGuestOrderAndItems(Guest guest, Charge charge) throws GuestException {
+    public GuestOrder saveGuestOrderAndItems(GuestModel guestModel, Charge charge) throws GuestException {
+        Guest guest = GuestMapper.toEntity(guestModel);
         Guest savedGuest;
         GuestOrder savedGuestOrder;
         List<GuestOrderItem> guestOrderItems;

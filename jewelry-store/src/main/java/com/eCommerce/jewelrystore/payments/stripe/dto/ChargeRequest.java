@@ -1,6 +1,5 @@
 package com.eCommerce.jewelrystore.payments.stripe.dto;
 
-import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.model.GuestModel;
 
 public class ChargeRequest {
@@ -8,6 +7,7 @@ public class ChargeRequest {
     public enum Currency {
         EUR, USD;
     }
+
     private String description;
     private int amount; // cents
     private Currency currency;
@@ -56,13 +56,13 @@ public class ChargeRequest {
         this.stripeToken = stripeToken;
     }
 
-	public String getAddressID() {
-		return addressID;
-	}
+    public String getAddressID() {
+        return addressID;
+    }
 
-	public void setAddressID(String addressID) {
-		this.addressID = addressID;
-	}
+    public void setAddressID(String addressID) {
+        this.addressID = addressID;
+    }
 
     public GuestModel getGuestModel() {
         return guest;

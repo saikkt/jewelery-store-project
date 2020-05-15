@@ -3,11 +3,13 @@ package com.eCommerce.jewelrystore.payments.util.api;
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
 import com.eCommerce.jewelrystore.adapter.TransactionClient;
+import com.eCommerce.jewelrystore.aws.secrets.stripe.StripeSecret;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
 import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
+import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
@@ -63,6 +65,9 @@ public class PaymentsController {
 
     @Autowired
     TransactionClient transactionClient;
+
+    @Autowired
+    StripeSecret stripeSecret;
 
     Logger logger = LoggerFactory.getLogger(PaymentsController.class);
 
@@ -130,9 +135,8 @@ public class PaymentsController {
                 model.addAttribute("chargeId", charge.getId());
                 model.addAttribute("balance_transaction", charge.getBalanceTransaction());
 
-                //To do-- Try with Object Mapper...Use GuestModel instead of Guest
-                Guest guest = (Guest) model.getAttribute("guest");
-                GuestOrder guestOrder = guestOrderClient.placeGuestOrder(guest, charge);
+                GuestModel guestModel = chargeRequest.getGuestModel();
+                GuestOrder guestOrder = guestOrderClient.placeGuestOrder(guestModel, charge);
 
                 /*Shipping Details,
                  Order Confirmation Email,
@@ -164,7 +168,7 @@ public class PaymentsController {
             if (customerOrders.size() == 0)
                 return ResponseEntity.noContent().build();
             model.addAttribute("amount", customerOrders.get(0).getCheckoutPrice()); // in cents
-            model.addAttribute("stripePublicKey", "pk_test_7XVj7rZoBH41H8SLaNekEnCk00XFj6ME1t");
+            model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
             model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok().body(model);
         }
@@ -173,7 +177,7 @@ public class PaymentsController {
 
             GuestOrder guestOrder = guestOrderClient.getGuestOrderSummary();
             model.addAttribute("amount", guestOrder.getCheckoutPrice()); // in cents
-            model.addAttribute("stripePublicKey", "pk_test_7XVj7rZoBH41H8SLaNekEnCk00XFj6ME1t");
+            model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
             model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok(model);
         }

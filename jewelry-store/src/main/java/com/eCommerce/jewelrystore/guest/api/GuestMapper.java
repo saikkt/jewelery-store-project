@@ -3,9 +3,9 @@ package com.eCommerce.jewelrystore.guest.api;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.model.GuestModel;
 
-class GuestMapper {
+public class GuestMapper {
 
-    static Guest toEntity(GuestModel guestModel) {
+    public static Guest toEntity(GuestModel guestModel) {
         Guest guest = new Guest(
                 guestModel.getFirstName(),
                 guestModel.getLastName(),
@@ -19,7 +19,7 @@ class GuestMapper {
         return guest;
     }
 
-    static GuestModel toModel(Guest guest) {
+   public static GuestModel toModel(Guest guest) {
         GuestModel guestModel = new GuestModel();
         guestModel.setGuestID(guest.getGuestID());
         guestModel.setFirstName(guest.getFirstName());

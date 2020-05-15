@@ -46,6 +46,11 @@ dependencies {
 	//Stripe Payment Gateway
 	implementation 'com.stripe:stripe-java:4.2.0'
 
+
+
+//	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws-secrets-manager-config', version: '2.0.1.RELEASE'
+	compile group: 'com.amazonaws', name: 'aws-java-sdk-secretsmanager', version: '1.11.355'
+
 	//aws
 //	implementation 'org.springframework.cloud:spring-cloud-starter-aws'
 

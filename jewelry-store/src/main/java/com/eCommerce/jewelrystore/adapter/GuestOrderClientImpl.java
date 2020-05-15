@@ -3,6 +3,7 @@ package com.eCommerce.jewelrystore.adapter;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
+import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.guest.service.GuestOrderService;
 import com.stripe.model.Charge;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,7 @@ public class GuestOrderClientImpl implements GuestOrderClient {
     }
 
     @Override
-    public GuestOrder placeGuestOrder(Guest guest, Charge charge) throws GuestException {
-        return guestOrderService.saveGuestOrderAndItems(guest,charge);
+    public GuestOrder placeGuestOrder(GuestModel guestModel, Charge charge) throws GuestException {
+        return guestOrderService.saveGuestOrderAndItems(guestModel,charge);
     }
 }

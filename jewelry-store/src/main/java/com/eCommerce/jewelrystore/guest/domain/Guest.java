@@ -24,11 +24,11 @@ public class Guest {
 
     @Email
     @NotNull
-    @Column(name = "EmailAddress", length = 255)
+    @Column(name = "EmailAddress")
     private String emailAddress;
 
     @NotNull
-    @Column(name = "StreetAddress", length = 255)
+    @Column(name = "StreetAddress")
     private String streetAddress;
 
     @Column(name = "ApartmentNumber", length = 10)
