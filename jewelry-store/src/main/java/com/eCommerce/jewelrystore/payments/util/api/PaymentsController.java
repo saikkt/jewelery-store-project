@@ -6,7 +6,6 @@ import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.aws.secrets.stripe.StripeSecret;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
 import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
-import com.eCommerce.jewelrystore.guest.domain.Guest;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 import com.eCommerce.jewelrystore.guest.model.GuestModel;
@@ -31,11 +30,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -75,7 +74,7 @@ public class PaymentsController {
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException {
+    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
@@ -129,7 +128,7 @@ public class PaymentsController {
                 logger.info("payment failed for guest", ex);
             }
             //To do -- change charge status to enum
-            if (charge.getStatus() == "succeeded") {
+            if (charge.getStatus().equalsIgnoreCase("succeeded")) {
                 model.addAttribute("id", charge.getId());
                 model.addAttribute("status", charge.getStatus());
                 model.addAttribute("chargeId", charge.getId());
@@ -137,6 +136,8 @@ public class PaymentsController {
 
                 GuestModel guestModel = chargeRequest.getGuestModel();
                 GuestOrder guestOrder = guestOrderClient.placeGuestOrder(guestModel, charge);
+                //To do-- Try with Object Mapper...Use GuestModel instead of Guest
+
 
                 /*Shipping Details,
                  Order Confirmation Email,

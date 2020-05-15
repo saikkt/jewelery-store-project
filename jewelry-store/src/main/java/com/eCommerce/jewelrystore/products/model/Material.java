@@ -14,6 +14,9 @@ public class Material {
     @Column(name = "MaterialType")
     private String materialType;
 
+    @Column(name = "ImagePath")
+    private String imagePath;
+
     public Material() {
     }
 
@@ -31,5 +34,13 @@ public class Material {
 
     public void setMaterialType(String materialType) {
         this.materialType = materialType;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

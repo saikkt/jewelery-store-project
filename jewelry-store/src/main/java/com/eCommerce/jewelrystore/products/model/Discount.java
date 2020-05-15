@@ -1,6 +1,7 @@
 package com.eCommerce.jewelrystore.products.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "jDiscount")
@@ -15,7 +16,7 @@ public class Discount {
     private String discountType;
 
     @Column(name = "Percentage")
-    private double percentage;
+    private BigDecimal percentage;
 
     public Discount() {
     }
@@ -36,11 +37,11 @@ public class Discount {
         this.discountType = discountType;
     }
 
-    public double getPercentage() {
+    public BigDecimal getPercentage() {
         return percentage;
     }
 
-    public void setPercentage(double percentage) {
+    public void setPercentage(BigDecimal percentage) {
         this.percentage = percentage;
     }
 }

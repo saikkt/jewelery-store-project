@@ -18,6 +18,9 @@ public class Section {
     @Column(name = "SectionName")
     private String sectionName;
 
+    @Column(name = "ImagePath")
+    private String imagePath;
+
     public Section() {
     }
 
@@ -37,6 +40,12 @@ public class Section {
         this.sectionName = sectionName;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 }
 

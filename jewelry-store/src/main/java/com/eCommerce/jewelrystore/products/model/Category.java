@@ -26,6 +26,8 @@ public class Category {
     @Column(name = "POPULAR")
     private boolean popular;
 
+    @Column(name = "ImagePath")
+    private String imagePath;
 //    @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 //    private List<Product> products;
 
@@ -78,5 +80,13 @@ public class Category {
 
     public void setPopular(boolean popular) {
         this.popular = popular;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

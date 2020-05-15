@@ -15,6 +15,9 @@ public class Collection {
     @Column(name="CollectionName")
     private String collectionName;
 
+    @Column(name = "ImagePath")
+    private String imagePath;
+
     public Collection() {
     }
 
@@ -32,5 +35,13 @@ public class Collection {
 
     public void setCollectionName(String collectionName) {
         this.collectionName = collectionName;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

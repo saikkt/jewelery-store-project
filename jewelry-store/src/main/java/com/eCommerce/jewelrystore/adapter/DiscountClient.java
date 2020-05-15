@@ -8,4 +8,5 @@ import java.util.List;
 @Component
 public interface DiscountClient {
     List<Discount> getAllDiscounts();
+    Discount getDiscountByID(long discountID);
 }

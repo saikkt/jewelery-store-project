@@ -11,4 +11,5 @@ public interface ProductClient {
     BigDecimal getProductPriceByID(long productID);
     boolean isProductIDExists(long productID);
     List<Product> getAllProducts();
+    Product getProductByID(long productID);
 }

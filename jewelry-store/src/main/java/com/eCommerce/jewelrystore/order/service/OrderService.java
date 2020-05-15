@@ -1,11 +1,14 @@
 package com.eCommerce.jewelrystore.order.service;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
+import com.eCommerce.jewelrystore.adapter.DiscountClient;
 import com.eCommerce.jewelrystore.adapter.ProductClient;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.domain.OrderItem;
 import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.repository.OrderRepository;
+import com.eCommerce.jewelrystore.products.model.Discount;
+import com.eCommerce.jewelrystore.products.model.Product;
 import com.eCommerce.jewelrystore.products.service.ProductService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +28,7 @@ public class OrderService {
     private OrderRepository orderRepository;
     private ProductClient productClient;
     private ProductService productService;
+    private DiscountClient discountClient;
 
     public OrderService(OrderRepository orderRepository, ProductClient productClient,ProductService productService) {
         this.orderRepository = orderRepository;
@@ -44,24 +48,17 @@ public class OrderService {
         //Set Order
         //Get Unit Price
         //Calculate Total price
-        //******To Do******
         //Get Discount from discount table
+        //******To Do******
         //Get Tax From tax table (Not Sure How tax is calculated. Either for individual product or total price)
-
-//        order.getOrderItems().stream().forEach(orderItem -> {
-//            System.out.println(productClient.getProductPriceByID(orderItem.getProductID()));
-//        });
-
-//        for(int i=0;i<order.getOrderItems().size();i++){
-//            System.out.println(productClient.getProductPriceByID(order.getOrderItems().get(i).getProductID()));
-//        }
 
         order.getOrderItems().stream()
                 .forEach(orderItem -> {
                     orderItem.setOrder(order);
                    System.out.println(productService.getByProductID(orderItem.getProductID()));
 //                    orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
-                    orderItem.setTotalPrice(orderItem.getUnitPrice().multiply(new BigDecimal(orderItem.getQuantity())));
+                    BigDecimal discount = orderItem.getUnitPrice().multiply(orderItem.getDiscount().divide(BigDecimal.valueOf(100)));
+                    orderItem.setTotalPrice((orderItem.getUnitPrice().subtract(discount).multiply(new BigDecimal(orderItem.getQuantity()))));
                 });
         //Calculate CheckOut Price
         BigDecimal checkOutPrice = order.getOrderItems().stream()
@@ -86,7 +83,10 @@ public class OrderService {
             Order order_new = new Order(userDetails.getCustomerId());
             OrderItem orderItem = new OrderItem(order_new,productID);
             orderItem.setQuantity(quantity);
-            orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
+            Product product = productClient.getProductByID(orderItem.getProductID());
+            orderItem.setUnitPrice(product.getPrice());
+            Discount discount = discountClient.getDiscountByID(product.getDiscountID());
+            orderItem.setDiscount(discount.getPercentage());
             List<OrderItem> orderItemsList = new ArrayList<>();
             orderItemsList.add(orderItem);
             order_new.setOrderItems(orderItemsList);
@@ -96,7 +96,10 @@ public class OrderService {
         {
             OrderItem orderItem = new OrderItem(order,productID);
             orderItem.setQuantity(quantity);
-            orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
+            Product product = productClient.getProductByID(orderItem.getProductID());
+            orderItem.setUnitPrice(product.getPrice());
+            Discount discount = discountClient.getDiscountByID(product.getDiscountID());
+            orderItem.setDiscount(discount.getPercentage());
             order.getOrderItems().add(orderItem);
             return save(order);
         }
@@ -138,4 +141,5 @@ public class OrderService {
         //saving back order
        return  save(order);
     }
+
 }

@@ -104,9 +104,9 @@ public class LandingPageBuilder {
     }
 
     public boolean checkIfSectionIsPresentInCategory(String sectionName, Category category) {
-        if (sectionName.equalsIgnoreCase("mens"))
+        if (sectionName.equalsIgnoreCase("men"))
             return category.isMenSection();
-        if (sectionName.equalsIgnoreCase("womens"))
+        if (sectionName.equalsIgnoreCase("women"))
             return category.isWomenSection();
         if (sectionName.equalsIgnoreCase("kids"))
             return category.isKidsSection();
@@ -115,13 +115,13 @@ public class LandingPageBuilder {
     }
 
     public List<SubCategory> sectionWiseSubCategory(Category category, String sectionName) {
-        if (sectionName.equalsIgnoreCase("mens")) {
+        if (sectionName.equalsIgnoreCase("men")) {
             return subCategoryClient.getAllSubCategoriesByCategoryID(category.getCategoryID())
                     .stream()
                     .filter(SubCategory::isMenSection)
                     .collect(Collectors.toList());
         }
-        if (sectionName.equalsIgnoreCase("womens")) {
+        if (sectionName.equalsIgnoreCase("women")) {
             return subCategoryClient.getAllSubCategoriesByCategoryID(category.getCategoryID())
                     .stream()
                     .filter(SubCategory::isWomenSection)

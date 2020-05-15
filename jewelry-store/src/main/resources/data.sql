@@ -14,63 +14,68 @@ CREATE TABLE `jCategories` (
   `WOMEN` bit(1) default '0',
   `KIDS` bit(1) default '0',
   `POPULAR` bit(1) default '0',
+  `ImagePath` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`CategoryID`)
 );
 
-INSERT INTO jCategories(CategoryName,MEN,WOMEN,KIDS,POPULAR) values
-('Necklaces',1,1,1,0),
-('Earrings',1,1,1,1),
-('Bangles',0,1,0,1);
+INSERT INTO jCategories(CategoryName,MEN,WOMEN,KIDS,POPULAR,ImagePath) values
+('Necklaces',1,1,1,0,''),
+('Earrings',1,1,1,1,''),
+('Bangles',0,1,0,1,'');
 
 
-CREATE TABLE jSubCategories (
-    SubCategoryID INT(11) AUTO_INCREMENT  PRIMARY KEY,
-    CategoryID INT(11),
-    SubCategoryName VARCHAR(50) NOT NULL,
-    MEN bit(1) default '0',
-    WOMEN bit(1) default '0',
-    KIDS bit(1) default '0',
+CREATE TABLE jSubCategory (
+    `SubCategoryID` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+    `CategoryID` INT(11),
+    `SubCategoryName` VARCHAR(50) NOT NULL,
+   `MEN` bit(1) default '0',
+    `WOMEN` bit(1) default '0',
+    `KIDS` bit(1) default '0',
+    `ImagePath` varchar(250) DEFAULT NULL,
     FOREIGN KEY (`CategoryID`) REFERENCES `jCategories`(`CategoryID`)
   );
 
-INSERT INTO jSubCategories (CategoryID,SubCategoryName,MEN,WOMEN,KIDS) VALUES
-(1,'Pendants',0,1,0),
-(1,'Necklace Sets',0,1,0),
-(1, 'Pattas',0,1,0),
-(1, 'Mangalsutras',0,1,0),
-(2,'Chandbali',0,1,0),
-(2, 'Clipons',1,1,0),
-(3,'Arm Braceletes',1,1,1),
-(3, 'Braceletes',1,1,1);
+INSERT INTO jSubCategory (CategoryID,SubCategoryName,MEN,WOMEN,KIDS,ImagePath) VALUES
+(1,'Pendants',0,1,0,''),
+(1,'Necklace Sets',0,1,0,''),
+(1, 'Pattas',0,1,0,''),
+(1, 'Mangalsutras',0,1,0,''),
+(2,'Chandbali',0,1,0,''),
+(2, 'Clipons',1,1,0,''),
+(3,'Arm Braceletes',1,1,1,''),
+(3, 'Braceletes',1,1,1,'');
 
 CREATE TABLE jSections (
-  SectionID INT(11) AUTO_INCREMENT  PRIMARY KEY,
-  SectionName VARCHAR(50) DEFAULT NOT NULL
+  `SectionID` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+  `SectionName` VARCHAR(50) DEFAULT NOT NULL,
+  `ImagePath` varchar(250) DEFAULT NULL
 );
 
-INSERT INTO jSections (SectionName) VALUES
-('KIDS'),
-('MEN'),
-('WOMEN');
+INSERT INTO jSections (SectionName,ImagePath) VALUES
+('KIDS',''),
+('MEN',''),
+('WOMEN','');
 
 CREATE TABLE jCollections (
-  CollectionID INT(11) AUTO_INCREMENT  PRIMARY KEY,
-  CollectionName VARCHAR(50) DEFAULT NOT NULL
+  `CollectionID` INT(11) AUTO_INCREMENT  PRIMARY KEY,
+  `CollectionName` VARCHAR(50) DEFAULT NOT NULL,
+  `ImagePath` varchar(250) DEFAULT NULL
 );
 
-INSERT INTO jCollections (CollectionName) VALUES
-('DIWALI-COLLECTION'),
-('ROMANTIC-COLLECTION');
+INSERT INTO jCollections (CollectionName,ImagePath) VALUES
+('DIWALI-COLLECTION',''),
+('ROMANTIC-COLLECTION','');
 
 CREATE TABLE `jMaterials` (
   `MaterialID` int(11) NOT NULL AUTO_INCREMENT,
   `MaterialType` varchar(50) NOT NULL,
+  `ImagePath` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`MaterialID`)
 );
 
-INSERT INTO jMaterials(MaterialType) values
-('GOLD'),
-('SILVER');
+INSERT INTO jMaterials(MaterialType,ImagePath) values
+('GOLD',''),
+('SILVER','');
 
 CREATE TABLE `jMetalPurity` (
   `MetalPurityID` int(11) NOT NULL AUTO_INCREMENT,
@@ -105,6 +110,7 @@ CREATE TABLE `jProducts` (
   `MaterialID` int(11) NOT NULL,
   `MetalPurityID` int(11) NOT NULL,
   `DiscountID` int(11) DEFAULT 1 NOT NULL,
+  `SubCategoryID` INT(11) NOT NULL,
   `InStockQuantity` int(22) DEFAULT '0',
   `BestSeller` bit(1) DEFAULT '0',
   `TopProduct` bit(1) DEFAULT '0',
@@ -112,7 +118,6 @@ CREATE TABLE `jProducts` (
   `ImagePath` varchar(250) DEFAULT NULL,
   `version` int(11) DEFAULT '1',
   `CreateDate` datetime(6) DEFAULT NULL,
-  `Discount` decimal(19,2) DEFAULT NULL,
   `UpdateDate` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`ProductID`),
   FOREIGN KEY (`CategoryID`) REFERENCES `jCategories` (`CategoryID`),
@@ -120,14 +125,15 @@ CREATE TABLE `jProducts` (
   FOREIGN KEY (`CollectionID`) REFERENCES `jCollections` (`CollectionID`),
   FOREIGN KEY (`MaterialID`) REFERENCES `jMaterials` (`MaterialID`),
   FOREIGN KEY (`MetalPurityID`) REFERENCES `jMetalPurity` (`MetalPurityID`),
-  FOREIGN KEY (`DiscountID`) REFERENCES `jDiscount` (`DiscountID`)
+  FOREIGN KEY (`DiscountID`) REFERENCES `jDiscount` (`DiscountID`),
+  FOREIGN KEY (`SubCategoryID`) REFERENCES `jSubCategory` (`SubCategoryID`)
 );
 
-INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,InStockQuantity,Price,ImagePath,CreateDate,BestSeller,TopProduct) VALUES
-('2.6 Size Three-tone Bangle in 22K Gold',1,3,1,1,1,1,12,234.67,'http://aws.com/s3','2020-04-06',0,1),
-('3.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,2,1,3,333,'http://aws.com/s3','2020-05-05',1,1),
-('4.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,2,3,444.56,'http://aws.com/s3','2020-05-04',1,0),
-('5.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,1,3,121,'http://aws.com/s3','2020-04-20',1,1);
+INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,SubCategoryID,InStockQuantity,Price,ImagePath,CreateDate,BestSeller,TopProduct) VALUES
+('2.6 Size Three-tone Bangle in 22K Gold',1,3,1,1,1,1,1,12,234.67,'http://aws.com/s3','2020-04-06',0,1),
+('3.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,2,1,1,3,333,'http://aws.com/s3','2020-05-05',1,1),
+('4.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,2,1,3,444.56,'http://aws.com/s3','2020-05-04',1,0),
+('5.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,1,1,3,121,'http://aws.com/s3','2020-04-20',1,1);
 
 DROP TABLE jCustomers IF EXISTS;
 DROP TABLE jWishList IF EXISTS;
@@ -194,8 +200,9 @@ ObjectID BINARY(16) DEFAULT NULL,
 FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
 );
 
-INSERT INTO jOrders(CustomerID,CheckoutPrice) VALUES
-(1,2345.67);
+INSERT INTO jOrders(CustomerID,CheckoutPrice,OrderStatus) VALUES
+(1,2345.67,'PLACED'),
+(2,23.67,'PLACED');
 
 
 
@@ -214,7 +221,8 @@ FOREIGN KEY (`ProductID`) REFERENCES `jProducts` (`ProductID`)
 );
 
 INSERT INTO jOrderItems(OrderID,ProductID) values
-(1,1);
+(1,1),
+(2,2);
 
 DROP TABLE IF EXISTS jShippingDetails;
 

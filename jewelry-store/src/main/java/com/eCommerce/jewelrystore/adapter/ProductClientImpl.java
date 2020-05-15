@@ -31,4 +31,9 @@ public class ProductClientImpl implements ProductClient {
     public List<Product> getAllProducts() {
         return productService.getProducts();
     }
+
+    @Override
+    public Product getProductByID(long productID) {
+        return productService.getByProductID(productID);
+    }
 }

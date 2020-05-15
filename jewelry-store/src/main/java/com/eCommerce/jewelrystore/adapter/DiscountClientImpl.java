@@ -19,4 +19,9 @@ public class DiscountClientImpl implements DiscountClient {
     public List<Discount> getAllDiscounts() {
         return discountService.getAll();
     }
+
+    @Override
+    public Discount getDiscountByID(long discountID) {
+        return discountService.getByDiscountID(discountID);
+    }
 }
