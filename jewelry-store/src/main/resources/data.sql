@@ -200,8 +200,9 @@ ObjectID BINARY(16) DEFAULT NULL,
 FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
 );
 
-INSERT INTO jOrders(CustomerID,CheckoutPrice) VALUES
-(1,2345.67);
+INSERT INTO jOrders(CustomerID,CheckoutPrice,OrderStatus) VALUES
+(1,2345.67,'PLACED'),
+(2,23.67,'PLACED');
 
 
 
@@ -220,7 +221,8 @@ FOREIGN KEY (`ProductID`) REFERENCES `jProducts` (`ProductID`)
 );
 
 INSERT INTO jOrderItems(OrderID,ProductID) values
-(1,1);
+(1,1),
+(2,2);
 
 DROP TABLE IF EXISTS jShippingDetails;
 
