@@ -16,19 +16,21 @@ public class WishListMapper {
 
     public static WishList toNewDomain(WishListModel wishListModel){
         StringBuilder productsList=new StringBuilder();
-        wishListModel.getCartListProducts().stream().forEach(product->{
-            productsList.append(product.getProductID());
+        wishListModel.getWishListProducts().stream().forEach(product->{
+            productsList.append(product.getProductID()+"~");
         });
         WishList wishList = new WishList(wishListModel.getCustomerID(),productsList.toString());
+        wishList.setCustomerID(wishListModel.getCustomerID());
         return  wishList;
     }
 
     public static WishList merge(WishListModel wishListModel, WishList wishList) {
         StringBuilder productsList=new StringBuilder(wishList.getProductsList());
-        wishListModel.getCartListProducts().stream().forEach(product->{
-            productsList.append(product.getProductID());
+        wishListModel.getWishListProducts().stream().forEach(product->{
+            productsList.append(product.getProductID()+"~");
         });
         wishList.setProductsList(productsList.toString());
+        wishList.setCustomerID(wishListModel.getCustomerID());
         return wishList;
     }
 }

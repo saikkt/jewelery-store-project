@@ -36,26 +36,16 @@ public class WishListController {
 
     @GetMapping("/getByLoggedUser")
     public ResponseEntity<WishListModel> getWishList(){
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        MyUserDetails userDetails = (MyUserDetails) principal;
-        long customerId = userDetails.getCustomerId();
-        WishList wishList = wishListService.getByCustomerId(customerId);
-        WishListModel wishListModel = WishListMapper.toModel(wishList);
-        if(wishListModel.getWishListCount()>0){
+        WishList wishList = wishListService.getByLoggedInCustomerId();
+        WishListModel wishListModel = new WishListModel();
+        if(wishList!=null){
+            wishListModel = WishListMapper.toModel(wishList);
             List<String> products = Arrays.asList(wishList.getProductsList().split("~"));
             List<Product> wishListProducts = new ArrayList<>();
             products.stream().forEach(p->{
                 wishListProducts.add(productService.getByProductID(Integer.parseInt(p)));
             });
             wishListModel.setWishListProducts(wishListProducts);
-        }
-        List<Order> orders = orderService.getByCustomerIdInCart(customerId);
-        if(orders.size()!=0) {
-            List<OrderItem> orderItems =orders.get(0).getOrderItems();
-            wishListModel.setCartListCount(orderItems.size());
-            wishListModel.setCartListProducts(orderItems.stream().map(p -> {
-                return productService.getByProductID(p.getProductID());
-            }).collect(Collectors.toList()));
         }
         return ResponseEntity.ok().body(wishListModel);
     }
@@ -78,7 +68,7 @@ public class WishListController {
         MyUserDetails userDetails = (MyUserDetails) principal;
         long customerId = userDetails.getCustomerId();
         wishListModel.setCustomerID(customerId);
-        WishList wishList = wishListService.getByCustomerId(customerId);
+        WishList wishList = wishListService.getByLoggedInCustomerId();
         WishList wishListMapped = WishListMapper.merge(wishListModel,wishList);
         WishList wishListSaved = wishListService.update(wishListMapped);
         return ResponseEntity.ok().body(WishListMapper.toModel(wishListSaved));

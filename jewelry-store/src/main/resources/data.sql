@@ -162,6 +162,7 @@ CustomerID INT(11),
 ProductsList VARCHAR(200) NOT NULL,
 Version INT (11) NOT NULL DEFAULT '1',
 ObjectID BINARY(16) DEFAULT NULL,
+
 FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
 );
 
