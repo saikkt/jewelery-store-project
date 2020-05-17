@@ -34,6 +34,11 @@ public class CartClientImpl implements CartClient {
     }
 
     @Override
+    public List<CartItem> getCartItemsWithProductEntity(HttpSession session) {
+        return cartService.getCart(session);
+    }
+
+    @Override
     public void emptyCart(HttpSession session) {
         session.removeAttribute(cartSessionAttributeName);
     }

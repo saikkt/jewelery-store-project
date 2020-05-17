@@ -1,6 +1,7 @@
 package com.eCommerce.jewelrystore.guest.service;
 
 import com.eCommerce.jewelrystore.adapter.*;
+import com.eCommerce.jewelrystore.cart.domain.CartItem;
 import com.eCommerce.jewelrystore.email.util.MailSender;
 import com.eCommerce.jewelrystore.guest.api.GuestMapper;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
@@ -24,10 +25,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @SuppressWarnings("unused")
 @Component
@@ -85,21 +83,20 @@ public class GuestOrderServiceImpl implements GuestOrderService {
     @Transactional
     @Override
     public GuestOrder orderSummary() throws GuestException {
-        final HashMap<Long, Integer> cartItems;
+        //final HashMap<Long, Integer> cartItems;
+        final List<CartItem> cartItems;
         GuestOrder guestOrder;
         try {
-            cartItems = cartClient.getCartItems(httpSession);
+            cartItems = cartClient.getCartItemsWithProductEntity(httpSession);
             guestOrder = new GuestOrder();
 
             //generate order items using cart
             List<GuestOrderItem> guestOrderItems = new ArrayList<>();
-            List<Product> productsList = new ArrayList<>();
-            cartItems.forEach((productID, quantity) -> productsList.add(productClient.getProductByID(productID)));
-            cartItems.forEach((productID, quantity) -> guestOrderItems.add(new GuestOrderItem(productID, quantity)));
+            cartItems.forEach(cartItem -> guestOrderItems.add(new GuestOrderItem(cartItem.getProductID(), cartItem.getQuantity())));
 
-            //handle taxes, discount, totalprice, unitprice
+            //handle taxes, discount, total price, unit price
             guestOrderItems.forEach(guestOrderItem -> {
-                guestOrderItem.setUnitPrice(productClient.getProductPriceByID(guestOrderItem.getProductID()));
+                guestOrderItem.setUnitPrice(orderSummaryUnitPriceHelper(cartItems, guestOrderItem.getProductID()));
                 guestOrderItem.setDiscount(guestOrderItem.getUnitPrice()
                         .multiply(productClient.getProductDiscount(guestOrderItem.getProductID())
                                 .divide(BigDecimal.valueOf(100))));
@@ -127,6 +124,15 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             throw new GuestException("Error in generating order summary", e);
         }
         return guestOrder;
+    }
+
+    public BigDecimal orderSummaryUnitPriceHelper(List<CartItem> cartItems, long productID) {
+        CartItem cartItem = cartItems.stream()
+                .filter(item -> item.getProductID() == productID)
+                .findFirst()
+                .orElse(null);
+
+        return cartItem.getProduct().getPrice();
     }
 
     /**
