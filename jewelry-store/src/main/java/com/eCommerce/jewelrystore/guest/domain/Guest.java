@@ -44,7 +44,7 @@ public class Guest {
 
 
     @NotNull
-    @Column (name = "Country", length = 30)
+    @Column(name = "Country", length = 30)
     private String country;
 
     @NotNull
@@ -66,6 +66,7 @@ public class Guest {
                  @NotNull String streetAddress,
                  @NotNull String city,
                  @NotNull String state,
+                 @NotNull String country,
                  @NotNull long zipCode) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -73,6 +74,7 @@ public class Guest {
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
+        this.country = country;
         this.zipCode = zipCode;
         this.objectID = UUID.randomUUID();
     }

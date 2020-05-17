@@ -130,7 +130,7 @@ CREATE TABLE `jProducts` (
 );
 
 INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,MetalPurityID,DiscountID,SubCategoryID,InStockQuantity,Price,ImagePath,CreateDate,BestSeller,TopProduct) VALUES
-('2.6 Size Three-tone Bangle in 22K Gold',1,3,1,1,1,1,1,12,234.67,'http://aws.com/s3','2020-04-06',0,1),
+('2.6 Size Three-tone Bangle in 22K Gold',1,3,1,1,1,2,1,12,234.67,'http://aws.com/s3','2020-04-06',0,1),
 ('3.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,2,1,1,3,333,'http://aws.com/s3','2020-05-05',1,1),
 ('4.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,2,1,3,444.56,'http://aws.com/s3','2020-05-04',1,0),
 ('5.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,1,1,3,121,'http://aws.com/s3','2020-04-20',1,1);
@@ -167,8 +167,8 @@ FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
 );
 
 INSERT INTO jWishList(CustomerID, ProductsList) values
-(1,'1~2'),
-(2,'1');
+(1,'1~2~'),
+(2,'1~');
 
 
 CREATE TABLE jAddresses(

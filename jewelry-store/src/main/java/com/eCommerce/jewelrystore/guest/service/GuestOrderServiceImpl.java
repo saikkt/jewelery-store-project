@@ -1,9 +1,6 @@
 package com.eCommerce.jewelrystore.guest.service;
 
-import com.eCommerce.jewelrystore.adapter.CartClient;
-import com.eCommerce.jewelrystore.adapter.ProductClient;
-import com.eCommerce.jewelrystore.adapter.ShippingDetailsClient;
-import com.eCommerce.jewelrystore.adapter.TransactionClient;
+import com.eCommerce.jewelrystore.adapter.*;
 import com.eCommerce.jewelrystore.email.util.MailSender;
 import com.eCommerce.jewelrystore.guest.api.GuestMapper;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
@@ -15,6 +12,7 @@ import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderItemRepository;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderRepository;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
+import com.eCommerce.jewelrystore.products.model.Product;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
 import com.stripe.model.Charge;
 import org.slf4j.Logger;
@@ -42,6 +40,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
     private final CartClient cartClient;
     private final ShippingDetailsClient shippingDetailsClient;
     private final TransactionClient transactionClient;
+    private final DiscountClient discountClient;
     private final HttpSession httpSession;
     private final ProductClient productClient;
     private final MailSender mailSender;
@@ -55,7 +54,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
                                  GuestOrderItemRepository guestOrderItemRepository,
                                  GuestService guestService,
                                  CartClient cartClient,
-                                 ShippingDetailsClient shippingDetailsClient, TransactionClient transactionClient, HttpSession httpSession,
+                                 ShippingDetailsClient shippingDetailsClient, TransactionClient transactionClient, DiscountClient discountClient, HttpSession httpSession,
                                  ProductClient productClient,
                                  MailSender mailSender,
                                  @Value("guest.email.subject.name")
@@ -69,6 +68,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         this.cartClient = cartClient;
         this.shippingDetailsClient = shippingDetailsClient;
         this.transactionClient = transactionClient;
+        this.discountClient = discountClient;
         this.httpSession = httpSession;
         this.productClient = productClient;
         this.mailSender = mailSender;
@@ -93,12 +93,20 @@ public class GuestOrderServiceImpl implements GuestOrderService {
 
             //generate order items using cart
             List<GuestOrderItem> guestOrderItems = new ArrayList<>();
+            List<Product> productsList = new ArrayList<>();
+            cartItems.forEach((productID, quantity) -> productsList.add(productClient.getProductByID(productID)));
             cartItems.forEach((productID, quantity) -> guestOrderItems.add(new GuestOrderItem(productID, quantity)));
 
             //handle taxes, discount, totalprice, unitprice
             guestOrderItems.forEach(guestOrderItem -> {
                 guestOrderItem.setUnitPrice(productClient.getProductPriceByID(guestOrderItem.getProductID()));
-                guestOrderItem.setTotalPrice(guestOrderItem.getUnitPrice().multiply(new BigDecimal(guestOrderItem.getQuantity())));
+                guestOrderItem.setDiscount(guestOrderItem.getUnitPrice()
+                        .multiply(productClient.getProductDiscount(guestOrderItem.getProductID())
+                                .divide(BigDecimal.valueOf(100))));
+
+                guestOrderItem.setTotalPrice(guestOrderItem.getUnitPrice()
+                        .subtract(guestOrderItem.getDiscount())
+                        .multiply(new BigDecimal(guestOrderItem.getQuantity())));
             });
 
             //Calculate CheckOut Price
