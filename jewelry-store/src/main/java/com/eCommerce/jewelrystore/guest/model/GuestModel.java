@@ -36,6 +36,9 @@ public class GuestModel {
     private long zipCode;
 
     @JsonProperty
+    private String country;
+
+    @JsonProperty
     private long version;
 
     public long getGuestID() {
@@ -108,6 +111,14 @@ public class GuestModel {
 
     public void setZipCode(long zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public long getVersion() {
