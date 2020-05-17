@@ -25,7 +25,7 @@ public class WishListMapper {
     }
 
     public static WishList merge(WishListModel wishListModel, WishList wishList) {
-        StringBuilder productsList=new StringBuilder(wishList.getProductsList());
+        StringBuilder productsList=new StringBuilder();
         wishListModel.getWishListProducts().stream().forEach(product->{
             productsList.append(product.getProductID()+"~");
         });

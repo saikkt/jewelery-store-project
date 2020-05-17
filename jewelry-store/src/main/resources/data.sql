@@ -167,8 +167,8 @@ FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
 );
 
 INSERT INTO jWishList(CustomerID, ProductsList) values
-(1,'1~2'),
-(2,'1');
+(1,'1~2~'),
+(2,'1~');
 
 
 CREATE TABLE jAddresses(
