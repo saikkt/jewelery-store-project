@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StripeConfig {
 
+    //To-do:: get these values from secret vaults
     protected final String stripeSecretName = "dev/api/keys";
     protected final String stripeApiKey = "dev-stripe-public-key";
 

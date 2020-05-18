@@ -1,6 +1,6 @@
 package com.eCommerce.jewelrystore.aws.secrets.stripe;
 
-//Simple POJO to create a bean
+//Simple Entity to create a bean and access in payments
 public class StripeSecret {
 
     private String stripePublicKey;

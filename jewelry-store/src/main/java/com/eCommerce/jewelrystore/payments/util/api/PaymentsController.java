@@ -17,6 +17,7 @@ import com.eCommerce.jewelrystore.payments.stripe.service.StripeService;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
 import com.eCommerce.jewelrystore.payments.util.PaymentUtil;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
+import com.eCommerce.jewelrystore.shipping.errorhandler.ShippingDetailsException;
 import com.eCommerce.jewelrystore.shipping.service.ShippingDetailsService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -74,7 +75,7 @@ public class PaymentsController {
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException {
+    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException, ShippingDetailsException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);

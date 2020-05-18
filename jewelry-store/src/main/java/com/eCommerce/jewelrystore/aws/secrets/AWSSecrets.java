@@ -22,6 +22,7 @@ public class AWSSecrets {
 
         AWSCredentialsProvider credentialsProvider = new ClasspathPropertiesFileCredentialsProvider();
         // Create a Secrets Manager client
+        // ToDo: Credentials should be loaded from EC2 directly.
         AWSSecretsManager client = AWSSecretsManagerClientBuilder.standard()
                 .withCredentials(credentialsProvider)
                 .withRegion(awsRegion)
@@ -72,7 +73,7 @@ public class AWSSecrets {
 
     }
 
-    public String getApiSecretValue(String secret,String apiKey){
+    public String getApiSecretValue(String secret, String apiKey) {
         String apiValue = null;
         try {
             JsonNode jsonNode = objectMapper.readTree(secret);

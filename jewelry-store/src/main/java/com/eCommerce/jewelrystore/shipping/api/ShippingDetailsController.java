@@ -3,6 +3,7 @@ package com.eCommerce.jewelrystore.shipping.api;
 import com.eCommerce.jewelrystore.products.model.Product;
 import com.eCommerce.jewelrystore.products.service.ProductService;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
+import com.eCommerce.jewelrystore.shipping.errorhandler.ShippingDetailsException;
 import com.eCommerce.jewelrystore.shipping.service.ShippingDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class ShippingDetailsController {
     }
 
      @PostMapping("/postShipping")
-    public ResponseEntity<ShippingDetails> postShipping(ShippingDetails shippingDetails){
+    public ResponseEntity<ShippingDetails> postShipping(ShippingDetails shippingDetails) throws ShippingDetailsException {
         return ResponseEntity.ok().body(shippingDetailsService.postShipping(shippingDetails));
      }
 }

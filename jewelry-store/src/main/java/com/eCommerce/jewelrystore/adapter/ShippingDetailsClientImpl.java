@@ -1,6 +1,7 @@
 package com.eCommerce.jewelrystore.adapter;
 
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
+import com.eCommerce.jewelrystore.shipping.errorhandler.ShippingDetailsException;
 import com.eCommerce.jewelrystore.shipping.service.ShippingDetailsService;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ public class ShippingDetailsClientImpl implements ShippingDetailsClient {
     }
 
     @Override
-    public ShippingDetails postShipping(ShippingDetails shippingDetails) {
+    public ShippingDetails postShipping(ShippingDetails shippingDetails) throws ShippingDetailsException {
         return shippingDetailsService.postShipping(shippingDetails);
     }
 }

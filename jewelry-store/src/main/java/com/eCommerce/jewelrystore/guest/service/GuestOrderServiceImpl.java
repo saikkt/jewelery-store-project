@@ -13,8 +13,8 @@ import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderItemRepository;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderRepository;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
-import com.eCommerce.jewelrystore.products.model.Product;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
+import com.eCommerce.jewelrystore.shipping.errorhandler.ShippingDetailsException;
 import com.stripe.model.Charge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,9 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @SuppressWarnings("unused")
 @Component
@@ -234,13 +236,9 @@ public class GuestOrderServiceImpl implements GuestOrderService {
      * @param guestOrderID Auto generated value
      * @throws GuestException is thrown when saving shipping details is failed
      */
-    public void saveShippingDetails(long guestOrderID) throws GuestException {
+    public void saveShippingDetails(long guestOrderID) throws ShippingDetailsException {
         ShippingDetails shippingDetails = new ShippingDetails(guestOrderID);
         shippingDetails.setGuest(true);
-        try {
-            shippingDetailsClient.postShipping(shippingDetails);
-        } catch (Exception e) {
-            throw new GuestException("Unable to save shipping details for guest", e);
-        }
+        shippingDetailsClient.postShipping(shippingDetails);
     }
 }

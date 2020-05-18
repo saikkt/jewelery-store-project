@@ -53,6 +53,7 @@ public class LandingPageBuilder {
         landingPage = new LandingPage();
     }
 
+
     public LandingPageBuilder loadGlobalLists() {
         landingPage.setGlobalProductList(productClient.getAllProducts());
         landingPage.setGlobalSectionList(sectionClient.getAllSections());

@@ -1,7 +1,4 @@
-/*
-  ToDo: Discuss if boolean data needs to send in category to reduce payload.
-  ToDo: Write a builder to build global object
- */
+
 package com.eCommerce.jewelrystore.landingpage.service;
 
 import com.eCommerce.jewelrystore.landingpage.domain.LandingPage;
