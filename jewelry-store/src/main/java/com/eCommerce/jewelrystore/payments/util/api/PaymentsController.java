@@ -14,6 +14,7 @@ import com.eCommerce.jewelrystore.order.domain.OrderStatus;
 import com.eCommerce.jewelrystore.order.service.OrderService;
 import com.eCommerce.jewelrystore.payments.stripe.dto.ChargeRequest;
 import com.eCommerce.jewelrystore.payments.stripe.service.StripeService;
+import com.eCommerce.jewelrystore.payments.taxes.service.TaxService;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
 import com.eCommerce.jewelrystore.payments.util.PaymentUtil;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
@@ -36,6 +37,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -65,6 +67,9 @@ public class PaymentsController {
 
     @Autowired
     TransactionClient transactionClient;
+
+    @Autowired
+    TaxService taxService;
 
     @Autowired
     StripeSecret stripeSecret;
@@ -169,7 +174,11 @@ public class PaymentsController {
             List<Order> customerOrders = orderService.getByCustomerIdInCart(customerId);
             if (customerOrders.size() == 0)
                 return ResponseEntity.noContent().build();
-            model.addAttribute("amount", customerOrders.get(0).getCheckoutPrice()); // in cents
+            BigDecimal amount = customerOrders.get(0).getCheckoutPrice();
+            BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
+            model.addAttribute("amount", amount);
+            model.addAttribute("tax", stateTax);// in cents
+            model.addAttribute("total", amount.add(stateTax));
             model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
             model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok().body(model);
@@ -178,7 +187,11 @@ public class PaymentsController {
         else {
 
             GuestOrder guestOrder = guestOrderClient.getGuestOrderSummary();
-            model.addAttribute("amount", guestOrder.getCheckoutPrice()); // in cents
+            BigDecimal amount = guestOrder.getCheckoutPrice();
+            BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
+            model.addAttribute("amount", amount); // in cents
+            model.addAttribute("tax", stateTax);// in cents
+            model.addAttribute("total", amount.add(stateTax));
             model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
             model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok(model);

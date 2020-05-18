@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS jMaterials;
 DROP TABLE IF EXISTS jMetalPurity;
 DROP TABLE IF EXISTS jDiscount;
 DROP TABLE IF EXISTS jProducts;
+DROP TABLE IF EXISTS jTaxes;
 
 CREATE TABLE `jCategories` (
   `CategoryID` int(11) NOT NULL AUTO_INCREMENT,
@@ -90,15 +91,16 @@ INSERT INTO jMetalPurity(Purity) values
 CREATE TABLE `jDiscount` (
   `DiscountID` int(11) NOT NULL AUTO_INCREMENT,
   `DiscountType` varchar(50) NOT NULL,
-  `Percentage` decimal(10,2) NOT NULL,
+  `Percentage` INT(11) default 0 ,
+  `Worth` INT(11) default 0 ,
   PRIMARY KEY (`DiscountID`)
 );
 
-INSERT INTO jDiscount(DiscountType,Percentage) values
-('DEFAULT',0.00),
-('10%',10.00),
-('20%',20.00),
-('Dummy Sale',5.99);
+INSERT INTO jDiscount(DiscountType,Percentage,Worth) values
+('DEFAULT',0.00,0),
+('10%',10.00,0),
+('20%',20.00,0),
+('Dummy Sale',0,10);
 
 
 CREATE TABLE `jProducts` (
@@ -134,6 +136,19 @@ INSERT INTO jProducts (ProductName,CategoryID,SectionID,CollectionID,MaterialID,
 ('3.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,2,1,1,3,333,'http://aws.com/s3','2020-05-05',1,1),
 ('4.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,2,1,3,444.56,'http://aws.com/s3','2020-05-04',1,0),
 ('5.25 Size Diamond Ring 18 Karat Rose Gold',1,3,2,1,1,1,1,3,121,'http://aws.com/s3','2020-04-20',1,1);
+
+CREATE TABLE `jTaxes` (
+  `TaxID` int(11) NOT NULL AUTO_INCREMENT,
+  `TaxType` varchar(50) NOT NULL,
+  `Percentage` int(11) default 0,
+  `Worth` int(11) default 0,
+  PRIMARY KEY (`TaxID`)
+);
+
+INSERT INTO jTaxes (TaxType,Percentage,Worth)
+VALUES
+('FEDERAL',18,0),
+('STATE',4,0);
 
 DROP TABLE jCustomers IF EXISTS;
 DROP TABLE jWishList IF EXISTS;

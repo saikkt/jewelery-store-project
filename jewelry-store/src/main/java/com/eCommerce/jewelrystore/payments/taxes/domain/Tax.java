@@ -1,19 +1,18 @@
-package com.eCommerce.jewelrystore.products.model;
+package com.eCommerce.jewelrystore.payments.taxes.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "jDiscount")
-public class Discount {
-
+@Table(name = "jTax")
+public class Tax {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "DiscountID")
-    private long discountID;
+    @Column(name = "TaxID")
+    private long taxID;
 
-    @Column(name = "DiscountType")
-    private String discountType;
+    @Column(name = "TaxType")
+    private String taxType;
 
     @Column(name = "Percentage")
     private BigDecimal percentage;
@@ -21,23 +20,23 @@ public class Discount {
     @Column(name = "Worth")
     private BigDecimal worth;
 
-    public Discount() {
+    public Tax() {
     }
 
-    public long getDiscountID() {
-        return discountID;
+    public long getTaxID() {
+        return taxID;
     }
 
-    public void setDiscountID(long discountID) {
-        this.discountID = discountID;
+    public void setTaxID(long taxID) {
+        this.taxID = taxID;
     }
 
-    public String getDiscountType() {
-        return discountType;
+    public String getTaxType() {
+        return taxType;
     }
 
-    public void setDiscountType(String discountType) {
-        this.discountType = discountType;
+    public void setTaxType(String taxType) {
+        this.taxType = taxType;
     }
 
     public BigDecimal getPercentage() {
