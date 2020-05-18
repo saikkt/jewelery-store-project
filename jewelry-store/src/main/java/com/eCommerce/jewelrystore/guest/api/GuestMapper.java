@@ -13,6 +13,7 @@ public class GuestMapper {
                 guestModel.getStreetAddress(),
                 guestModel.getCity(),
                 guestModel.getState(),
+                guestModel.getCountry(),
                 guestModel.getZipCode()
         );
         guest.setApartmentNumber(guestModel.getApartmentNumber());
@@ -29,6 +30,7 @@ public class GuestMapper {
         guestModel.setApartmentNumber(guest.getApartmentNumber());
         guestModel.setCity(guest.getCity());
         guestModel.setState(guest.getState());
+        guestModel.setCountry(guest.getCountry());
         guestModel.setZipCode(guest.getZipCode());
         guestModel.setVersion(guest.getVersion());
 

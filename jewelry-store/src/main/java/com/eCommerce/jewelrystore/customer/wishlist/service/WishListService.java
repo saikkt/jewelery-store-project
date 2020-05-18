@@ -43,7 +43,13 @@ public class WishListService {
     }
 
     @Transactional
-    public void delete(long customerId) {
-        wishListRepository.deleteByCustomerID(customerId);
+    public boolean delete(long customerId) {
+    	try {
+    		wishListRepository.deleteByCustomerID(customerId);
+    		return true;
+    	} catch(Exception e) {
+			System.out.println("Exception while deleting the wishlist " + e);
+    		return false;
+    	}
     }
 }

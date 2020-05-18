@@ -82,6 +82,7 @@ public class WishListController {
         return ResponseEntity.ok().body(WishListMapper.toModel(wishListSaved));
     }
 
+    
     //need to be added in production --  removed for testing purpose
     //@PreAuthorize("hasRole('ROLE_USER')")
     @DeleteMapping("/deleteWishList")
@@ -92,4 +93,62 @@ public class WishListController {
         wishListService.delete(customerId);
         return ResponseEntity.ok().build();
     }
+    
+    // Make nessessary changes for below methods, if needed
+    // Added by seethend - start
+    @PostMapping("/postWishListItem/{productId}")
+    public ResponseEntity<WishListModel> postWishListItem(@PathVariable String productId){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetails userDetails = (MyUserDetails) principal;
+        long customerId = userDetails.getCustomerId();
+        
+        WishList wishList = wishListService.getByLoggedInCustomerId();
+        WishList wishListMapped = null;
+        
+        if(wishList == null)
+        	wishListMapped = new WishList(customerId, productId + "~");
+        else
+        	wishListMapped = WishListMapper.mergeProduct(productId, wishList, customerId);
+        
+        WishList wishListSaved = wishListService.update(wishListMapped);
+        
+        WishListModel wishListModel = makeWishListModel(wishListSaved);
+        
+        return ResponseEntity.ok().body(wishListModel);
+    }
+    
+    @DeleteMapping("/deleteWishListItem/{productId}")
+    public ResponseEntity<WishListModel> deleteWishListItem(@PathVariable String productId){
+    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetails userDetails = (MyUserDetails) principal;
+        long customerId = userDetails.getCustomerId();
+        
+        WishList wishList = wishListService.getByLoggedInCustomerId();
+    	WishList wishListMapped = null;
+        
+        if(wishList == null)
+        	wishListMapped = new WishList(customerId, productId + "~");
+        else
+        	wishListMapped = WishListMapper.removeProduct(productId, wishList, customerId);
+
+        WishList wishListSaved = wishListService.update(wishListMapped);
+
+        WishListModel wishListModel = makeWishListModel(wishListSaved);
+        
+        return ResponseEntity.ok().body(wishListModel);
+    }
+    
+	private WishListModel makeWishListModel(WishList wishListSaved) {
+		WishListModel wishListModel = WishListMapper.toModel(wishListSaved);
+	    
+	    List<String> products = Arrays.asList(wishListSaved.getProductsList().split("~"));
+	    List<Product> wishListProducts = new ArrayList<>();
+	    products.stream().forEach(p->{
+	        wishListProducts.add(productService.getByProductID(Integer.parseInt(p)));
+	    });
+	    wishListModel.setWishListProducts(wishListProducts);
+		return wishListModel;
+	}
+
+    // Added by seethend - end
 }

@@ -11,9 +11,11 @@ import org.springframework.stereotype.Component;
 public class ProductClientImpl implements ProductClient {
 
     private ProductService productService;
+    private DiscountClient discountClient;
 
-    public ProductClientImpl(ProductService productService) {
+    public ProductClientImpl(ProductService productService, DiscountClient discountClient) {
         this.productService = productService;
+        this.discountClient = discountClient;
     }
 
     @Override
@@ -35,5 +37,10 @@ public class ProductClientImpl implements ProductClient {
     @Override
     public Product getProductByID(long productID) {
         return productService.getByProductID(productID);
+    }
+
+    @Override
+    public BigDecimal getProductDiscount(long productID) {
+        return discountClient.getDiscountByID(getProductByID(productID).getDiscountID()).getPercentage();
     }
 }

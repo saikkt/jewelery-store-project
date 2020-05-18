@@ -1,9 +1,7 @@
 package com.eCommerce.jewelrystore.guest.service;
 
-import com.eCommerce.jewelrystore.adapter.CartClient;
-import com.eCommerce.jewelrystore.adapter.ProductClient;
-import com.eCommerce.jewelrystore.adapter.ShippingDetailsClient;
-import com.eCommerce.jewelrystore.adapter.TransactionClient;
+import com.eCommerce.jewelrystore.adapter.*;
+import com.eCommerce.jewelrystore.cart.domain.CartItem;
 import com.eCommerce.jewelrystore.email.util.MailSender;
 import com.eCommerce.jewelrystore.guest.api.GuestMapper;
 import com.eCommerce.jewelrystore.guest.domain.Guest;
@@ -15,6 +13,7 @@ import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderItemRepository;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderRepository;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
+import com.eCommerce.jewelrystore.products.model.Product;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
 import com.stripe.model.Charge;
 import org.slf4j.Logger;
@@ -26,10 +25,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @SuppressWarnings("unused")
 @Component
@@ -42,6 +38,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
     private final CartClient cartClient;
     private final ShippingDetailsClient shippingDetailsClient;
     private final TransactionClient transactionClient;
+    private final DiscountClient discountClient;
     private final HttpSession httpSession;
     private final ProductClient productClient;
     private final MailSender mailSender;
@@ -55,7 +52,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
                                  GuestOrderItemRepository guestOrderItemRepository,
                                  GuestService guestService,
                                  CartClient cartClient,
-                                 ShippingDetailsClient shippingDetailsClient, TransactionClient transactionClient, HttpSession httpSession,
+                                 ShippingDetailsClient shippingDetailsClient, TransactionClient transactionClient, DiscountClient discountClient, HttpSession httpSession,
                                  ProductClient productClient,
                                  MailSender mailSender,
                                  @Value("guest.email.subject.name")
@@ -69,6 +66,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         this.cartClient = cartClient;
         this.shippingDetailsClient = shippingDetailsClient;
         this.transactionClient = transactionClient;
+        this.discountClient = discountClient;
         this.httpSession = httpSession;
         this.productClient = productClient;
         this.mailSender = mailSender;
@@ -85,20 +83,27 @@ public class GuestOrderServiceImpl implements GuestOrderService {
     @Transactional
     @Override
     public GuestOrder orderSummary() throws GuestException {
-        final HashMap<Long, Integer> cartItems;
+        //final HashMap<Long, Integer> cartItems;
+        final List<CartItem> cartItems;
         GuestOrder guestOrder;
         try {
-            cartItems = cartClient.getCartItems(httpSession);
+            cartItems = cartClient.getCartItemsWithProductEntity(httpSession);
             guestOrder = new GuestOrder();
 
             //generate order items using cart
             List<GuestOrderItem> guestOrderItems = new ArrayList<>();
-            cartItems.forEach((productID, quantity) -> guestOrderItems.add(new GuestOrderItem(productID, quantity)));
+            cartItems.forEach(cartItem -> guestOrderItems.add(new GuestOrderItem(cartItem.getProductID(), cartItem.getQuantity())));
 
-            //handle taxes, discount, totalprice, unitprice
+            //handle taxes, discount, total price, unit price
             guestOrderItems.forEach(guestOrderItem -> {
-                guestOrderItem.setUnitPrice(productClient.getProductPriceByID(guestOrderItem.getProductID()));
-                guestOrderItem.setTotalPrice(guestOrderItem.getUnitPrice().multiply(new BigDecimal(guestOrderItem.getQuantity())));
+                guestOrderItem.setUnitPrice(orderSummaryUnitPriceHelper(cartItems, guestOrderItem.getProductID()));
+                guestOrderItem.setDiscount(guestOrderItem.getUnitPrice()
+                        .multiply(productClient.getProductDiscount(guestOrderItem.getProductID())
+                                .divide(BigDecimal.valueOf(100))));
+
+                guestOrderItem.setTotalPrice(guestOrderItem.getUnitPrice()
+                        .subtract(guestOrderItem.getDiscount())
+                        .multiply(new BigDecimal(guestOrderItem.getQuantity())));
             });
 
             //Calculate CheckOut Price
@@ -119,6 +124,15 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             throw new GuestException("Error in generating order summary", e);
         }
         return guestOrder;
+    }
+
+    public BigDecimal orderSummaryUnitPriceHelper(List<CartItem> cartItems, long productID) {
+        CartItem cartItem = cartItems.stream()
+                .filter(item -> item.getProductID() == productID)
+                .findFirst()
+                .orElse(null);
+
+        return cartItem.getProduct().getPrice();
     }
 
     /**

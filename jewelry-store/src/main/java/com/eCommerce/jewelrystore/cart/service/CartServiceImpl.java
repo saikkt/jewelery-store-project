@@ -21,16 +21,16 @@ public class CartServiceImpl implements CartService {
     private ProductService productService;
 
     public CartServiceImpl(@Value("${cart.session.attribute.name}") String cartSessionAttributeName,
-                           ProductClient productClient,ProductService productService) {
+                           ProductClient productClient, ProductService productService) {
         this.cartSessionAttributeName = cartSessionAttributeName;
         this.productClient = productClient;
-        this.productService=productService;
+        this.productService = productService;
     }
 
     //Auxiliary method to check if product id exists
     //To do -- change exception according to Product Entity
     public boolean isProductIDExists(long productID) throws Exception {
-        if(!productClient.isProductIDExists(productID)){
+        if (!productClient.isProductIDExists(productID)) {
             throw new Exception();
         }
         return productClient.isProductIDExists(productID);
@@ -40,14 +40,16 @@ public class CartServiceImpl implements CartService {
     public List<CartItem> addItemToCart(long productID, int quantity, HttpSession session) throws Exception {
 
         //check if product id exists
-        isProductIDExists(productID);
-        Product product =  productService.getByProductID(productID);
+        // isProductIDExists(productID);
+        Product product = productService.getByProductID(productID);
+
+        if (product == null) throw new Exception();
 
         if (session.getAttribute(cartSessionAttributeName) == null) {
             List<CartItem> cartItems = new ArrayList<>();
-            if(product.getInStockQuantity()<quantity)
-                throw new ProductOutOfStockException("Product stock limit reached "+product.getProductName());
-            cartItems.add(new CartItem(productID, quantity,product));
+            if (product.getInStockQuantity() < quantity)
+                throw new ProductOutOfStockException("Product stock limit reached " + product.getProductName());
+            cartItems.add(new CartItem(productID, quantity, product));
             session.setAttribute(cartSessionAttributeName, cartItems);
             return cartItems;
         }
@@ -59,16 +61,17 @@ public class CartServiceImpl implements CartService {
         final int index = findCartItemIndex(cartItems, productID);
         if (index != -1) {
             CartItem cartItem = cartItems.get(index);
-            if((product.getInStockQuantity()+cartItem.getQuantity())<quantity)
-                throw new ProductOutOfStockException("Product stock limit reached "+product.getProductName());
-            cartItem.setQuantity(quantity+cartItem.getQuantity());
-            cartItems.set(index,cartItem);
+            if ((product.getInStockQuantity() + cartItem.getQuantity()) < quantity)
+                throw new ProductOutOfStockException("Product stock limit reached " + product.getProductName());
+            cartItem.setQuantity(quantity + cartItem.getQuantity());
+            cartItems.set(index, cartItem);
             return cartItems;
         }
 
-        if(product.getInStockQuantity()<quantity)
-            throw new ProductOutOfStockException("Product stock limit reached "+product.getProductName());
-        cartItems.add(new CartItem(productID, quantity,productService.getByProductID(productID)));
+        if (product.getInStockQuantity() < quantity)
+            throw new ProductOutOfStockException("Product stock limit reached " + product.getProductName());
+        cartItems.add(new CartItem(productID, quantity, product));
+
         return cartItems;
     }
 
@@ -76,9 +79,9 @@ public class CartServiceImpl implements CartService {
     public List<CartItem> removeCartItem(long productID, HttpSession session) throws Exception {
 
         //check if product id exists
-        if(!isProductIDExists(productID)) throw new Exception();
+        if (!isProductIDExists(productID)) throw new Exception();
 
-        List<CartItem> cartItems =getCart(session);
+        List<CartItem> cartItems = getCart(session);
         final int index = findCartItemIndex(cartItems, productID);
         if (index != -1) {
             cartItems.remove(index);
@@ -90,19 +93,19 @@ public class CartServiceImpl implements CartService {
 
 
     @Override
-    public List<CartItem> updateCartItem(long productID, HttpSession session,int quantity) throws Exception {
+    public List<CartItem> updateCartItem(long productID, HttpSession session, int quantity) throws Exception {
 
         //check if product id exists
-        if(!isProductIDExists(productID)) throw new Exception();
+        if (!isProductIDExists(productID)) throw new Exception();
 
-        Product product =  productService.getByProductID(productID);
+        Product product = productService.getByProductID(productID);
         List<CartItem> cartItems = (List<CartItem>) session.getAttribute(cartSessionAttributeName);
         final int index = findCartItemIndex(cartItems, productID);
         if (index != -1) {
             int quantity_available = cartItems.get(index).getQuantity();
-            if(quantity_available < quantity)
+            if (quantity_available < quantity)
                 quantity = quantity_available;
-            else if(quantity < 0)
+            else if (quantity < 0)
                 quantity = 0;
             cartItems.get(index).setQuantity(quantity);
             session.setAttribute(cartSessionAttributeName, cartItems);
@@ -110,6 +113,7 @@ public class CartServiceImpl implements CartService {
         }
         return cartItems;
     }
+
     @Override
     public List<CartItem> getCart(HttpSession session) {
         return (List<CartItem>) session.getAttribute(cartSessionAttributeName);
@@ -117,7 +121,7 @@ public class CartServiceImpl implements CartService {
 
 
     public int findCartItemIndex(List<CartItem> cartItems, long productID) {
-        if(cartItems!=null) {
+        if (cartItems != null) {
             for (int i = 0; i < cartItems.size(); i++) {
                 if (cartItems.get(i).getProductID() == productID)
                     return i;
@@ -132,10 +136,10 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<CartItem> updateCart(List<CartItem> cartItems,HttpSession session) {
-        cartItems.stream().forEach(p->{
+    public List<CartItem> updateCart(List<CartItem> cartItems, HttpSession session) {
+        cartItems.stream().forEach(p -> {
             try {
-            	updateCartItem(p.getProductID(), session, p.getQuantity());
+                updateCartItem(p.getProductID(), session, p.getQuantity());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
