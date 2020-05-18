@@ -56,10 +56,9 @@ public class OrderService {
         order.getOrderItems().stream()
                 .forEach(orderItem -> {
                     orderItem.setOrder(order);
-                   System.out.println(productService.getByProductID(orderItem.getProductID()));
-//                    orderItem.setUnitPrice(productClient.getProductPriceByID(orderItem.getProductID()));
                     BigDecimal discount = orderItem.getUnitPrice().multiply(orderItem.getDiscount().divide(BigDecimal.valueOf(100)));
-                    orderItem.setTotalPrice((orderItem.getUnitPrice().subtract(discount).multiply(new BigDecimal(orderItem.getQuantity()))));
+                    BigDecimal offer = orderItem.getOffer();
+                    orderItem.setTotalPrice((orderItem.getUnitPrice().subtract(discount).subtract(offer).multiply(new BigDecimal(orderItem.getQuantity()))));
                 });
         //Calculate CheckOut Price
         BigDecimal checkOutPrice = order.getOrderItems().stream()
@@ -88,6 +87,7 @@ public class OrderService {
             orderItem.setUnitPrice(product.getPrice());
             Discount discount = discountClient.getDiscountByID(product.getDiscountID());
             orderItem.setDiscount(discount.getPercentage());
+            orderItem.setOffer(discount.getWorth());
             List<OrderItem> orderItemsList = new ArrayList<>();
             orderItemsList.add(orderItem);
             order_new.setOrderItems(orderItemsList);
@@ -101,6 +101,7 @@ public class OrderService {
             orderItem.setUnitPrice(product.getPrice());
             Discount discount = discountClient.getDiscountByID(product.getDiscountID());
             orderItem.setDiscount(discount.getPercentage());
+            orderItem.setOffer(discount.getWorth());
             order.getOrderItems().add(orderItem);
             return save(order);
         }

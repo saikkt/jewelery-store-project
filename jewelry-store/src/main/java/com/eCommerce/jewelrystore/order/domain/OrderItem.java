@@ -26,6 +26,9 @@ public class OrderItem {
     @Column(name = "Discount")
     private BigDecimal discount;
 
+    @Column(name = "Offer")
+    private BigDecimal offer;
+
     @Column(name = "TotalPrice")
     private BigDecimal totalPrice;
 
@@ -120,6 +123,14 @@ public class OrderItem {
 
     public void setObjectID(UUID objectID) {
         this.objectID = UUID.randomUUID();
+    }
+
+    public BigDecimal getOffer() {
+        return offer;
+    }
+
+    public void setOffer(BigDecimal offer) {
+        this.offer = offer;
     }
 
     @Override
