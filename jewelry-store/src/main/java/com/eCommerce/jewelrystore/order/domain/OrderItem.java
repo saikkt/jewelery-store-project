@@ -14,8 +14,8 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderItemID;
 
-    @Column(name = "ProductID")
-    private long productID;
+    @Column(name = "ProductName")
+    private String productName;
 
     @Column(name = "UnitPrice")
     private BigDecimal unitPrice;
@@ -23,11 +23,11 @@ public class OrderItem {
     @Column(name = "Quantity")
     private int quantity;
 
+    @Column(name = "DiscountType")
+    private String discountType;
+
     @Column(name = "Discount")
     private BigDecimal discount;
-
-    @Column(name = "Offer")
-    private BigDecimal offer;
 
     @Column(name = "TotalPrice")
     private BigDecimal totalPrice;
@@ -46,9 +46,9 @@ public class OrderItem {
 
     protected OrderItem(){}
 
-    public OrderItem(Order order, long productID) {
+    public OrderItem(Order order, String productName) {
         this.order = order;
-        this.productID = productID;
+        this.productName = productName;
         this.objectID = UUID.randomUUID();
     }
 
@@ -68,13 +68,12 @@ public class OrderItem {
         this.order = order;
     }
 
-
-    public long getProductID() {
-        return productID;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductID(long productID) {
-        this.productID = productID;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public BigDecimal getUnitPrice() {
@@ -93,12 +92,22 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+
+
     public BigDecimal getDiscount() {
         return discount;
     }
 
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
+    }
+
+    public String getDiscountType() {
+        return discountType;
+    }
+
+    public void setDiscountType(String discountType) {
+        this.discountType = discountType;
     }
 
     public BigDecimal getTotalPrice() {
@@ -125,13 +134,13 @@ public class OrderItem {
         this.objectID = UUID.randomUUID();
     }
 
-    public BigDecimal getOffer() {
-        return offer;
-    }
-
-    public void setOffer(BigDecimal offer) {
-        this.offer = offer;
-    }
+//    public BigDecimal getOffer() {
+//        return offer;
+//    }
+//
+//    public void setOffer(BigDecimal offer) {
+//        this.offer = offer;
+//    }
 
     @Override
     public boolean equals(Object o) {

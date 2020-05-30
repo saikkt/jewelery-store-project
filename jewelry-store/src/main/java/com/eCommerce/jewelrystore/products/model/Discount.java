@@ -18,8 +18,8 @@ public class Discount {
     @Column(name = "Percentage")
     private BigDecimal percentage;
 
-    @Column(name = "Worth")
-    private BigDecimal worth;
+//    @Column(name = "Worth")
+//    private BigDecimal worth;
 
     public Discount() {
     }
@@ -48,11 +48,4 @@ public class Discount {
         this.percentage = percentage;
     }
 
-    public BigDecimal getWorth() {
-        return worth;
-    }
-
-    public void setWorth(BigDecimal worth) {
-        this.worth = worth;
-    }
 }

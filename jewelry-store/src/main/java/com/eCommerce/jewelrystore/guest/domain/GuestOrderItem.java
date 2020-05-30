@@ -30,6 +30,9 @@ public class GuestOrderItem {
     @Column(name = "Discount")
     private BigDecimal discount;
 
+    @Column(name = "Offer")
+    private BigDecimal offer;
+
     @Column(name = "TotalPrice")
     private BigDecimal totalPrice;
 
@@ -107,6 +110,22 @@ public class GuestOrderItem {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public long getGuestOrderItemID() {
+        return guestOrderItemID;
+    }
+
+    public void setGuestOrderItemID(long guestOrderItemID) {
+        this.guestOrderItemID = guestOrderItemID;
+    }
+
+    public BigDecimal getOffer() {
+        return offer;
+    }
+
+    public void setOffer(BigDecimal offer) {
+        this.offer = offer;
     }
 
     public long getVersion() {

@@ -37,7 +37,7 @@ public class OrderController {
     }
 
     //Admin access only
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<OrderModel>> getAllOrders(@RequestParam(required = false) Optional<Integer> page,
                                                          @RequestParam(required = false) Optional<Integer> size) {
@@ -58,7 +58,7 @@ public class OrderController {
     }
 
     //Admin and user access
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/history")
     public ResponseEntity<List<OrderModel>> getOrdersByCustomerID(@RequestParam(name = "customerID") long customerID) {
         List<OrderModel> customerOrders = orderService.getByCustomerID(customerID).stream()
@@ -68,7 +68,7 @@ public class OrderController {
     }
 
     //Admin Access only
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{orderID}")
     public ResponseEntity<OrderModel> getByOrderID(@PathVariable(name = "orderID") long orderID) {
         Optional<Order> orderOptional = orderService.getByOrderID(orderID);

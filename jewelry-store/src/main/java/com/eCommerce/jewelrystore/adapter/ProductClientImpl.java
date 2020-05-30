@@ -40,6 +40,11 @@ public class ProductClientImpl implements ProductClient {
     }
 
     @Override
+    public Product getProductByName(String productName) {
+        return productService.getByProductName(productName);
+    }
+
+    @Override
     public BigDecimal getProductDiscount(long productID) {
         return discountClient.getDiscountByID(getProductByID(productID).getDiscountID()).getPercentage();
     }

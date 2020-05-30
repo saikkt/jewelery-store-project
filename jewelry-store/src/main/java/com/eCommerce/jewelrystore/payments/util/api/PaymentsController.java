@@ -4,8 +4,11 @@ import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
 import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.aws.secrets.stripe.StripeSecret;
+import com.eCommerce.jewelrystore.customer.domain.Customer;
 import com.eCommerce.jewelrystore.customer.repository.CustomerRepository;
+import com.eCommerce.jewelrystore.customer.service.CustomerService;
 import com.eCommerce.jewelrystore.customer.util.CartLoaderUtility;
+import com.eCommerce.jewelrystore.email.util.MailSender;
 import com.eCommerce.jewelrystore.guest.domain.GuestOrder;
 import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 import com.eCommerce.jewelrystore.guest.model.GuestModel;
@@ -17,6 +20,10 @@ import com.eCommerce.jewelrystore.payments.stripe.service.StripeService;
 import com.eCommerce.jewelrystore.payments.taxes.service.TaxService;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
 import com.eCommerce.jewelrystore.payments.util.PaymentUtil;
+import com.eCommerce.jewelrystore.products.model.Coupon;
+import com.eCommerce.jewelrystore.products.model.Discount;
+import com.eCommerce.jewelrystore.products.service.CouponService;
+import com.eCommerce.jewelrystore.products.service.DiscountService;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
 import com.eCommerce.jewelrystore.shipping.service.ShippingDetailsService;
 import com.stripe.exception.StripeException;
@@ -29,11 +36,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
@@ -72,6 +75,15 @@ public class PaymentsController {
 
     @Autowired
     StripeSecret stripeSecret;
+
+    @Autowired
+    CouponService couponService;
+
+    @Autowired
+    CustomerService customerService;
+
+    @Autowired
+    MailSender mailSender;
 
     Logger logger = LoggerFactory.getLogger(PaymentsController.class);
 
@@ -116,8 +128,11 @@ public class PaymentsController {
             ShippingDetails shippingDetails = new ShippingDetails(customerOrders.getOrderID());
             shippingDetailsService.postShipping(shippingDetails);
             //adding into payment
+            orderService.saveTransactionDetails(customerOrders.getOrderID(),charge);
             //logic left
             //send email for order confirmation
+            Customer customer = customerService.get(customerId).get();
+            mailSender.sendEmail(customer.getEmailAddress(),"Order Placed",customerOrders.toString());
             return ResponseEntity.ok().build();
         }
 
@@ -160,24 +175,59 @@ public class PaymentsController {
      * cents or dollars.
      */
     @RequestMapping("/checkout")
-    public ResponseEntity<Model> checkout(Model model, HttpSession httpSession) throws GuestException {
+    public ResponseEntity<Model> checkout(Model model, HttpSession httpSession, @RequestParam(name = "couponName") String couponName) throws GuestException {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long customerId;
 
         //If the context has logged in user
         if (principal instanceof UserDetails) {
+            //getting customer details
             MyUserDetails userDetails = (MyUserDetails) principal;
             customerId = userDetails.getCustomerId();
+
+            //loading updated cart into customer with 'CART' status
             cartLoaderUtility.loadCartToCustomer(httpSession);
-            List<Order> customerOrders = orderService.getByCustomerIdInCart(customerId);
+
+            //refreshing order
+            List<Order> customerOrders = orderService.getByCustomerIdInCartRefreshed(customerId);
             if (customerOrders.size() == 0)
                 return ResponseEntity.noContent().build();
-            BigDecimal amount = customerOrders.get(0).getCheckoutPrice();
+//            Order refreshedOrder = orderService.refreshOrder(customerOrders.get(0));
+            Order refreshedOrder = customerOrders.get(0);
+
+            Coupon coupon = null;
+            //getting coupon if available
+            if(couponName!=null) {
+
+                //getting coupon
+                coupon = couponService.validateCoupon(couponName);
+                //checking whether coupon is valid
+                if (coupon==null || coupon.isValid() != true)
+                    throw new RuntimeException();
+                else
+                    refreshedOrder = orderService.updateCouponInCartOrder(customerId, coupon);
+
+                //checking whether the coupon used by customer is in applied limit
+                List<Order> orders = orderService.getByCustomerID(customerId);
+
+                long couponUsed = orders.stream().filter(order -> {
+                    return couponName.equals(order.getCouponType());
+
+                }).count();
+                if (couponUsed >= coupon.getLimitPerCustomer())
+                    throw new RuntimeException();
+            }
+
+            //adding taxes to order
+            BigDecimal amount = refreshedOrder.getTotalPrice();
             BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
+            orderService.addTaxesToOrder(refreshedOrder,stateTax);
+
             model.addAttribute("amount", amount);
-            model.addAttribute("tax", stateTax);// in cents
-            model.addAttribute("total", amount.add(stateTax));
+            model.addAttribute("tax", stateTax);
+            model.addAttribute("couponAmount", coupon.getWorth());// in cents
+            model.addAttribute("total", refreshedOrder.getCheckoutPrice());
             model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
             model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok().body(model);

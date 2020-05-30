@@ -31,6 +31,15 @@ public class Order {
     @Column(name = "OrderStatus")
     private OrderStatus orderStatus;
 
+    @Column(name = "CouponType")
+    private String couponType;
+
+    @Column(name = "CouponWorth")
+    private BigDecimal couponWorth;
+
+    @Column(name = "TotalPrice")
+    private BigDecimal totalPrice;
+
     @Column(name = "CheckoutPrice")
     private BigDecimal checkoutPrice;
 
@@ -92,6 +101,30 @@ public class Order {
 
     public void setCheckoutPrice(BigDecimal checkoutPrice) {
         this.checkoutPrice = checkoutPrice;
+    }
+
+    public String getCouponType() {
+        return couponType;
+    }
+
+    public void setCouponType(String couponType) {
+        this.couponType = couponType;
+    }
+
+    public BigDecimal getCouponWorth() {
+        return couponWorth;
+    }
+
+    public void setCouponWorth(BigDecimal couponWorth) {
+        this.couponWorth = couponWorth;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public List<OrderItem> getOrderItems() {

@@ -3,6 +3,7 @@ package com.eCommerce.jewelrystore.order.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -13,11 +14,13 @@ public class OrderItemModel {
     @JsonProperty
     private long orderID;
     @JsonProperty
-    private long productID;
+    private String productName;
     @JsonProperty
     private BigDecimal unitPrice;
     @JsonProperty
     private int quantity;
+    @JsonProperty
+    private String discountType;
     @JsonProperty
     private BigDecimal discount;
     @JsonProperty
@@ -41,12 +44,20 @@ public class OrderItemModel {
         this.orderID = orderID;
     }
 
-    public long getProductID() {
-        return productID;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductID(long productID) {
-        this.productID = productID;
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getDiscountType() {
+        return discountType;
+    }
+
+    public void setDiscountType(String discountType) {
+        this.discountType = discountType;
     }
 
     public BigDecimal getUnitPrice() {

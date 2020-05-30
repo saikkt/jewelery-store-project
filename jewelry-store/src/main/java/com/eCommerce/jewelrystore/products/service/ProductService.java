@@ -289,4 +289,8 @@ public class ProductService {
     public List<Product> searchProductByKeyWord(String keyword) {
         return productsRepository.findByProductKeyWord(keyword);
     }
+
+    public Product getByProductName(String productName) {
+        return productsRepository.findByProductName(productName);
+    }
 }
