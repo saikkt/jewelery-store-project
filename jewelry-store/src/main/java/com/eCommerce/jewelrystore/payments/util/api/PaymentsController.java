@@ -205,7 +205,7 @@ public class PaymentsController {
 
             Coupon coupon = null;
             //getting coupon if available
-            if(couponName!=null && !couponName.equals("")) {
+            if(couponName!=null && !couponName.trim().isEmpty()) {
 
                 //getting coupon
                 coupon = couponService.validateCoupon(couponName);
@@ -224,19 +224,24 @@ public class PaymentsController {
                 }).count();
                 if (couponUsed >= coupon.getLimitPerCustomer())
                     throw new RuntimeException();
+                
+
+                model.addAttribute("couponAmount", coupon.getWorth());// in cents
+            } else {
+            	refreshedOrder.setCheckoutPrice(refreshedOrder.getTotalPrice());
             }
 
             //adding taxes to order
-            BigDecimal amount = refreshedOrder.getTotalPrice();
+            BigDecimal amount = refreshedOrder.getCheckoutPrice();
             BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
             orderService.addTaxesToOrder(refreshedOrder,stateTax);
 
-            model.addAttribute("amount", amount);
-            model.addAttribute("tax", stateTax);
-            model.addAttribute("couponAmount", coupon.getWorth());// in cents
-            model.addAttribute("total", refreshedOrder.getCheckoutPrice());
-            model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
-            model.addAttribute("currency", ChargeRequest.Currency.USD);
+//          model.addAttribute("amount", amount);
+          model.addAttribute("tax", stateTax);
+          model.addAttribute("finalAmount", refreshedOrder.getCheckoutPrice());
+          model.addAttribute("totalAmount", refreshedOrder.getTotalPrice());
+          model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
+          model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok().body(model);
         }
         //If the checkout is for guest
