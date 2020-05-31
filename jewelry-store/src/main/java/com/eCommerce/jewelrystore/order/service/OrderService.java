@@ -50,6 +50,10 @@ public class OrderService {
         return orderRepository.findByCustomerID(customerID);
     }
 
+    public List<Order> getByCustomerNotInCart(long customerID) {
+        return orderRepository.getByCustomerNotInCart(customerID);
+    }
+
     public Order save(Order order) {
         //Set Order
         //Get Unit Price

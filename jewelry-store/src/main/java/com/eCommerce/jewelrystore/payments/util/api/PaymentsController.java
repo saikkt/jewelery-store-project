@@ -198,7 +198,7 @@ public class PaymentsController {
 
             Coupon coupon = null;
             //getting coupon if available
-            if(couponName!=null) {
+            if(couponName!=null && !couponName.equals("")) {
 
                 //getting coupon
                 coupon = couponService.validateCoupon(couponName);
@@ -209,7 +209,7 @@ public class PaymentsController {
                     refreshedOrder = orderService.updateCouponInCartOrder(customerId, coupon);
 
                 //checking whether the coupon used by customer is in applied limit
-                List<Order> orders = orderService.getByCustomerID(customerId);
+                List<Order> orders = orderService.getByCustomerNotInCart(customerId);
 
                 long couponUsed = orders.stream().filter(order -> {
                     return couponName.equals(order.getCouponType());
