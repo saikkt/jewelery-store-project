@@ -96,6 +96,8 @@ public class CustomerController {
         if(cartClient.getCartItems(httpSession).size()!=0) {
             cartLoaderUtility.loadCartToCustomer(httpSession);
             cartClient.emptyCart(httpSession);
+        } else {
+        	cartLoaderUtility.removeCartIfExists();
         }
         SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
         return ((MyUserDetails) principal).getCustomerId();

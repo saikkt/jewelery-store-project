@@ -42,6 +42,15 @@ public class CartLoaderUtility {
            orderService.addToCart(p.getKey(),p.getValue());
        });
     }
+    
+    public void removeCartIfExists() {
+    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetails userDetails = (MyUserDetails) principal;
+        List<Order> order = orderService.getByCustomerIdInCart(userDetails.getCustomerId());
+        
+        if(order != null && order.size() > 0)
+        	orderService.deleteByOrderID(order.get(0).getOrderID());
+    }
 
     public void loadCustomerToCart(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
