@@ -1,6 +1,8 @@
 package com.eCommerce.jewelrystore.payments.util.api;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
+import com.eCommerce.jewelrystore.adapter.CartClient;
+import com.eCommerce.jewelrystore.adapter.CartClientImpl;
 import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
 import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.aws.secrets.stripe.StripeSecret;
@@ -85,13 +87,16 @@ public class PaymentsController {
     @Autowired
     MailSender mailSender;
 
+    @Autowired
+    CartClient cartClient;
+
     Logger logger = LoggerFactory.getLogger(PaymentsController.class);
 
     //    @Value("${STRIPE_PUBLIC_KEY}")
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException {
+    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model,HttpSession httpSession) throws StripeException, GuestException, TransactionException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
@@ -129,6 +134,8 @@ public class PaymentsController {
             shippingDetailsService.postShipping(shippingDetails);
             //adding into payment
             orderService.saveTransactionDetails(customerOrders.getOrderID(),charge);
+            //emptying cart
+            cartClient.emptyCart(httpSession);
             //logic left
             //send email for order confirmation
             Customer customer = customerService.get(customerId).get();
