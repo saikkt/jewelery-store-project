@@ -62,7 +62,7 @@ public class LandingPageBuilder {
         landingPage.setGlobalCollectionList(collectionClient.getAllCollections());
         landingPage.setGlobalMaterialList(materialClient.getAllMaterials());
         landingPage.setGlobalMetalPurityList(metalPurityClient.getAllMetalPurities());
-        landingPage.setGlobalDiscountList(discountClient.getAllDiscounts());
+        landingPage.setGlobalDiscountList(discountClient.getAllDiscountsWithPercentages());
         return this;
     }
 

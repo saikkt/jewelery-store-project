@@ -1,6 +1,5 @@
 package com.eCommerce.jewelrystore.guest.model;
 
-import com.eCommerce.jewelrystore.guest.domain.GuestOrderItem;
 import com.eCommerce.jewelrystore.guest.domain.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -39,6 +38,12 @@ public class GuestOrderModel {
     private OrderStatus orderStatus;
 
     @JsonProperty
+    private String couponType;
+
+    @JsonProperty
+    private BigDecimal couponWorth;
+
+    @JsonProperty
     private BigDecimal checkoutPrice;
 
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
@@ -47,7 +52,6 @@ public class GuestOrderModel {
 
     @JsonProperty
     private List<GuestOrderItemModel> guestOrderItems = new ArrayList<>();
-
 
 
     public long getGuestOrderID() {
@@ -96,6 +100,22 @@ public class GuestOrderModel {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getCouponType() {
+        return couponType;
+    }
+
+    public void setCouponType(String couponType) {
+        this.couponType = couponType;
+    }
+
+    public BigDecimal getCouponWorth() {
+        return couponWorth;
+    }
+
+    public void setCouponWorth(BigDecimal couponWorth) {
+        this.couponWorth = couponWorth;
     }
 
     public BigDecimal getCheckoutPrice() {

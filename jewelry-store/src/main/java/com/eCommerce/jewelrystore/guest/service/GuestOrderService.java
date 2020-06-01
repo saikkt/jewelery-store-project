@@ -13,4 +13,6 @@ public interface GuestOrderService {
 
     GuestOrder saveGuestOrderAndItems(GuestModel guestModel, Charge charge) throws GuestException;
 
+    GuestOrder validateAndSetCoupon(GuestOrder guestOrder, String couponName) throws GuestException;
+
 }

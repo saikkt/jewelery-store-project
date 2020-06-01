@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,14 +33,12 @@ public class DiscountController {
         }
         return ResponseEntity.ok(discountOptional.get());
     }
+    
 
-    @GetMapping("/find-by-discount-type")
-    public ResponseEntity<Discount> findByDiscountType(@RequestParam(name = "discount-type") String discountType ){
-        Discount discount = discountService.findByDiscountType(discountType);
-        if(discount == null){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(discount);
+
+    @GetMapping("/getAllWithPercentages")
+    public ResponseEntity<List<Discount>> getAllDiscountsWithPercentages(){
+        return ResponseEntity.ok().body(discountService.getAllDiscountsWithPercentages());
     }
 
     @PostMapping

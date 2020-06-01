@@ -10,14 +10,14 @@ import java.util.stream.Collectors;
 class GuestOrderMapper {
 
     //Order Placed Date Format Style
-   final static FormatStyle formatStyle = FormatStyle.FULL;
+    final static FormatStyle formatStyle = FormatStyle.FULL;
 
     static GuestOrder toEntity(GuestOrderModel guestOrderModel) {
         GuestOrder guestOrder = new GuestOrder();
         guestOrder.setGuestOrderItems(
                 guestOrderModel.getGuestOrderItems()
                         .stream()
-                        .map(guestOrderItem -> GuestOrderItemMapper.toEntity(guestOrderItem))
+                        .map(GuestOrderItemMapper::toEntity)
                         .collect(Collectors.toList())
         );
         return guestOrder;
@@ -28,6 +28,8 @@ class GuestOrderMapper {
         guestOrderModel.setGuestID(guestOrder.getGuestID());
         guestOrderModel.setGuestOrderID(guestOrder.getGuestOrderID());
         guestOrderModel.setGuestOrderNumber(guestOrder.getGuestOrderNumber());
+        guestOrderModel.setCouponType(guestOrder.getCouponType());
+        guestOrderModel.setCouponWorth(guestOrder.getCouponWorth());
         guestOrderModel.setCheckoutPrice(guestOrder.getCheckoutPrice());
         //guestOrderModel.setOrderDate(guestOrder.getOrderDate());
         if (guestOrder.getOrderDate() != null) {

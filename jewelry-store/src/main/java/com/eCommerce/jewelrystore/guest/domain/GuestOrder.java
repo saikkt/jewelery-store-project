@@ -1,19 +1,13 @@
 package com.eCommerce.jewelrystore.guest.domain;
 
-import com.eCommerce.jewelrystore.order.domain.Order;
-import com.eCommerce.jewelrystore.order.domain.OrderItem;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table (name = "jGuestOrders")
+@Table(name = "jGuestOrders")
 public class GuestOrder {
 
     //DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
@@ -32,10 +26,22 @@ public class GuestOrder {
     @Column(name = "OrderDate")
     private LocalDate orderDate;
 
-    @Column (name = "OrderStatus")
+    @Column(name = "OrderStatus")
     private OrderStatus orderStatus;
 
-    @Column (name = "CheckoutPrice")
+    @Column(name = "CouponType")
+    private String couponType;
+
+    @Column(name = "CouponWorth")
+    private BigDecimal couponWorth;
+
+    @Transient
+    private BigDecimal checkoutPriceWithoutTax;
+
+    @Transient
+    private BigDecimal stateTax;
+
+    @Column(name = "CheckoutPrice")
     private BigDecimal checkoutPrice;
 
     @Transient
@@ -50,7 +56,6 @@ public class GuestOrder {
     public GuestOrder() {
 
     }
-
 
 
     public long getGuestOrderID() {
@@ -91,6 +96,38 @@ public class GuestOrder {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getCouponType() {
+        return couponType;
+    }
+
+    public void setCouponType(String couponType) {
+        this.couponType = couponType;
+    }
+
+    public BigDecimal getCouponWorth() {
+        return couponWorth;
+    }
+
+    public void setCouponWorth(BigDecimal couponWorth) {
+        this.couponWorth = couponWorth;
+    }
+
+    public BigDecimal getCheckoutPriceWithoutTax() {
+        return checkoutPriceWithoutTax;
+    }
+
+    public void setCheckoutPriceWithoutTax(BigDecimal checkoutPriceWithoutTax) {
+        this.checkoutPriceWithoutTax = checkoutPriceWithoutTax;
+    }
+
+    public BigDecimal getStateTax() {
+        return stateTax;
+    }
+
+    public void setStateTax(BigDecimal stateTax) {
+        this.stateTax = stateTax;
     }
 
     public BigDecimal getCheckoutPrice() {

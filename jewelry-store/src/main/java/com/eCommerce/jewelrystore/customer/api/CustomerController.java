@@ -8,7 +8,6 @@ package com.eCommerce.jewelrystore.customer.api;
 import com.eCommerce.jewelrystore.accounts.MyUserDetailsService;
 import com.eCommerce.jewelrystore.accounts.UserRepository;
 import com.eCommerce.jewelrystore.accounts.exceptions.UserForbiddenException;
-import com.eCommerce.jewelrystore.accounts.exceptions.UserInActiveException;
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.accounts.models.User;
 import com.eCommerce.jewelrystore.accounts.utilities.BcryptGenerator;
@@ -53,6 +52,9 @@ public class CustomerController {
     private  UserRepository userRepository;
 
     @Autowired
+    private OrderService orderService;
+
+    @Autowired
     ApplicationEventPublisher eventPublisher;
 
     @Autowired
@@ -82,6 +84,7 @@ public class CustomerController {
     public ResponseEntity<CustomerModel> reloadBrowser(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long id = ((MyUserDetails) principal).getCustomerId();
+
         CustomerModel customerModel = CustomerMapper.toModel(customerService.get(id).get(),userDetailsService.getUserByCustomerID(id).get());
         return ResponseEntity.ok().body(customerModel);
     }

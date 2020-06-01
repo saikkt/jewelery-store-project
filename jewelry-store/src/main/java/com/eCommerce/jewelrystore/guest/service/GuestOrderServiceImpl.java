@@ -12,7 +12,10 @@ import com.eCommerce.jewelrystore.guest.errorhandler.GuestException;
 import com.eCommerce.jewelrystore.guest.model.GuestModel;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderItemRepository;
 import com.eCommerce.jewelrystore.guest.repository.GuestOrderRepository;
+import com.eCommerce.jewelrystore.payments.taxes.service.TaxService;
 import com.eCommerce.jewelrystore.payments.transaction.errorhandler.TransactionException;
+import com.eCommerce.jewelrystore.products.model.Coupon;
+import com.eCommerce.jewelrystore.products.service.CouponService;
 import com.eCommerce.jewelrystore.shipping.domain.ShippingDetails;
 import com.eCommerce.jewelrystore.shipping.errorhandler.ShippingDetailsException;
 import com.stripe.model.Charge;
@@ -37,6 +40,8 @@ public class GuestOrderServiceImpl implements GuestOrderService {
     private final GuestOrderRepository guestOrderRepository;
     private final GuestOrderItemRepository guestOrderItemRepository;
     private final GuestService guestService;
+    private final TaxService taxService;
+    private final CouponService couponService;
     private final CartClient cartClient;
     private final ShippingDetailsClient shippingDetailsClient;
     private final TransactionClient transactionClient;
@@ -53,8 +58,12 @@ public class GuestOrderServiceImpl implements GuestOrderService {
                                  GuestOrderRepository guestOrderRepository,
                                  GuestOrderItemRepository guestOrderItemRepository,
                                  GuestService guestService,
+                                 TaxService taxService, CouponService couponService,
                                  CartClient cartClient,
-                                 ShippingDetailsClient shippingDetailsClient, TransactionClient transactionClient, DiscountClient discountClient, HttpSession httpSession,
+                                 ShippingDetailsClient shippingDetailsClient,
+                                 TransactionClient transactionClient,
+                                 DiscountClient discountClient,
+                                 HttpSession httpSession,
                                  ProductClient productClient,
                                  MailSender mailSender,
                                  @Value("guest.email.subject.name")
@@ -65,6 +74,8 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         this.guestOrderRepository = guestOrderRepository;
         this.guestOrderItemRepository = guestOrderItemRepository;
         this.guestService = guestService;
+        this.taxService = taxService;
+        this.couponService = couponService;
         this.cartClient = cartClient;
         this.shippingDetailsClient = shippingDetailsClient;
         this.transactionClient = transactionClient;
@@ -109,11 +120,16 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             });
 
             //Calculate CheckOut Price
-            BigDecimal checkOutPrice = guestOrderItems.stream()
+            BigDecimal checkOutPriceWithOutTax = guestOrderItems.stream()
                     .map(GuestOrderItem::getTotalPrice)
                     .reduce(new BigDecimal(0), BigDecimal::add);
+            guestOrder.setCheckoutPriceWithoutTax(checkOutPriceWithOutTax);
 
-            guestOrder.setCheckoutPrice(checkOutPrice);
+            BigDecimal stateTax = checkOutPriceWithOutTax.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
+            guestOrder.setStateTax(stateTax);
+
+            BigDecimal checkOutPriceWithTax = checkOutPriceWithOutTax.add(stateTax);
+            guestOrder.setCheckoutPrice(checkOutPriceWithTax);
             //set order items list
             guestOrder.setGuestOrderItems(guestOrderItems);
 
@@ -158,7 +174,12 @@ public class GuestOrderServiceImpl implements GuestOrderService {
 
             // Generate Order Summary and Dump result into GuestOrder
             // Set all the fields to guest order
-            GuestOrder guestOrder = orderSummary();
+            GuestOrder tempGuestOrder = orderSummary();
+            String couponName = null;
+            if (httpSession.getAttribute("CouponName") != null) {
+                couponName = (String) httpSession.getAttribute("CouponName");
+            }
+            GuestOrder guestOrder = validateAndSetCoupon(tempGuestOrder, couponName);
             guestOrderItems = guestOrder.getGuestOrderItems();
             guestOrder.setGuestID(savedGuest.getGuestID());
             guestOrder.setGuestOrderNumber(UUID.randomUUID());
@@ -190,8 +211,9 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             saveShippingDetails(savedGuestOrder.getGuestOrderID());
 
 
-            //Clear cart session
+            //Clear cart session and coupon name
             httpSession.removeAttribute(cartSessionAttributeName);
+            httpSession.removeAttribute("CouponName");
         } catch (NullPointerException e) {
             logger.warn("Unable to place guest order");
             throw new GuestException("Null pointer accessed, unable to place guest order", e);
@@ -200,6 +222,24 @@ public class GuestOrderServiceImpl implements GuestOrderService {
             throw new GuestException("Unable to place guest order", e);
         }
         return savedGuestOrder;
+    }
+    
+
+    @Override
+    public GuestOrder validateAndSetCoupon(GuestOrder guestOrder, String couponName) throws GuestException {
+        Coupon coupon;
+        if (couponName != null) {
+            coupon = couponService.validateCoupon(couponName);
+            httpSession.setAttribute("CouponName", couponName);
+            if (coupon == null || !coupon.isValid()) {
+                throw new GuestException("Coupon Validation Failed", new RuntimeException());
+            } else {
+                guestOrder.setCouponType(coupon.getCouponType());
+                guestOrder.setCouponWorth(coupon.getWorth());
+                guestOrder.setCheckoutPrice(guestOrder.getCheckoutPrice().subtract(coupon.getWorth()));
+            }
+        }
+        return guestOrder;
     }
 
     /**

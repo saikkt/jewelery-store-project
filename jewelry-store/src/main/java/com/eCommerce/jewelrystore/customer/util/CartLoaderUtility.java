@@ -2,8 +2,10 @@ package com.eCommerce.jewelrystore.customer.util;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
 import com.eCommerce.jewelrystore.adapter.CartClient;
+import com.eCommerce.jewelrystore.adapter.ProductClient;
 import com.eCommerce.jewelrystore.order.domain.Order;
 import com.eCommerce.jewelrystore.order.service.OrderService;
+import com.eCommerce.jewelrystore.products.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,9 @@ public class CartLoaderUtility {
 
     @Autowired
     CartClient cartClient;
+
+    @Autowired
+    ProductClient productClient;
 
     public void loadCartToCustomer(HttpSession session){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -41,12 +46,13 @@ public class CartLoaderUtility {
     public void loadCustomerToCart(HttpSession httpSession) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         MyUserDetails userDetails = (MyUserDetails) principal;
-        List<Order> order = orderService.getByCustomerIdInCart(userDetails.getCustomerId());
+        List<Order> order = orderService.getByCustomerIdInCartRefreshed(userDetails.getCustomerId());
         if(order.size()==0)
             return;
-        order.get(0).getOrderItems().stream().forEach(p->{
+        Order order_refreshed = orderService.refreshOrder(order.get(0));
+        order_refreshed.getOrderItems().stream().forEach(orderItem->{
             try {
-                cartClient.addItemToCart(p.getProductID(),p.getQuantity(),httpSession);
+                cartClient.addItemToCart(productClient.getProductByName(orderItem.getProductName()).getProductID(),orderItem.getQuantity(),httpSession);
             } catch (Exception e) {
                 e.printStackTrace();
             }

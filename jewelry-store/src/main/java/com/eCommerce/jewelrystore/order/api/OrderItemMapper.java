@@ -18,10 +18,11 @@ class OrderItemMapper {
     private static ProductClient productClient;
 
     static OrderItem toEntity(Order order, OrderItemModel orderItemModel){
-        OrderItem orderItem = new OrderItem(order,orderItemModel.getProductID());
+        OrderItem orderItem = new OrderItem(order,orderItemModel.getProductName());
         orderItem.setDiscount(orderItemModel.getDiscount());
         orderItem.setQuantity(orderItemModel.getQuantity());
-        orderItem.setProductID(orderItemModel.getProductID());
+        orderItem.setProductName(orderItemModel.getProductName());
+        orderItem.setDiscountType(orderItemModel.getDiscountType());
 //        System.out.println(productClient.getProductPriceByID(1));
 //        BigDecimal big = productClient.getProductPriceByID(orderItem.getProductID());
 //        orderItem.setUnitPrice(BigDecimal.ONE);
@@ -35,7 +36,8 @@ class OrderItemMapper {
         orderItemModel.setOrderID(orderItem.getOrder().getOrderID());
         orderItemModel.setOrderItemID(orderItem.getOrderItemID());
         orderItemModel.setDiscount(orderItem.getDiscount());
-        orderItemModel.setProductID(orderItem.getProductID());
+        orderItemModel.setDiscountType(orderItem.getDiscountType());
+        orderItemModel.setProductName(orderItem.getProductName());
         orderItemModel.setQuantity(orderItem.getQuantity());
         orderItemModel.setUnitPrice(orderItem.getUnitPrice());
         orderItemModel.setTotalPrice(orderItem.getTotalPrice());

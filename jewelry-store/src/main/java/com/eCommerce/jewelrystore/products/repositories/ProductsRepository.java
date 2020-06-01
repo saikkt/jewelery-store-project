@@ -17,6 +17,7 @@ public interface ProductsRepository extends JpaRepository<Product,Integer>, JpaS
 
 //    @QueryHints(value = { @QueryHint(name = org.hibernate.annotations.QueryHints.FLUSH_MODE, value = "COMMIT") })
     Product findByProductID(long productID);
+    Product findByProductName(String productName);
     List<Product> findByCategoryID(long categoryID);
     List<Product> findByCollectionID(long collectionID);
     List<Product> findBySectionID(long sectionID);

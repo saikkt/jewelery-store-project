@@ -26,4 +26,9 @@ public class GuestOrderClientImpl implements GuestOrderClient {
     public GuestOrder placeGuestOrder(GuestModel guestModel, Charge charge) throws GuestException {
         return guestOrderService.saveGuestOrderAndItems(guestModel,charge);
     }
+
+    @Override
+    public GuestOrder validateAndSetCoupon(GuestOrder guestOrder,String couponName) throws GuestException {
+        return guestOrderService.validateAndSetCoupon(guestOrder,couponName);
+    }
 }

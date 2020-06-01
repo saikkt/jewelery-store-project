@@ -87,21 +87,46 @@ CREATE TABLE `jMetalPurity` (
 INSERT INTO jMetalPurity(Purity) values
 ('24K'),
 ('18K');
+--
+--CREATE TABLE `jDiscount` (
+--  `DiscountID` int(11) NOT NULL AUTO_INCREMENT,
+--  `DiscountType` varchar(50) NOT NULL,
+--  `Percentage` INT(11) default 0 ,
+--  `Worth` INT(11) default 0 ,
+--  PRIMARY KEY (`DiscountType`)
+--);
+--
+--INSERT INTO jDiscount(DiscountType,Percentage,Worth) values
+--('DEFAULT',0.00,0),
+--('10%',10.00,0),
+--('20%',20.00,0),
+--('Dummy Sale',0,10);
+
 
 CREATE TABLE `jDiscount` (
   `DiscountID` int(11) NOT NULL AUTO_INCREMENT,
   `DiscountType` varchar(50) NOT NULL,
   `Percentage` INT(11) default 0 ,
-  `Worth` INT(11) default 0 ,
   PRIMARY KEY (`DiscountID`)
 );
 
-INSERT INTO jDiscount(DiscountType,Percentage,Worth) values
-('DEFAULT',0.00,0),
-('10%',10.00,0),
-('20%',20.00,0),
-('Dummy Sale',0,10);
+INSERT INTO jDiscount(DiscountType,Percentage) values
+('DEFAULT',0.00),
+('10%',10.00),
+('20%',20.00);
 
+CREATE TABLE `jCoupon` (
+  `CouponID` int(11) NOT NULL AUTO_INCREMENT,
+  `CouponType` varchar(50) NOT NULL,
+  `Worth`  decimal(10,2)  default 0 ,
+  `LimitPerCustomer` INT(11) default 0 ,
+  PRIMARY KEY (`CouponID`)
+);
+
+INSERT INTO jCoupon(CouponType,Worth,LimitPerCustomer) values
+('DEFAULT',0.00,3),
+('DIWALI',10.00,3),
+('RAMZAN',20.00,3);
 
 CREATE TABLE `jProducts` (
   `ProductID` int(11) NOT NULL AUTO_INCREMENT,
@@ -148,7 +173,8 @@ CREATE TABLE `jTaxes` (
 INSERT INTO jTaxes (TaxType,Percentage,Worth)
 VALUES
 ('FEDERAL',18,0),
-('STATE',4,0);
+('STATE',4,0),
+('NEWYORK',18,0);
 
 DROP TABLE jCustomers IF EXISTS;
 DROP TABLE jWishList IF EXISTS;
@@ -177,7 +203,6 @@ CustomerID INT(11),
 ProductsList VARCHAR(200) NOT NULL,
 Version INT (11) NOT NULL DEFAULT '1',
 ObjectID BINARY(16) DEFAULT NULL,
-
 FOREIGN KEY (`CustomerID`) REFERENCES `jCustomers` (`CustomerID`)
 );
 
@@ -210,6 +235,9 @@ OrderID INT(11) PRIMARY KEY AUTO_INCREMENT,
 CustomerID INT(11),
 OrderDate datetime DEFAULT NULL,
 OrderStatus VARCHAR(15) DEFAULT NULL,
+CouponType varchar(50) DEFAULT NULL,
+CouponWorth  decimal(10,2)  default 0 ,
+TotalPrice DECIMAL(10,2)  DEFAULT 0.0000,
 CheckoutPrice DECIMAL(10,2) DEFAULT 0.0000,
 Version INT(11) NOT NULL DEFAULT '1',
 ObjectID BINARY(16) DEFAULT NULL,
@@ -221,24 +249,23 @@ INSERT INTO jOrders(CustomerID,CheckoutPrice,OrderStatus) VALUES
 (2,23.67,'PLACED');
 
 
-
 CREATE TABLE jOrderItems(
 OrderItemID INT(11) PRIMARY KEY AUTO_INCREMENT,
 OrderID INT(11) NOT NULL,
-ProductID INT(11) NOT NULL,
+ProductName varchar(400) NOT NULL,
 UnitPrice DECIMAL(10,2) NOT NULL  DEFAULT 0.0000,
 Quantity INT(11) NOT NULL DEFAULT '1',
-Discount DECIMAL(10,2) DEFAULT 0.0000,
+DiscountType DECIMAL(10,2) DEFAULT 0.0000,
+Discount INT(11) default 0 ,
 TotalPrice DECIMAL(10,2) NOT NULL DEFAULT 0.0000,
 Version INT(11) NOT NULL DEFAULT '1',
 ObjectID BINARY(16) DEFAULT NULL,
-FOREIGN KEY (`OrderID`) REFERENCES `jOrders` (`OrderID`),
-FOREIGN KEY (`ProductID`) REFERENCES `jProducts` (`ProductID`)
+FOREIGN KEY (`OrderID`) REFERENCES `jOrders` (`OrderID`)
 );
 
-INSERT INTO jOrderItems(OrderID,ProductID) values
-(1,1),
-(2,2);
+INSERT INTO jOrderItems(OrderID,ProductName) values
+(1,'something'),
+(2,'that thing');
 
 DROP TABLE IF EXISTS jShippingDetails;
 
@@ -330,6 +357,8 @@ CREATE TABLE `jGuestOrders` (
   `GuestID` int(11) DEFAULT NULL,
   `OrderDate` datetime DEFAULT NULL,
   `OrderStatus` varchar(15) DEFAULT NULL,
+  `CouponType` varchar(32) DEFAULT NULL,
+  `CouponWorth` decimal(10,2) DEFAULT '0.00',
   `CheckoutPrice` decimal(10,2) DEFAULT '0.00',
   `Version` int(11) NOT NULL DEFAULT '1',
   `ObjectID` binary(16) DEFAULT NULL,
