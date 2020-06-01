@@ -1,6 +1,8 @@
 package com.eCommerce.jewelrystore.payments.util.api;
 
 import com.eCommerce.jewelrystore.accounts.models.MyUserDetails;
+import com.eCommerce.jewelrystore.adapter.CartClient;
+import com.eCommerce.jewelrystore.adapter.CartClientImpl;
 import com.eCommerce.jewelrystore.adapter.GuestOrderClient;
 import com.eCommerce.jewelrystore.adapter.TransactionClient;
 import com.eCommerce.jewelrystore.aws.secrets.stripe.StripeSecret;
@@ -86,13 +88,16 @@ public class PaymentsController {
     @Autowired
     MailSender mailSender;
 
+    @Autowired
+    CartClient cartClient;
+
     Logger logger = LoggerFactory.getLogger(PaymentsController.class);
 
     //    @Value("${STRIPE_PUBLIC_KEY}")
 //    private String stripePublicKey;
 
     @PostMapping("/charge")
-    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model) throws StripeException, GuestException, TransactionException, ShippingDetailsException {
+    public ResponseEntity<HttpStatus> charge(@RequestBody ChargeRequest chargeRequest, Model model,HttpSession httpSession) throws StripeException, GuestException, TransactionException, ShippingDetailsException {
 
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
@@ -130,6 +135,8 @@ public class PaymentsController {
             shippingDetailsService.postShipping(shippingDetails);
             //adding into payment
             orderService.saveTransactionDetails(customerOrders.getOrderID(),charge);
+            //emptying cart
+            cartClient.emptyCart(httpSession);
             //logic left
             //send email for order confirmation
             Customer customer = customerService.get(customerId).get();
@@ -197,7 +204,7 @@ public class PaymentsController {
 
             Coupon coupon = null;
             //getting coupon if available
-            if(couponName!=null) {
+            if(couponName!=null && !couponName.trim().isEmpty()) {
 
                 //getting coupon
                 coupon = couponService.validateCoupon(couponName);
@@ -208,7 +215,7 @@ public class PaymentsController {
                     refreshedOrder = orderService.updateCouponInCartOrder(customerId, coupon);
 
                 //checking whether the coupon used by customer is in applied limit
-                List<Order> orders = orderService.getByCustomerID(customerId);
+                List<Order> orders = orderService.getByCustomerNotInCart(customerId);
 
                 long couponUsed = orders.stream().filter(order -> {
                     return couponName.equals(order.getCouponType());
@@ -216,19 +223,24 @@ public class PaymentsController {
                 }).count();
                 if (couponUsed >= coupon.getLimitPerCustomer())
                     throw new RuntimeException();
+                
+
+                model.addAttribute("couponAmount", coupon.getWorth());// in cents
+            } else {
+            	refreshedOrder.setCheckoutPrice(refreshedOrder.getTotalPrice());
             }
 
             //adding taxes to order
-            BigDecimal amount = refreshedOrder.getTotalPrice();
+            BigDecimal amount = refreshedOrder.getCheckoutPrice();
             BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
             orderService.addTaxesToOrder(refreshedOrder,stateTax);
 
-            model.addAttribute("amount", amount);
-            model.addAttribute("tax", stateTax);
-            model.addAttribute("couponAmount", coupon.getWorth());// in cents
-            model.addAttribute("total", refreshedOrder.getCheckoutPrice());
-            model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
-            model.addAttribute("currency", ChargeRequest.Currency.USD);
+//          model.addAttribute("amount", amount);
+          model.addAttribute("tax", stateTax);
+          model.addAttribute("finalAmount", refreshedOrder.getCheckoutPrice());
+          model.addAttribute("totalAmount", refreshedOrder.getTotalPrice());
+          model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
+          model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok().body(model);
         }
         //If the checkout is for guest

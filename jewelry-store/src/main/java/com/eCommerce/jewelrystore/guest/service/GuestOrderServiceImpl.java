@@ -223,7 +223,7 @@ public class GuestOrderServiceImpl implements GuestOrderService {
         }
         return savedGuestOrder;
     }
-    
+
 
     @Override
     public GuestOrder validateAndSetCoupon(GuestOrder guestOrder, String couponName) throws GuestException {
