@@ -247,12 +247,21 @@ public class PaymentsController {
         else {
 
             GuestOrder tempGuestOrder = guestOrderClient.getGuestOrderSummary();
-            GuestOrder guestOrder = guestOrderClient.validateAndSetCoupon(tempGuestOrder,couponName);
-           // BigDecimal amount = guestOrder.getCheckoutPrice();
-           // BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
-            model.addAttribute("amount", guestOrder.getCheckoutPriceWithoutTax()); // in cents
-            model.addAttribute("tax", guestOrder.getStateTax());// in cents
-            model.addAttribute("total", guestOrder.getCheckoutPrice());
+            /* 	// Skipping coupon check for Guest
+	            GuestOrder guestOrder = guestOrderClient.validateAndSetCoupon(tempGuestOrder,couponName);
+	           // BigDecimal amount = guestOrder.getCheckoutPrice();
+	           // BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
+	            model.addAttribute("amount", guestOrder.getCheckoutPriceWithoutTax()); // in cents
+	            model.addAttribute("tax", guestOrder.getStateTax());// in cents
+	            model.addAttribute("total", guestOrder.getCheckoutPrice());
+	            model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
+	            model.addAttribute("currency", ChargeRequest.Currency.USD);
+            */
+            BigDecimal amount = tempGuestOrder.getCheckoutPrice();
+            BigDecimal stateTax  = amount.multiply(taxService.getNewYorkStateTax().getPercentage().divide(BigDecimal.valueOf(100)));
+            model.addAttribute("tax", stateTax);// in cents
+            model.addAttribute("totalAmount", amount); // in cents
+            model.addAttribute("finalAmount", amount.add(stateTax));
             model.addAttribute("stripePublicKey", stripeSecret.getStripePublicKey());
             model.addAttribute("currency", ChargeRequest.Currency.USD);
             return ResponseEntity.ok(model);

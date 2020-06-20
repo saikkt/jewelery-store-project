@@ -59,8 +59,10 @@ public class OrderController {
 
     //Admin and user access
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-    @GetMapping("/history")
-    public ResponseEntity<List<OrderModel>> getOrdersByCustomerID(@RequestParam(name = "customerID") long customerID) {
+    @GetMapping("/userhistory")
+    public ResponseEntity<List<OrderModel>> getOrdersByCustomerID() {
+    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long customerID = ((MyUserDetails) principal).getCustomerId();
         List<OrderModel> customerOrders = orderService.getByCustomerID(customerID).stream()
                 .map(OrderMapper::toModel)
                 .collect(Collectors.toList());

@@ -99,7 +99,9 @@ public class CustomerController {
         } else {
         	cartLoaderUtility.removeCartIfExists();
         }
-        SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+        httpSession.invalidate();
+//      SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+        SecurityContextHolder.clearContext();
         return ((MyUserDetails) principal).getCustomerId();
     }
 
